@@ -1,0 +1,8 @@
+#+title: 函数
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+指向实数集的[[file:20201009224938-泛函中的映射.org][映射]]称为函数
+
+- 距离空间里到某个确定点 \(x_{0}\) 的距离函数 \(\rho(x_{0}, y)\) 是连续函数。
+  很容易证明，使用 \(\varepsilon - \delta\) 语言，令 \(\varepsilon = \delta\) 即可。

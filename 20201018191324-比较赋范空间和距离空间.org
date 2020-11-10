@@ -1,0 +1,20 @@
+#+title: 比较赋范空间和距离空间
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 如果我们在赋范空间中用范数定义[[file:20200930133725-距离空间.org][距离]]：
+ \(\forall x,y \in \mathbb{X} ,\rho(x,y)=\lVert x-y \rVert \)y
+这个距离可以验证是满足三个[[file:20200930133725-距离空间.org][公理]]的。
+
+这就是说，赋范空间都是在（元素的差的）范数意义上的距离空间。
+
+* 反过来也可以用距离定义范数
+只要
+- 空间是线性空间
+- \(\rho(x,y) = \rho(x-y, 0)\)
+- \(\rho(\alpha x, 0) = |\alpha|\rho(x,0)\)
+
+可以验证范数 \(\lVert x \rVert =\rho(x,0)\) 是满足[[file:20201015231757-范数.org][范数三个公理]]的。
+
+详见
+https://wenku.baidu.com/view/43bd668f3b3567ec112d8ace.html

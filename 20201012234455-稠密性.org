@@ -1,0 +1,20 @@
+#+title: 稠密性
+#+roam_tags: 泛函分析
+#+roam_alias: density
+
+这个概念有两种定义
+- 若 \(\mathbb{A},\mathbb{B}\subseteq \mathbb{X}\) ，\(\mathbb{X}\) 是距离空间，且 \(\mathbb{A}\subset \mathbb{\overline{B}}\) ，那么称 \(\mathbb{B}\) 在 \(\mathbb{A}\) 中稠密。
+
+- 若 \(\mathbb{A}\subseteq \mathbb{X}\ and\ \overline{\mathbb{A}}=\mathbb{X}\) ，那么称 \(\mathbb{A}\) 在 \(\mathbb{X}\) 中稠密，或 \(\mathbb{A}\) 是 \(\mathbb{X}\) 中的稠密集。
+
+稠密的等价命题
+1. \(\iff\)  \(\forall x\in \mathbb{A},\forall \varepsilon>0,\exists y\in \mathbb{B}(\rho(x,y)<\varepsilon)\)
+2. \(\iff\)  \(\forall \varepsilon(\mathbb{A}\subset \bigcup_{y\in \mathbb{B}}S(y,\varepsilon))\) ，就是说 \(\mathbb{B}\) 中每个点的任意大小开球的并包含 \(\mathbb{A}\) 。
+3. \(\iff\)  \(\forall x\in \mathbb{A} \exists\{x_n\}\subset \mathbb{B}(x_n\to x)\)
+
+例子
+- 外尔斯特拉斯逼近定理：一切实系数多项式构成的集合在[[file:20201004142655-连续函数空间.org][连续函数空间]] \(\mathbb{X}=C[a,b]\) 中稠密。
+  + 根据上面的等价命题 1，这意味着对任意连续函数，都存在实系数多项式，使得二者的距离小于任意给定正数。就是说连续函数一定可以被多项式逼近。
+
+应用：根据《应用泛函分析》，经典近似理论可以用赋范空间的稠密集来表达。如上面的逼近定理
+cite:zeidlerAppliedFunctionalAnalysis2012
