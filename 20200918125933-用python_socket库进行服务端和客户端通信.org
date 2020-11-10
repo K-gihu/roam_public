@@ -1,0 +1,47 @@
+#+TITLE: 用python_socket库进行服务端和客户端通信
+
+1. 建立 socket 对象 server
+2. 将 server 绑定到要监听的主机名和端口
+3. server 指定排队链接数目之后开始监听
+4. 用 server 接收链接，接收后产生链接对象和地址对象
+5. 链接对象接收数据对象（字节码对象）
+6. 数据对象解码并输出
+7. 链接对象发送数据
+
+服务端
+#+BEGIN_SRC python
+import socket
+
+# 建立一个服务端
+server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server.bind(("localhost", 6999))  # 绑定要监听的端口
+server.listen(5)  # 开始监听 表示可以使用五个链接排队
+while True:  # conn就是客户端链接过来而在服务端为期生成的一个链接实例
+    conn, addr = server.accept()  # 等待链接,多个链接的时候就会出现问题,其实返回了两个值
+    print(conn, addr)
+    while True:
+        try:
+            data = conn.recv(1024)  # 接收数据
+            print("recive:", data.decode())  # 打印接收到的数据
+            conn.send(data.upper())  # 然后再发送数据
+        except ConnectionResetError as e:
+            print("关闭了正在占线的链接！")
+            break
+    conn.close()
+#+END_SRC
+
+客户端
+#+BEGIN_SRC python
+import socket  # 客户端 发送一个数据，再接收一个数据
+
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 声明socket类型，同时生成链接对象
+client.connect(("localhost", 6999))  # 建立一个链接，连接到本地的6969端口
+while True:
+    # addr = client.accept()
+    # print '连接地址：', addr
+    msg = "欢迎访问菜鸟教程！"  # strip默认取出字符串的头尾空格
+    client.send(msg.encode("utf-8"))  # 发送一条信息 python3 只接收btye流
+    data = client.recv(1024)  # 接收一个信息，并指定接收的大小 为1024字节
+    print("recv:", data.decode())  # 输出我接收的信息
+client.close()  # 关闭这个链接
+#+END_SRC
