@@ -1,0 +1,5 @@
+#+title: 闭球套
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+若 \(\overline{S_n} = \overline{S_n} (x_n,r_n)\) 是一系列闭球，且满足 \(\overline{S_1} \supset \overline{S_2} \supset \dots \supset \overline{S_n} \supset \cdots\) ，那么这些闭球称为闭球套。

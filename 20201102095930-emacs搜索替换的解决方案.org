@@ -1,0 +1,11 @@
+#+title: emacs搜索替换的解决方案
+#+roam_tags: emacs
+#+roam_alias:
+
+* 主要内容
+可以使用 anzu-query-replace 进行搜索替换，如果要使用正则表达式，使用 anzu-query-replace-regexp
+
+emacs 自带的 query-replace 功能已经不错，可以在每个替换处询问用户是否替换。而 anzu 添加了可以即时显示替换结果的功能。
+
+* 参考
+https://github.com/emacsorphanage/anzu

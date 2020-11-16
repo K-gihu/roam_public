@@ -1,0 +1,71 @@
+#+title: 成功-失败法
+#+roam_tags: 工程优化方法
+#+roam_alias:
+
+* 定义
+从某个初始值出发，给定初始步长，沿函数下降的方向前进，直到满足终止条件。
+1. 选取初始点、初始步长及精度，计算初始点函数值
+2. 计算初始点加上初始步长后的点的函数值
+3. 比较函数值，若 2 的函数值小于 1 的函数值，搜索成功, 转 4；否则，搜索失败，转 5。
+4. 令 x:= x + h, f1:=f2, h:=2h，转 2。
+5. 判断 h<e? 若是，停止迭代，现在的点就是极值点；否则令 h:=-1/4h 转步骤 2。
+
+例程：
+#+BEGIN_SRC python
+def searchwithsuccessandfailuremethod(initpoint, initstep, error, func):
+    point = initpoint
+    step = initstep
+    funcvalue1 = func(point)
+    while True:
+        funcvalue2 = func(point + step)
+        if funcvalue2 < funcvalue1:
+            point += step
+            funcvalue1 = funcvalue2
+            step = step*2
+        else:
+            if abs(step) <= error:
+                return point
+            else:
+                step = -1/4 * step
+
+def quadricfunc(x):
+    return x**2
+
+return searchwithsuccessandfailuremethod(1, 1, 0.01, quadricfunc)
+#+END_SRC
+
+#+RESULTS:
+: 0.00390625
+
+* 性质或关系
+- 该方法需注意的点：初始步长选取要适当，太小迭代次数多，太大包含的单峰区间多。
+- 缺点：
+  + 效率低
+  + 如果函数单调，则没有结果。
+- 优点：可以求搜索区间，只要有两边高，中间低的三个点即可。
+- 求搜索区间的例程，在上面例程的基础上改造一下。：
+#+BEGIN_SRC python
+def searchwithsuccessandfailuremethod(initpoint, initstep, func):
+    point = initpoint
+    step = initstep
+    funcvalue1 = func(point)
+    while True:
+        funcvalue2 = func(point + step)
+        if funcvalue2 < funcvalue1:
+            point += step
+            funcvalue1 = funcvalue2
+            step = step*2
+        else:
+            if abs(step) <= error:
+                return point
+            else:
+                step = -1/4 * step
+
+def quadricfunc(x):
+    return x**2
+
+return searchwithsuccessandfailuremethod(1, 1, 0.01, quadricfunc)
+#+END_SRC
+
+#+RESULTS:
+: 0.00390625

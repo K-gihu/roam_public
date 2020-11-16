@@ -1,0 +1,34 @@
+#+title: evil-surround用法参考vim
+#+roam_tags: emacs
+#+roam_alias:
+
+* 主要内容
+正常模式
+-----------
+ds  ： 删除包围
+cs  ： 修改包围
+ys  ： 添加包围
+yS  ： 添加包围并替换包围文本
+yss ： 添加一行包围
+ySs ： 添加包围内容独成一行
+ySS ： 添加包围内容独成一行
+
+可视模式
+-----------
+s   ： 给选中内容添加包围
+S   ： 选中内容添加包围并独成一行
+
+例如：
+1. 光标在 "Hello world!" 中时按下 cs"' 则会替换双引号为单引号： 'Hello world!'
+2. 继续按下 cs'<p>，则会替换单引号为 "<p>" <p>Hello world!</p>
+3. 按下 cst"，则回到初始的双引号： "Hello world!"
+4. 要删除符号，则按下 ds" 删除双引号 Hello world!
+5. 当光标在 hello 上时，按下 ysiw] 则会变为 [Hello] world!
+
+在可视模式 v 下，按下 S 后即可包围了。其中、在包围符号为括号时，输入左括号，则会留一个空格，而右括号则不留空格。
+
+* 参考
+- 这是 VIM 用户的博客。
+  + https://mounui.com/355.html
+- evil-surround 仓库
+  + https://github.com/emacs-evil/evil-surround#examples

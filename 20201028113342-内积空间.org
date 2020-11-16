@@ -1,0 +1,15 @@
+#+title: 内积空间
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+内积空间是数域 \(P\) 上的线性空间，如果定义函数 \(< \cdot , \cdot > : H \times H \to P \) ，将有序点对 \(x,y \in H \times H\) 映射到 \(P\) 中一点，记为 \(< x,y > \in P\) ，而且满足下面三条内积公理：
+- \(<x,y>=\overline{<y,x>}\)
+- \(<\alpha x+\beta y,z> = \overline{\alpha}<x,z>+\overline{\beta}<y,z>\)
+- \(<x,x> \geq 0\) 且 \(<x,x> =0 \iff  x=0\)
+
+
+* 性质或关系
+- 这是一种对欧几里得空间内积概念的推广。相关的还有：向量夹角、向量投影、正交
+- 实内积空间和酉空间。
+- 内积可以定义向量[[file:20201015231757-范数.org][范数]]

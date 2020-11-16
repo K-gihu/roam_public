@@ -1,0 +1,10 @@
+#+title: pdf-tools使用当前主题配色：z m
+#+roam_tags: emacs
+#+roam_alias:
+
+* 主要内容
+ymarco2020/04/20
+You can tell pdftools to use the current theme background/foreground color with =z m (pdf-view-midnight-minor-mode)=
+
+* 参考
+https://discord.com/channels/406534637242810369/695450585758957609/701801024318341191

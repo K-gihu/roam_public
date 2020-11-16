@@ -1,0 +1,10 @@
+#+title: 稀疏集
+#+roam_tags: 泛函分析
+#+roam_alias: 疏朗集
+
+在距离空间 \(\mathbb{X}\) 中，有 \(\mathbb{A} \in \mathbb{X}\) ，若 \(\mathbb{A} \) 在 \(\mathbb{X}\) 的任意一个非空开集中均不[[file:20201012234455-稠密性.org][稠密]]，则 \(\mathbb{A} \) 是稀疏集或疏朗集
+
+等价命题： \(\forall S(x_0,r), \exists S(y_0,r') \subset S(x_0,r):\mathbb{A} \cap S(y_0,r')=\emptyset\)
+
+例子
+-  \(R^n\) 中任一有限子集都是稀疏集，特例是任一单元素集都是稀疏集，因而任一可数子集都是[[file:20201021131759-第一范畴集和第二范畴集.org][第一类型的集]]。

@@ -1,0 +1,16 @@
+#+title: 线性变换
+#+roam_tags: 线性代数
+#+roam_alias:
+
+* 定义
+由一个线性空间指向同一线性空间的线性映射。
+
+* 关系
+如果采用[[file:20200918213109-用向量的运动理解线性变换.org][网格点的运动]]来理解线性变换，那么线性变换的直观特征就是
+- 变换后的直线依然是直线（不仅值网格上的直线，还有其他任意点组成的直线）
+- 变换前的原点在变换后依旧是原点
+- 保持网格线平行且等距分布
+
+** 例子
+ \(T\begin{pmatrix}x  \\ y\end{pmatrix} = \begin{pmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{pmatrix}\begin{pmatrix}x  \\ y\end{pmatrix}\)
+逆时针旋转 \(\theta\) 变换

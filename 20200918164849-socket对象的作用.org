@@ -1,0 +1,26 @@
+#+title: 一般TCP链接中服务端的socket对象的作用
+https://keelii.com/2018/09/24/socket-programming-in-python/
+#+BEGIN_SRC python
+#!/usr/bin/env python3
+
+import socket
+
+HOST = '127.0.0.1'  # 标准的回环地址 (localhost)
+PORT = 65432        # 监听的端口 (非系统级的端口: 大于 1023)
+
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    s.bind((HOST, PORT))
+    s.listen()
+    conn, addr = s.accept()
+    with conn:
+        print('Connected by', addr)
+        while True:
+            data = conn.recv(1024)
+            if not data:
+                break
+            conn.sendall(data)
+#+END_SRC
+
+这里使用了两个 socket 对象，一个是 s，另一个是 conn，这两个对象具有不同的作用
+- s 用来监听一定的主机端口收到的（客户端发来的）链接请求
+- conn 用来和客户端进行通信

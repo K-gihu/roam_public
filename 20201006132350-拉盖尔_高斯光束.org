@@ -1,0 +1,5 @@
+#+title: 拉盖尔-高斯光束
+#+roam_tags: 光学
+#+roam_alias: Laguerre-Gaussian光束
+
+典型涡旋光束。

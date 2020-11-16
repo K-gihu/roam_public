@@ -1,0 +1,37 @@
+#+title: xcape和xmodifier结合使用capslock代替esc和ctrl
+#+roam_tags: linux
+#+roam_alias:
+
+* 主要内容
+我自己用的代码
+#+begin_src bash
+#!/bin/bash
+
+# 自定义按键，以使得：
+# 使用capslock长按时执行ctrl，短按时执行escape。
+# 使用右alt键作为menu键
+
+xmodmap -e "remove lock = Caps_Lock"
+xmodmap -e "remove control = Control_L"
+
+# 66原来是capslock，37原来是control_l
+xmodmap -e "keycode 66 = Control_L"
+xmodmap -e "keycode 37 = Caps_Lock"
+
+# 修饰符是与keycode值绑定的，当我们修改了与修饰符相关的按键之后，记得更新一下相关的修饰符，否则的话，修饰符还是绑定在的物理按键上
+# https://www.cnblogs.com/yinheyi/p/10146900.html
+xmodmap -e "add lock = Caps_Lock"
+xmodmap -e "add control = Control_L"
+
+# 108原是alt，135原是menu
+xmodmap -e "remove mod1 = Alt_R"
+xmodmap -e "keycode 108 = Menu NoSymbol Menu"
+xmodmap -e "keycode 135 = Alt_R Meta_R Alt_R Meta_R"
+xmodmap -e "add mod1 = Alt_R"
+
+xcape -e "Control_L=Escape"
+#+end_src
+
+* 参考
+https://discord.com/channels/406534637242810369/695450585758957609/771752368936452137
+https://github.com/alols/xcape#examples

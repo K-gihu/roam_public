@@ -1,0 +1,5 @@
+#+title: emacs的一些常用字符串插入命令，如buffername和date
+#+roam_tags: emacs
+
+- 我们可以使用 =(format-time-string "%Y-%m-%d")= 输入格式化的日期
+- 可以使用 =(file-name-nondirectory (buffer-file-name))= 输入当前文件名

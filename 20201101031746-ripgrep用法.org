@@ -1,0 +1,8 @@
+#+title: ripgrep如何搜索隐藏文件和忽略文件
+#+roam_alias:
+
+#+begin_src sh
+rg --hidden --no-ignore test
+#+end_src
+
+使用上面的命令可以搜索隐藏的文件和被 =.gitignore= 等忽略的文件。

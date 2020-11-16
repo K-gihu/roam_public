@@ -1,0 +1,5 @@
+#+title: counsel-imenu
+#+roam_tags: emacs
+#+roam_alias: SPC-s-i
+
+显示代码或文章内部结构，目录

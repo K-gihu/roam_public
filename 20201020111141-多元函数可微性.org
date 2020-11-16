@@ -1,0 +1,12 @@
+#+title: 多元函数可微性
+#+roam_tags: 工程优化方法
+#+roam_alias:
+
+* 定义
+设函数 \(f:D  \subseteq \mathbb{R} ^n \to \mathbb{R} ,x \in D\) ，则 \(f\) 在 \(x\) 处可微
+\(\iff \exists l \in \mathbb{R} ^n \ s.t.\ \forall \Delta x \in \mathbb{R} ^n:\)
+\[\lim\limits_{\lVert \Delta x \rVert \to 0} \frac{f(x+\Delta x)-f(x)-l^T \Delta x}{\lVert \Delta x \rVert } = 0\]
+
+这个定义可以从二元函数可微性定义推广而来。
+
+- 可微必可导。这里定义中的 \(l\) 就是 \(f\) 在 \(x\) 处关于各方向的一阶偏导数构成的向量。也是 \(f\) 在 \(x\) 处的[[file:20201020115610-多元函数的梯度.org][梯度]]。

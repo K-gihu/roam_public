@@ -1,0 +1,14 @@
+#+title: l^p空间
+#+roam_tags: 泛函分析
+#+roam_alias: p幂可和序列空间
+
+对于 \(1 \le p < \infty\) ，
+
+\[l^p :=\left\{x = (x_1, x_2, \cdots ,x_n\cdots)\mid\sum_{i=1}^{\infty}|x_i|^p <\infty\right\} \]
+
+距离函数：
+\[\rho(x,y) = \left( \sum_{i=1}^{\infty}|x_i-y_i|^p \right)^{\frac{1}{p}}\]
+
+验证该空间满足[[file:20200930133725-距离空间.org][距离空间]]的三角不等式，需要使用闵可夫斯基不等式
+
+该空间连续版本是[[file:20201007105119-l_p_e_空间.org][p幂可积函数空间]]

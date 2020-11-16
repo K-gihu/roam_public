@@ -1,0 +1,7 @@
+#+title: 凸组合
+#+roam_tags: 工程优化方法
+#+roam_alias: 线段
+
+设线性空间 \(E\) 中有点 \(x,y \in E\) ，则集合 \(\{tx+(1-t)y\mid 0\leq t \leq 1\}\) 称为以 \(x,y\) 为端点的线段。
+
+设 \(x_1,x_2, \dots , x_n \in E, \lambda_i \geq 0, \sum_{i=1}^n \lambda_i = 1,\) 则称 \(\sum_{i=1}^n \lambda_i x_i\) 是 \(x_1,x_2, \dots ,x_n\) 的凸组合。

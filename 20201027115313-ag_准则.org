@@ -1,0 +1,16 @@
+#+title: AG 准则
+#+roam_tags: 工程优化方法
+#+roam_alias: Armijo-Goldstein准则
+
+* 定义
+为每次迭代函数的下降量规定一个上界和一个下界，保证一定下降的同时也不让计算量太大。
+如果记 \(d_k\) 为下降方向，记 \(g_k=\nabla f(x_k)\) ，那么一定有 \(g_k^T d_k<0\) 。
+下降量的上界和下界确定为：
+ \(f(x_k+\lambda d_k)-f(x_k) \leq \lambda\rho g_k^T d_k\)
+ \(f(x_k+\lambda d_k)-f(x_k) \geq \lambda(1-\rho) g_k^T d_k\)
+其中 \(\rho \in (0,\frac{1}{2})\)
+如果令 \(\varphi(\lambda)=f(x_k+\lambda d_k)\) ，那么上面的条件可以翻译为：
+ \(\varphi(\lambda_k) \leq \varphi(0) + \lambda_k\rho\varphi'(0)\)
+ \(\varphi(\lambda_k) \geq \varphi(0) + \lambda_k(1-\rho)\varphi'(0)\)
+这里预先推出了 \(\varphi'(0) = \varphi'(\lambda)\mid_{\lambda=0} = \nabla f(x_k+\lambda d_k) ^T \cdot d_k\mid_{\lambda=0} = g_k^T d_k\)
+* 性质或关系

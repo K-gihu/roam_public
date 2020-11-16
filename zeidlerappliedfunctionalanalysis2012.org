@@ -1,0 +1,18 @@
+#+TITLE: zeidlerAppliedFunctionalAnalysis2012: Applied functional analysis: applications to mathematical physics
+#+ROAM_KEY: cite:zeidlerAppliedFunctionalAnalysis2012
+
+- tags ::
+- keywords ::
+
+
+* Applied functional analysis: applications to mathematical physics
+  :PROPERTIES:
+  :Custom_ID: zeidlerAppliedFunctionalAnalysis2012
+  :URL:
+  :AUTHOR: Zeidler, E.
+  :NOTER_DOCUMENT: /home/klu/Zotero/storage/AA9SLIDE/Applied Functional Analysis Applications to Mathematical Physics by Eberhard Zeidler (z-lib.org).pdf
+  :NOTER_PAGE:
+  :END:
+
+
+序言中介绍了泛函分析基本思想。

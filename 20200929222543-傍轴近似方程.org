@@ -1,0 +1,10 @@
+#+title: 傍轴近似方程
+#+roam_tags: 光学
+
+在缓变振幅近似下，傍轴近似方程可以通过[[file:20200929223607-亥姆霍兹方程.org][亥姆霍兹方程]]推导得出，
+
+缓变振幅近似就是 \(\frac{\partial A}{\partial t} \ll AA, \frac{\partial^2A}{\partial t^2} \ll K \frac{\partial A}{\partial t}\) 。存疑。
+
+傍轴近似时满足 \(k_z = k \sqrt{1- \frac{k_x^2+k_y^2}{k}} \approx k - \frac{k_x^2+k_y^2}{k}\)
+
+傍轴近似，束腰半径约等于波长。

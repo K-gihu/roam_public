@@ -1,0 +1,7 @@
+#+title: 正定性
+#+roam_tags: 工程优化方法 线性代数
+#+roam_alias:
+
+如果 \(Q\) 是 \(n\times n\) 矩阵， \(x\in \mathbb{R}^n\) ，那么 \(Q\) 是：
+- 正定的，\(x^TQx >0\)
+- 半正定的，\(x^TQx \ge 0\)

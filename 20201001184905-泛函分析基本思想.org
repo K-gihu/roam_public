@@ -1,0 +1,19 @@
+#+title: 泛函分析基本思想
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+cite:zeidlerAppliedFunctionalAnalysis2012
+
+泛函分析基本思想是，使用算子方程来表示微分方程和积分方程。
+
+同一个算子方程 \(Au = f, u\in X\) ，可以表示
+- 积分方程 \(u(x) - \int_a^{b}A(x,y)\phi(u(y),y)dy = f(x), a\le x\le b\)
+  前提定义 \((Au)(x):=u(x)-\int_a^bA(x,y)\phi(u(y),y)dy=f(x),x\in [a,b]\)
+- 微分方程 \(u''(x)+c(x)u(x)=f(x),a\le x\le b, u(a)=u(b)=0\)
+  前提定义 \((Au)(x):=u''(x)+c(x)u(x)=f(x),a\le x\le b\)
+- 实数方程系
+  前提定义 \(Au:=(A_1(u_1,u_2),A_2(u_1,u_2))=(f_1,f_2)=f\)
+- 抽象最小值问题 \(F(u)=\min!, u\in X\)
+等等
+
+泛函分析超越基本分析之处在于，维度可以无穷。

@@ -1,0 +1,21 @@
+#+title: emacs搜索时进行wgrep
+#+roam_tags: emacs
+#+roam_alias:
+
+* 主要内容
+
+These keybindings are available while a search is active:
+
+| Keybind   | Description                                   |
+|-----------+-----------------------------------------------|
+| =C-c C-o= | Open a buffer with your search results        |
+| =C-c C-e= | Open a writable buffer of your search results |
+| =C-SPC=   | Preview the current candidate                 |
+| =C-RET=   | Open the selected candidate in other-window   |
+
+Changes to the resulting wgrep buffer (opened by =C-c C-e=) can be committed
+with =C-c C-c= and aborted with =C-c C-k= (alternatively =ZZ= and =ZQ=, for evil
+users).
+
+* 参考
+[[file:~/.emacs.d/modules/completion/ivy/README.org::*Project search & replace][Project search & replace]]

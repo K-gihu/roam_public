@@ -1,0 +1,5 @@
+#+title: 封闭运算
+#+roam_alias:
+
+* 定义
+对于集合 \(G\) 上定义的运算「 \(\cdot\) 」，如果 \(\forall x,y \in G\) 有 \(x\cdot y \in G\) ，那么这种运算称为封闭运算。

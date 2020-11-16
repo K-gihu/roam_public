@@ -1,0 +1,7 @@
+#+title: 内积空间中的勾股定理
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+若[[file:20201028113342-内积空间.org][内积空间]]元素 \(x_1,x_2,\dots ,x_n \in \mathbb{H} \) 相互[[file:20201031123423-正交.org][正交]]，那么他们的和的[[file:20201015231757-范数.org][范数]]的平方等于各自范数的平方和。
+  + \(x = x_1+x_2+\dots +x_n, \lVert x \rVert ^2 = \sum_{i=1}^n \lVert x_i \rVert ^2\)

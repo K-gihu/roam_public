@@ -1,0 +1,12 @@
+#+title: ABCD矩阵
+#+roam_tags: 光学
+#+roam_alias:
+
+来自激光原理。类似于微波理论中的传输线理论的 ABCD 矩阵。自由空间的 ABCD 矩阵是
+\begin{bmatrix}
+   1 & z \\
+   0 & 1
+\end{bmatrix}
+
+- [[file:20201006205316-柯林斯公式.org][柯林斯公式]]用 ABCD 矩阵
+- 根据初始平面是在自由空间中还是在介质中，该矩阵会不同。

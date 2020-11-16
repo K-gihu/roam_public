@@ -1,0 +1,15 @@
+#+title: 粗糙海面散射特性研究的计算方法
+
+- 数值方法
+	- MOM 针对单一频率
+	- FDTD 针对宽带（频）波，比如脉冲
+	- FEM
+	- TDIE
+- 混合方法
+	- 近似-数值混合方法
+		- MOM-KA
+		- MOM-SPM
+		- TDIE-TOKA
+	- 互易性原理
+		- KA-PO
+		- KA-GTD/EEC

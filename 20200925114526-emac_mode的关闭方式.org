@@ -1,0 +1,7 @@
+#+title: emac-mode的关闭方式
+https://emacs-china.org/t/native-os-sis/14089/30
+#+begin_quote
+在 emacs 中，对于所有的 mode 来说：
+(sis-global-inline-mode nil) 和 (sis-global-inline-mode t) 是一样的。 :joy:
+你要想关闭的话，可以这样 (sis-global-inline-mode -1)
+#+end_quote

@@ -1,0 +1,23 @@
+#+title: UML顺序图组合片段
+#+roam_alias: "combined fragment"
+#+roam_tags: UML
+
+* 主要内容
+| Operator | Fragment Typ                                                                                  |
+| alt      | 可选多个片段: only the one whose condition is true will execute                               |
+| opt      | Optional: 片段仅在条件为真时执行                                                              |
+| par      | Parallel: each fragment is run in parallel                                                    |
+| loop     | Loop: the fragment may execute multiple times, and the guard indicates the basis of iteration |
+| region   | Critical region: the fragment can have only one thread executing it at once                   |
+| neg      | Negative: the fragment shows an invalid interaction                                           |
+| ref      | Reference: 引用别的图定义的交互过程。你可以定义参数和返回值。                                 |
+| sd       | Sequence diagram: used to surround an entire sequence diagram.                                |
+
+Note That:
+
+    It is possible to combine frames in order to capture, e.g., loops or branches.
+    Combined fragment keywords: alt, opt, break, par, seq, strict, neg, critical, ignore, consider, assert and loop.
+    Constraints are usually used to show timing constraints on messages. They can apply to the timing of one message or intervals between messages.
+
+* 参考
+https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-sequence-diagram/
