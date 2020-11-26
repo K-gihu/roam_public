@@ -1,0 +1,22 @@
+#+TITLE: shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002: 数学辞海 第5卷
+#+roam_key: cite:shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002
+#+roam_tags: lit
+- tags ::
+- keywords ::
+
+* 数学辞海 第 5 卷
+:PROPERTIES:
+:Custom_ID: shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002
+:URL: http://www.zhizhen.com/detail_38502727e7500f26a299b735657dcb30f1cfdb37f15d71ba1921b0a3ea25510134114c969f2eae5ce89121216563089c042076b795443f421228947cf554123d112cb301f39271709e5a7cc72d793154
+:AUTHOR:  《数学辞海》编辑委员会
+:NOTER_DOCUMENT: /home/klu/Downloads/_Literature/《数学辞海》编辑委员会_2002_数学辞海 第5卷.pdf
+:NOTER_PAGE: 85
+:END:
+
+** 线性规划标准型的定义可以是取最大值
+:PROPERTIES:
+:NOTER_PAGE: 85
+:END:
+
+这里取了最大，工程优化方法中取的是最小。
+\(c\) 是成本系数向量，\(A\) 是约束方程组的消耗系数矩阵，\(x\) 为决策向量，\(b\) 为资源的限制向量。

@@ -1,0 +1,14 @@
+#+title: 赫尔德不等式
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+设 \(p,q > 1, \frac{1}{p}+\frac{1}{q}=1, f \in L^{p} (E), g \in L^{q} (E) \) ，则
+
+\begin{gather*}
+fg \in L^{1} (E)\\
+\left|\int_E fg dm\right| \leq \left(\int_E |f|^p dm\right)^{\frac{1}{p}}\left(\int_E |g|^q dm\right)^{\frac{1}{q}}
+\end{gather*}
+
+* 性质或关系
+p=2的时候，化为[[file:20201124212311-柯西_施瓦茨不等式.org][柯西-施瓦茨不等式]]。

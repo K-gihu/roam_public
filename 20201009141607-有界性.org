@@ -1,3 +1,0 @@
-#+title: 有界性
-#+roam_tags: 泛函分析
-#+roam_alias:

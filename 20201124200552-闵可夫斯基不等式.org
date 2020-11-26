@@ -1,0 +1,10 @@
+#+title: 闵可夫斯基不等式
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+设 \(f,g \in L^{p}(E), p \geq 1\) ，有
+\[\left( \int_E |f+g|^{p} dm \right)^{\frac{1}{p}} \leq\left( \int_E |f|^{p} dm \right)^{\frac{1}{p}} + \left( \int_E |g|^{p} dm \right)^{\frac{1}{p}}\] 。
+
+* 性质或关系
+在[[file:20201007105119-l_p_e_空间.org][L^p(E)空间]]中的任意两个元素满足该不等式。

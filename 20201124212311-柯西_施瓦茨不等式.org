@@ -1,0 +1,9 @@
+#+title: 柯西-施瓦茨不等式
+#+roam_tags: 泛函分析
+#+roam_alias: Cauchy-Schwarz不等式
+
+* 定义
+\(f \in L^{2} (E), g \in L^{2} (E) \) ，就是他们两个平方可积，则
+\[\left|\int_E fg dm\right|^2 \leq \left(\int_E |f|^2 dm\right)\left(\int_E |g|^2 dm\right)\]
+
+* 性质或关系

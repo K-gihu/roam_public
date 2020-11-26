@@ -1,0 +1,19 @@
+#+title: 线性规划标准型
+#+roam_tags: 工程优化方法
+#+roam_alias:
+
+* 定义
+对线性规划数学模型的一种标准形式规定。写成矩阵形式是
+\begin{gather*}
+\min z = c^T x \text{  (representing linear combination of vector x)}\\
+s.t.\  Ax=b (b\geq 0) \\
+x \geq 0
+\end{gather*}
+
+也可以记作：
+\(\min \{z = c^T x : Ax=b, x\geq 0, b\geq 0\}\)
+
+NOTE: 但是为什么约束条件本来是很多不等式，现在可以用等式描述？
+
+* 性质或关系
+目标函数可以取最大值也可以最小值，因为[[file:../20200929211038-工程优化方法课程.org][工程优化课]]上讲取最小值，而[[file:shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002_数学辞海 第5卷.org][shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002: 数学辞海 第5卷]]上面讲取最大值。其他的规定都一样。

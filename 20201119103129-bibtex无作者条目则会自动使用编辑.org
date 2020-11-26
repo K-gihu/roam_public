@@ -1,0 +1,10 @@
+#+title: bibtex无作者条目则会自动使用编辑
+#+roam_alias:
+
+* 主要内容
+#+begin_quote
+bibtex as well as biblatex take the editor field if there is no author field given.
+#+end_quote
+
+* 参考
+https://tex.stackexchange.com/questions/131184/how-to-specify-an-entry-for-a-book-where-no-author-is-given

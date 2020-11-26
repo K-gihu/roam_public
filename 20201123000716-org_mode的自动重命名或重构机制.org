@@ -1,0 +1,8 @@
+#+title: org-mode的自动重命名或重构机制
+#+roam_tags: emacs
+#+roam_alias:
+
+* 主要内容
+目前发现，至少在使用org-roam的时候，如果我修改一个文件开头的 =#+TITLE: bala= 部分，那么相应的链接和文件名都会自动重命名。
+
+* 参考

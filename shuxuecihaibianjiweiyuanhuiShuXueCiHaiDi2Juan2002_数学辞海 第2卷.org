@@ -1,0 +1,25 @@
+#+TITLE: shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi2Juan2002: 数学辞海 第2卷
+#+roam_key: cite:shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi2Juan2002
+#+roam_tags: lit
+- tags ::
+- keywords ::
+
+* 数学辞海 第 2 卷
+  :PROPERTIES:
+  :Custom_ID: shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi2Juan2002
+  :URL: http://www.zhizhen.com/detail_38502727e7500f26a299b735657dcb30cdfea00674b7dbf01921b0a3ea25510134114c969f2eae5c72d5d9753026c2c9023b5360d90a4a7cc446a8682f81461aaafbfeaa5372b2e1d0258ca03f6d4b54
+  :AUTHOR:  《数学辞海》编辑委员会
+  :NOTER_DOCUMENT: /home/klu/Downloads/_Literature/《数学辞海》编辑委员会_2002_数学辞海 第2卷.pdf
+  :NOTER_PAGE: 257
+  :END:
+
+
+** 线性代数——定型和半定型
+:PROPERTIES:
+:NOTER_PAGE: 257
+:END:
+[[pdf:/ntfsstore/_Literature/《数学辞海》编辑委员会_2002_数学辞海 第2卷.pdf::257++5.04][《数学辞海》编辑委员会_2002_数学辞海 第2卷.pdf: Page 257]]
+定型包括正定二次型和负定二次型，它是(实)二次型的一种，可以用惯性指数定义：正定二次型的正负惯性指数分别是 \(n,0\) 。
+半定型和定型的区别就是，半正定二次型的正负惯性指数分别是 \(r(\leq n),0\) 。
+非半定的，就是不定型。
+
