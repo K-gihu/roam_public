@@ -1,5 +1,5 @@
 #+TITLE: README
 
-这是用于分享和打卡的公用仓库，我将再次上传我记录的一些笔记。
+这是用于分享和打卡的公用仓库，我将在此上传我记录的一些笔记。
 
 org 文件使用类似于 markdown 的格式。使用 Emacs, org-mode, org-roam-mode 等进行编辑。
