@@ -2,9 +2,11 @@
 #+roam_tags: 泛函分析
 #+roam_alias:
 
-连续[[file:20201009224938-泛函中的映射.org][映射]]使用 \(\varepsilon - \delta\)  语言定义，主要含义就是：只要 \(\mathbb{X}\) 中两点的距离足够小，这两点经过映射 \(T\) 对应的 \(\mathbb{Y}\) 中的两点的距离就会足够小，后者小的程度可以任意（多小都可以），这样的映射 \(T\) 就是连续映射。
-- 如果上述含义中的 \(\mathbb{X}\) 中的两点一个不变，一个变化，那么就可以说映射 \(T\) 在不变的 *点处连续* 。其含义就是：任何一个点到该点的距离只要足够小，那么对应的像之间的距离也会足够小。
+* 定义
+连续[[file:20201009224938-泛函中的映射.org][映射]]使用 \(\varepsilon - \delta\) 语言定义，主要含义就是：只要 \(\mathbb{X}\) 中两点的距离 *足够小* ，这两点经过映射 \(T\) 对应的 \(\mathbb{Y}\) 中的两点的距离就可以 *任意小* ，这样的映射 \(T\) 就是连续映射。
+- 如果上述含义中的 \(\mathbb{X}\) 中的两点一个不变，一个变化，那么就可以说映射 \(T\) 在不变的 *点处连续*
 
+* 性质和关系
 \(T\) 在 \(x^0\in \mathbb{X}\) 处连续等价于：
 - 如果距离空间 \(\mathbb{X}\) 中有一个点列 \(\{x_n\}\) 收敛于 \(x^0\) ，那么点列的像 \(\{T(x_n)\}\) 收敛于极限的像 \(T(x^0)\) 。
   + \(x_n \to x^0 \implies T(x_n)\to T(x^0)\)
@@ -12,5 +14,5 @@
   + \(T(S(x^0, \delta ))\subset S(Tx^0,\varepsilon )\)
 
 映射 \(T:\mathbb{X}\to \mathbb{Y}\) 是连续映射的等价命题是：
-- \(\forall \mathbb{G} \subset \mathbb{Y}, T^{-1}(\mathbb{G})\subset \mathbb{X}\) ，其中的 \(\mathbb{G}\) 是开集
-- \(\forall \mathbb{F} \subset \mathbb{Y}, T^{-1}(\mathbb{F})\subset \mathbb{X}\) ，其中的 \(\mathbb{F}\) 是闭集
+- \(\forall \mathbb{G} \subset \mathbb{Y}, T^{-1}(\mathbb{G})\subset \mathbb{X}\) ，其中的 \(\mathbb{G}\) 是开集，即开集的原像是开集
+- \(\forall \mathbb{F} \subset \mathbb{Y}, T^{-1}(\mathbb{F})\subset \mathbb{X}\) ，其中的 \(\mathbb{F}\) 是闭集，即闭集的原像是闭集

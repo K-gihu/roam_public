@@ -1,0 +1,11 @@
+#+title: 距离空间的三角不等式
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+\(\rho(x,y) \leq \rho(x,z)+\rho(z,y)\)
+
+衍生形式： \(\rho(x,y)\geq |\rho(x,z)-\rho(z,y)|\)
+
+* 性质或关系
+这是定义[[file:20200930133725-距离空间.org][距离空间]]的一个公理。
