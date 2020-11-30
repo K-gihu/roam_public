@@ -1,0 +1,8 @@
+#+title: 商空间
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+
+
+* 性质或关系

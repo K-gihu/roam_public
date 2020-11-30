@@ -1,10 +1,13 @@
-#+title: 聚点存在等价于收敛于自身的序列存在的证明
+#+title: 证明：聚点存在等价于收敛于自身的序列存在的
 #+roam_tags: 泛函分析
 #+roam_alias:
 
 求证：
 
-\(\forall \delta > 0, (S(x,\delta)\backslash\{x\})\bigcap E \not = \emptyset \iff\) 存在 \(E\) 中的互异点列 \(\{x_k\}\) 使得 \(\lim_{k \to \infty} |x_k-x| =0 \)
+若 \(E \subset\) 距离空间 \(X\) ，那么
+\(\forall \delta > 0, (S(x,\delta)\backslash\{x\})\bigcap E \not = \emptyset \iff\) 存在 \(E\) 中的互异点列 \(\{x_k\}\) 使得 \(\lim\limits_{k \to \infty} |x_k-x| =0 \)
+
+（上式左右两边都可以看作聚点的定义，我们学的是左边那个）
 
 证明思路：
 

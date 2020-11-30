@@ -1,0 +1,18 @@
+#+title: 证明：赋范线性空间中的球是凸集
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 求证
+在赋范空间 \(E\) 中有开（闭）球 \(S(x_0,r)\)
+\(\implies\) 开（闭）球中的任意两点[[file:20201021222639-凸组合.org][凸组合]]属于开球，
+即 \(\forall x_1,x_2 \in S(x_0,r), \lambda \in [0,1]: y = \lambda x_1+(1-\lambda)x_2 \in S(x_0,r)\)
+
+* 证明
+\begin{aligned}
+\lVert y-x_0 \rVert &= \lVert \lambda x_1 + (1-\lambda)x_2 - x_0 \rVert \\
+&= \lVert \lambda x_1 + (1-\lambda)x_2 - [\lambda x_0 + (1-\lambda)x_0] \rVert \\
+&\leq \lambda \lVert x_1-x_0 \rVert + (1-\lambda)\lVert x_2-x_0 \rVert \\
+&< \lambda r + (1-\lambda)r = r \\
+\end{aligned}
+
+所以 \(y \in S(x_0,r)\) ，[[file:20201021152537-凸集.org][凸集]]即证。同理， \(\overline{S} (x_0,r)\) 也是凸集。

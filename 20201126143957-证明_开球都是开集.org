@@ -1,4 +1,4 @@
-#+title: 证明开球都是开集
+#+title: 证明：开球都是开集
 #+roam_tags: 泛函分析
 #+roam_alias:
 

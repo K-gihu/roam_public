@@ -3,10 +3,11 @@
 #+ROAM_ALIAS: 模
 
 * 定义
-范数通过它的性质定义。在[[file:20201016153155-线性空间.org][线性空间]] \(\mathbb{X} \) 上，满足以下条件的实值[[file:20201011124051-函数.org][函数]]称为范数 \(p(\cdot):\mathbb{X}  \to \mathbb{R} \) 。
-- 非负，且( 范数为零 \(\iff\) 元素为零元素 )。
+在[[file:20201016153155-线性空间.org][线性空间]] \(\mathbb{X} \) 上，满足以下条件的实值[[file:20201011124051-函数.org][函数]]称为范数 \(p(\cdot):\mathbb{X}  \to \mathbb{R} \) 。
+如果 \(x \in \mathbb{X}\)
+- 正定性 :: \(p(x) \geq 0\) ，且 \(p(x)=0 \iff x=0\) 。
 - 被数乘的元素的范数等于元素的范数的数乘 \(p(\alpha x) = |\alpha| p(x)\) 。
-- 三角不等式 \(p(x+y)\leq p(x)+p(y)\) 。
+- [[file:20201126150916-距离空间的三角不等式.org][三角不等式]] ::  \(p(x+y)\leq p(x)+p(y)\) 。
 
 简写为 \(\lVert \cdot \rVert\) 。
 
@@ -18,4 +19,8 @@
 
 ** 范数和收敛
 - 我们可以使用范数来定义[[file:20201006213407-距离空间的序列收敛_极限.org][收敛]]。
-  通过 \(\lim\limits_{n\to\infty}\lVert u_n - u \rVert = 0\)，我们可以定义收敛。（当然，需要在[[file:20201016153155-线性空间.org][线性空间]]中才有减法）
+  通过 \(\lim\limits_{n\to\infty}\lVert u_n - u \rVert = 0\)，我们可以定义收敛。
+
+** 范数是连续函数
+根据三角不等式的差形式： \(|\lVert x_n \rVert - \lVert x \rVert | \leq \lVert x_n-x \rVert \)
+所以根据夹逼定理，即可知 \(x_n \to x\) 时， \(\lVert x_n \rVert \to \lVert x \rVert \) ，即证。

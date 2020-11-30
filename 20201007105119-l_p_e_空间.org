@@ -4,7 +4,7 @@
 
 \(L^p(\mathbb{E})\) 空间的 \( \mathbb{E}\) 定义为 \(\mathbb{R}\) 上的勒贝格可测集。
 
-\[L^p(\mathbb{E}):=\left\{f:\int_\mathbb{E} |f|^p dm < +\infty\right\}\]
+\[L^p(\mathbb{E}):=\left\{f:\int_\mathbb{E} |f|^p dm < +\infty\right\}, 1 \leq p < \infty\]
 
 其中 m 是 \(\mathbb{E}\) 上的勒贝格测度。
 
