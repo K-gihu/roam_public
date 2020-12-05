@@ -1,4 +1,4 @@
-#+title: 内点和聚点的比较
+#+title: 对比：内点和聚点
 #+roam_tags: 泛函分析
 #+roam_alias:
 

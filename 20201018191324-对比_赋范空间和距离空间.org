@@ -1,4 +1,4 @@
-#+title: 比较赋范空间和距离空间
+#+title: 对比：赋范空间和距离空间
 #+roam_tags: 泛函分析
 #+roam_alias:
 
