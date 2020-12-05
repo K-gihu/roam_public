@@ -1,0 +1,8 @@
+#+title: 序列无约束极小化技术
+#+roam_tags: 工程优化方法
+#+roam_alias:
+
+* 定义
+将[[file:20201203124015-约束优化问题.org][约束优化问题]]转化为 *无约束优化* 问题。通过一系列无约束优化问题的解得到约束优化问题的解的技术。
+sequentail unconstrained minimization technique,简称SUMT
+* 性质或关系
