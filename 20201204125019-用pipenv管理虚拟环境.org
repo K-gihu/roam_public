@@ -1,0 +1,14 @@
+#+title: 用pipenv管理虚拟环境
+#+roam_tags: python
+#+roam_alias:
+
+* 主要内容
+python 官网推荐使用 pipenv
+可以移动到项目目录，然后使用
+#+begin_src sh
+pipenv install PyQt5
+#+end_src
+这种方式安装包，会自动生成虚拟环境。
+
+* 参考
+https://packaging.python.org/tutorials/managing-dependencies/#installing-pipenv
