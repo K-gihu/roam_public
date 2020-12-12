@@ -1,0 +1,9 @@
+#+title: 按范数收敛
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+[[file:20201122220849-赋范空间.org][赋范空间]] \(\mathbb{E} \) 中的点列 \(\{x_n\}\) 收敛于 \(x\)  \(\iff\) \(\lim\limits_{n\to\infty}\rho(x_n,x)=\lim\limits_{n\to\infty}\lVert x_n-x \rVert = 0\)
+* 性质或关系
+[[file:20201018191324-对比_赋范空间和距离空间.org][赋范空间也是距离空间]]。这里就使用了范数构造一个距离，然后使用[[file:20201006213407-按距离收敛和极限.org][按距离收敛]]的定义方式定义了依范数收敛.
+* Footnotes

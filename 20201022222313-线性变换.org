@@ -11,6 +11,7 @@
 - 变换前的原点在变换后依旧是原点
 - 保持网格线平行且等距分布
 
+变换前后的一组向量之间的线性组合关系是不变的，具体说来就是线性组合的系数没变。
 ** 例子
  \(T\begin{pmatrix}x  \\ y\end{pmatrix} = \begin{pmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{pmatrix}\begin{pmatrix}x  \\ y\end{pmatrix}\)
 逆时针旋转 \(\theta\) 变换

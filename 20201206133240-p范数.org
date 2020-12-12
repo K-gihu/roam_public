@@ -1,0 +1,11 @@
+#+title: p范数
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+设 \(p\geq 1\) ，在 \(R^{N} ,C^{N} \) 空间上的 \(p\) 范数是 \(\lVert x \rVert _p = \left(\sum_{i=1}^N |x_i|^{p} \right)^{1 / p} \)
+如果 \(p=2\) ，就是常见的2范数，又称欧几里得范数。
+ \(p \to \infty\) 的时候，绝对值最大的那一项对范数的贡献远超其他项，所以 \(\lVert x \rVert _{\infty}=\max |x_i|\) 。
+* 性质或关系
+
+* Footnotes

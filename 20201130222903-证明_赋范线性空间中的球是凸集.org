@@ -3,11 +3,13 @@
 #+roam_alias:
 
 * 求证
-在赋范空间 \(E\) 中有开（闭）球 \(S(x_0,r)\)
+在[[file:20201122220849-赋范空间.org][赋范空间]] \(E\) 中有开（闭）球 \(S(x_0,r)\)
 \(\implies\) 开（闭）球中的任意两点[[file:20201021222639-凸组合.org][凸组合]]属于开球，
 即 \(\forall x_1,x_2 \in S(x_0,r), \lambda \in [0,1]: y = \lambda x_1+(1-\lambda)x_2 \in S(x_0,r)\)
 
 * 证明
+证明的关键在于[[file:20201015231757-范数.org][范数的三角不等式]]。
+
 \begin{aligned}
 \lVert y-x_0 \rVert &= \lVert \lambda x_1 + (1-\lambda)x_2 - x_0 \rVert \\
 &= \lVert \lambda x_1 + (1-\lambda)x_2 - [\lambda x_0 + (1-\lambda)x_0] \rVert \\
