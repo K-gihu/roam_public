@@ -8,9 +8,9 @@
 
 * 性质和关系
 ** 稠密性定义的等价命题[fn:1]
-\(B\) 在 \(A\) 中稠密[fn:2]
+\(B\) 在 \(A\) 中稠密
 1. \(\iff\)  \(\forall x\in \mathbb{A},\forall \epsilon > 0,\exists y\in \mathbb{B}:\rho(x,y)<\varepsilon\)
-   就是说 \(A\) 中的 *所有元素* 都能被子集 \(B\) 中的元素 *无限逼近* 。
+   就是说 \(A\) 中的 *所有元素* 都能被子集 \(B\) 中的元素 *无限逼近* 。[fn:2]
    [[file:20201205190436-证明_稠密性等价于无限逼近.org][证明在此]]
 2. \(\iff\)  \(\forall \varepsilon:\mathbb{A}\subset \bigcup_{y\in \mathbb{B}}S(y,\varepsilon)\)
    就是说 \(\mathbb{B}\) 中每个点的 *任意大小开球* 的并包含 \(\mathbb{A}\) 。
@@ -43,5 +43,7 @@ cite:zeidlerAppliedFunctionalAnalysis2012
 集合 \(B\) 在 \(A\) 中稠密，那么 \(B\) 是 \(A\) 的 [[file:20201205232332-epsilon网.org][\(\epsilon\) 网]]，而且 \(\epsilon\) 可以任意小。
 
 * Footnotes
+
+[fn:2] 来自26页课件。注意这个等价说法和 \(A\) 中所有点都是 \(B\) 的聚点是 *不等价* 的。 \(\overline{B} \) 有孤立点的话， \(A\) 中也可以有。
 
 [fn:1] 课件26页有证明
