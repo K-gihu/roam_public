@@ -1,0 +1,11 @@
+#+title: 证明：稠密性等价于无限逼近
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+从定义推出这个：
+\(A\) 中的点要么是 \(B\) 中的聚点，要么是 \(B\) 中的孤立点，总之都属于 \(\overline{B} \) ，聚点自然是可以找到无限接近的点，孤立点可以有同一个点与之对应。
+从这个推出定义：
+可以分成两种情况： \(x=y,x\not = y\) ，
+等于的时候这个点就属于 \(B\) 了。
+如果不等，那么 \(\forall \epsilon,\exists y \in B,x \not= y:y \in S(x,\epsilon)\) ，即 \(x\) 是 \(B\) 的聚点。
+那么就证明了 \(\forall x \in A: x \in \overline{B} \) .

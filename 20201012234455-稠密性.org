@@ -4,26 +4,27 @@
 
 * 定义
 - 若 \(\mathbb{A},\mathbb{B}\subseteq \mathbb{X}\) ，\(\mathbb{X}\) 是距离空间，且 \(\mathbb{A}\subseteq \mathbb{\overline{B}}\) ，那么称 \(\mathbb{B}\) 在 \(\mathbb{A}\) 中 *稠密* （或 *处处稠密* ）。
-  + 特例：如果 \(\mathbb{A}=\mathbb{X}\) ，那么 \(\overline{\mathbb{B}}=\mathbb{X}\) ，那么称 \(\mathbb{B}\) 在 \(\mathbb{X}\) 中稠密（或处处稠密），或 \(\mathbb{B}\) 是 \(\mathbb{X}\) 中的稠密子集。
+  + 特例：如果 \(\mathbb{A}=\mathbb{X}\) ，那么 \(\mathbb{X}=\overline{\mathbb{B}}\) ，那么称 \(\mathbb{B}\) 在 \(\mathbb{X}\) 中稠密（或处处稠密），或 \(\mathbb{B}\) 是 \(\mathbb{X}\) 中的稠密子集。
 
 * 性质和关系
 ** 稠密性定义的等价命题[fn:1]
-\(B\) 在 \(A\) 中稠密
+\(B\) 在 \(A\) 中稠密[fn:2]
 1. \(\iff\)  \(\forall x\in \mathbb{A},\forall \epsilon > 0,\exists y\in \mathbb{B}:\rho(x,y)<\varepsilon\)
    就是说 \(A\) 中的 *所有元素* 都能被子集 \(B\) 中的元素 *无限逼近* 。
-
+   [[file:20201205190436-证明_稠密性等价于无限逼近.org][证明在此]]
 2. \(\iff\)  \(\forall \varepsilon:\mathbb{A}\subset \bigcup_{y\in \mathbb{B}}S(y,\varepsilon)\)
-   就是说 \(\mathbb{B}\) 中每个点的任意大小开球的并包含 \(\mathbb{A}\) 。
+   就是说 \(\mathbb{B}\) 中每个点的 *任意大小开球* 的并包含 \(\mathbb{A}\) 。
+3. \(\iff\)  \(\forall x\in \mathbb{A}, \exists\{x_n\}\subset \mathbb{B}:x_n\to x\)
+   就是说 \(A\) 中的 *所有元素* 都可以作为 \(B\) 中某个 *点列的极限* 。
+4. \(\iff\)  \(\forall x \in A:\forall \epsilon >0:\exists y \in B:x \in S(y,\epsilon)\)
+   \(A\) 中的 *所有元素* 都在 \(B\) 的某个元素的 *任意大小邻域* 内。 *稠密* 的名字可以就此理解：
 
-3. \(\iff\)  \(\forall x\in \mathbb{A}, \exists\{x_n\}\subset \mathbb{B}(x_n\to x)\)
-   就是说 \(A\) 中的 *所有元素都* 可以作为 \(B\) 中某个 *点列的极限* 。
-
-还可以说， \(B\) 在 \(A\) 中稠密，就是 \(A\) 中的 *任意元素* 都在 \(B\) 的某个元素的 *邻域* 内。
 #+begin_example
 结合一下“稠密”这个词在汉语中的意思：浓稠，密度大。
 想象糖在水中很浓，糖分子空间在水分子空间中稠密，意味着
 - 全部水分子都可以被某个糖分子无限逼近
 - 全部水分子和某个糖分子的距离都可以无限小
+- 全部水分子都一定在某个糖分子旁边
 - 所有糖分子邻域的并包含全部水
 - 全部水分子都可以作为某个糖分子点列的极限。
 #+end_example
@@ -38,6 +39,8 @@
 
 应用：根据《应用泛函分析》，经典近似理论可以用赋范空间的稠密集来表达。如上面的逼近定理
 cite:zeidlerAppliedFunctionalAnalysis2012
+** 稠密和epsilon网
+集合 \(B\) 在 \(A\) 中稠密，那么 \(B\) 是 \(A\) 的 [[file:20201205232332-epsilon网.org][\(\epsilon\) 网]]，而且 \(\epsilon\) 可以任意小。
 
 * Footnotes
 
