@@ -1,0 +1,16 @@
+#+title: epsilon网
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+有距离空间子集 \(A,B \subseteq X\) ，如果 \(\forall x \in A:\exists x' \in B:\rho(x,x')<\epsilon\) ，则称 \(B\) 是 \(A\) 的 \(\epsilon\) 网。
+
+就是说 \(A\) 中的任意一点一定在 \(B\) 中某个点 \(x'\) 的 \(\epsilon\) 邻域 \(S(x',\epsilon)\) 中，则称 \(B\) 是 \(A\) 的 \(\epsilon\) 网。
+NOTE: 集合 \(B\) 的每一点以半径为 \(\epsilon\) 的开球包含了（覆盖了）集合 \(A\) 的所有元素。
+* 性质或关系
+\(\epsilon\) 网的含义就是，
+*这等价于*  \(A \subset \bigcup_{x' \in B}S(x',\epsilon)\)
+
+是不是很眼熟？很像[[file:20201012234455-稠密性.org][稠密的等价命题]]，区别在于， \(\epsilon\) 不是 *任意给定* 的，或者说不是 *任意小* 的。
+换句话说，集合 \(A\) 的 \(\epsilon\) 网，在 \(\epsilon\) 可以任意取值时，在 \(A\) 中稠密。
+* Footnotes
