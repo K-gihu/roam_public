@@ -21,12 +21,11 @@
 
 这三个性质的数学表达式是：
 
-- \(\rho(x,y) \ge 0 \ and \  \rho(x,y) = 0 \iff x = y, \forall x,y,z \in X\)
-- \(\rho(x,y) = \rho(y,x), \forall x,y,z \in X\)
-- \(\rho(x,y) \le \rho(x,z)+\rho(z,y), \forall x,y,z \in X\)
+- 正定性 :: \(\rho(x,y) \ge 0 \ and \  \rho(x,y) = 0 \iff x = y, \forall x,y,z \in X\)
+- 对称性 :: \(\rho(x,y) = \rho(y,x), \forall x,y,z \in X\)
+- 三角不等式 :: \(\rho(x,y) \le \rho(x,z)+\rho(z,y), \forall x,y,z \in X\)
 
 这就是距离的三个公理。
-
 
 * 性质和关系
 ** 距离空间的 *子集* 是同一距离意义下的距离空间。

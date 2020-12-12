@@ -1,0 +1,14 @@
+#+title: 距离空间的有界性
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+距离空间子集 \(A \subset X\) 称为有界的 \(\iff \exists r \geq 0,x_0\in X: A \subset \overline{S} (x_0,r) \subset X\)
+* 性质或关系
+等价定义：
+\(A \subset X\) 有界 \(\iff \exists r\geq 0,x_0 \in X:\forall x \in A:\rho(x_0,x)\leq r\)
+\(\iff\exists x_0\in X: \forall \{x_n\}\subset A:\rho(x_n,x_0)\leq n\)
+
+任何[[file:20201006213407-按距离收敛和极限.org][收敛点列]]都有界
+任何[[file:20201007144711-基本列.org][基本列]]都有界
+* Footnotes
