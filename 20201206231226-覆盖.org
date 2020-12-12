@@ -1,0 +1,9 @@
+#+title: 覆盖
+#+ROAM_TAGS: 集合论 泛函分析
+#+roam_alias:
+
+* 定义
+对距离空间子集 \(A \subseteq X\) ，如果有开集族 \(\{G_\alpha\}_{\alpha \in l}\) 包含 \(A\) ，则称它覆盖 \(A\) ，或者它是 \(A\) 的一个覆盖。
+* 性质或关系
+
+* Footnotes

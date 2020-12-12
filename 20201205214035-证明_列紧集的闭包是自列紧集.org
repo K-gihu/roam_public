@@ -1,0 +1,19 @@
+#+title: 证明：列紧集的闭包是自列紧集
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 求证
+等价命题
+\(A \subseteq X\) [[file:20201007153150-列紧集和列紧空间.org][列紧]] \(\iff\) \(\overline{A} \) [[file:20201205204426-自列紧集.org][自列紧]]
+* 证明
+\(\implies\) 自列紧集就是列紧闭集，\(\overline{A} \) 自然是闭集，我们只要证明它是列紧集就可以了，也即证明 \(\{x_{n_k}\}\subseteq \{x_n\}\subseteq \overline{A} \) 可以收敛到距离空间 \(X\) 。
+这相当于证明 \(\exists y \in X:\lim\limits_{k \to \infty}}\rho(x_{n_k},y) \to 0\)
+我们使用[[file:20201126150916-距离空间的三角不等式.org][三角不等式]]构造这个距离。
+根据 \(A\) 列紧可得， \(\forall y_n \in A:\exists \{y_{n_k}\}\subseteq \{y_n\}: \lim\limits_{k\to\infty} y_{n_k}=y \in X\)
+这样就有了 \(\rho(y_{n_k},y)\) ，还差 \(\rho(x_{n_k},y_{n_k})\) 。而这个距离可以通过[[file:20201007160636-闭包.org][闭包的定义]]得到：
+ \(\overline{A} \) 是闭包，那么其中任意序列的子列 \(\{x_{n_k}\}\) 都一定收敛于 \(A\) 中的序列某个序列的子列，比如 \(\{y_{n_k}\}\)
+这样两个距离都得到了。就可以证明了。
+
+\(\impliedby\) 如果 \(\overline{A} \) 是自列紧集，那么它的子集 \(A \subseteq \overline{A} \) 列紧。
+
+* Footnotes
