@@ -4,4 +4,5 @@
 :PROPERTIES:
 :todo: 1616220677220
 :END:
-** [[https://www.weiyun.com/vip/privilege][腾讯微云]] 提供 30 元每月的
+** [[https://www.weiyun.com/vip/privilege][腾讯微云]] 提供 30 元每月的 6 TB 空间服务，可以考虑。
+**
