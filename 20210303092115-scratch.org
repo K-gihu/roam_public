@@ -1,0 +1,12 @@
+抛掷一枚硬币，样本空间为 \(\Omega=\{H,T\}\) ，定义随机变量
+\begin{equation}
+X(t)=\begin{cases}
+\cos\pi t & H\\
+2t & T
+\end{cases}
+\quad
+t \in (-\infty, +\infty)
+\end{equation}
+
+文件系统文件系统文件系统文件系统文件系统抛掷一枚硬币，样本空间为
+抛掷一枚硬币，样本空间为：

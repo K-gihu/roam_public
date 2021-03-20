@@ -1,0 +1,9 @@
+#+title: 完备标准正交系
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+满足帕西瓦尔等式的标准正交系
+* 性质或关系
+
+* Footnotes

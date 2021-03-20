@@ -1,0 +1,33 @@
+#+title: 例题：用初等方法求解退化核的弗雷德霍姆积分方程
+#+roam_tags: 积分方程
+#+roam_alias: 
+
+* 概括
+解退化核的弗雷德霍姆方程的步骤：
+1. 将核函数分离变量，将积分化为定积分和变量的乘积。
+2. 将未知函数化为自由项+(定积分×变量×常数)*
+3. 将未知函数代入定积分，从而得到以定积分为变量的线性方程}}(定积分中有未知函数)
+4. 求出定积分，进而求出未知函数
+* 定义
+求解积分方程：
+\[f(x)-\lambda\int_0^1 (xy^2 +x^2 y)f(y)dy=x\]
+可以令
+\begin{equation}\label{a}
+A=\int_0^1 y^2 f(y)dy, B=\int_0^1 yf(y)dy
+\end{equation}
+他们显然都是常数。
+从而积分方程变为
+\begin{equation}\label{b}
+f(x)=x+\lambda Ax+\lambda B x^2
+\end{equation}
+可以代入 \((1)\) 式得到
+\begin{gather*}
+A=\frac{1}{4}+\frac{1}{4}\lambda A+\frac{1}{5}\lambda B\\
+B=\frac{1}{3}+\frac{1}{3}\lambda A+\frac{1}{4}\lambda B\\
+\end{gather*}
+这样可以解出 \(A,B\) 使用 \(\lambda\) 的表达式。从而可以代入2式得到
+\[f(x)=\frac{(240-60\lambda)x+80\lambda x^2 }{240-120\lambda -\lambda^2 }\] 
+* 性质或关系
+\(\lambda\) 取某些特殊值的时候，[[file:20201207100215-线性积分方程.org][齐次积分方程]]有非零解，这时 \(\lambda\) 称为 *积分方程的* 本征值，相应的非零解称为本征函数。
+
+* Footnotes

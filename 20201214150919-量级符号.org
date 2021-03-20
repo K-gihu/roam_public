@@ -1,0 +1,9 @@
+#+title: 量级符号
+#+ROAM_TAGS: 渐近分析
+#+roam_alias:
+
+* 主要内容
+- 同量级：\(\lim\limits_{x \to x_0}\frac{f(x)}{g(x)}=1\)
+- 量级小于：
+- 量级最多为：
+* 参考

@@ -1,0 +1,9 @@
+#+title: 证明：任意赋范线性空间的有限维子空间都完备
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+
+* 性质或关系
+
+* Footnotes

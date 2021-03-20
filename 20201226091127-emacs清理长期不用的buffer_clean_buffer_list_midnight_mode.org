@@ -1,0 +1,10 @@
+#+title: emacs清理长期不用的buffer clean-buffer-list midnight-mode
+#+roam_tags: emacs
+#+roam_alias: 
+
+* 主要内容
+=clean-buffer-list= 可以清除不用的buffer
+=midnight-mode= 可以每天午夜自动调用该函数清除。
+* 参考
+https://www.reddit.com/r/emacs/comments/4joygc/can_i_kill_idle_buffers/
+=SPC h v= 搜索

@@ -1,0 +1,15 @@
+#+title: 证明：线性算子有界等价于连续
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 求证
+[[file:20201019112759-线性映射.org][线性算子]] \(T:X\to X_1\) [[file:20201210132455-连续线性算子.org][连续]] \(\iff\)  \(T\) [[file:20201206173838-有界线性算子.org][有界]]
+* 证明
+- \(\implies\) 反证法：
+  1. 假设 \(T\) 无界，那么按照有界的定义有 \(\forall n> 0:\exists x_n\in X:\lVert Tx_n \rVert >n\lVert x_n \rVert \) 。
+  2. 令 \(y_n= \frac{x_n}{n \lVert x_n \rVert }\) ，则 \(\lVert y_n \rVert \to 0\) 所以 \(y_n\to 0\)
+  3. 而由 \(T\) 连续， \(Ty_n\to T 0 =T(y_n-y_n)=0\) ，而根据算子线性，这意味着 \(Tx_n\to 0\) ，和1矛盾
+- \(\impliedby\) 要证明 \(x_n\to x \implies T x_n\to Tx\) ：
+  1. 有界可以得到 \(\exists M>0:\forall x \in X:\lVert Tx \rVert \leq M\lVert x \rVert \) ，所以
+  2.  \(\lVert T x_n-Tx \rVert =\lVert T(x_n-x) \rVert \leq M\lVert x_n-x \rVert \to 0\)
+* Footnotes

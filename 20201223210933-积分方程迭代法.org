@@ -1,0 +1,42 @@
+#+title: 积分方程迭代法
+#+roam_tags: 积分方程
+#+roam_alias: 
+
+* 定义
+求解[[file:20201207100215-线性积分方程.org][第二类弗雷德霍姆积分方程]] \[f(x) = g(x)+\lambda\int_a^b k(x,y)f(y)dy\] 的一个直接方法是迭代法。
+
+第零次迭代：首先我们取近似 \(f_0(x) \approx g(x)\) 
+第一次迭代：将这个零级近似代入到积分式中，得到一级近似：
+\[f_1(x) = g(x) + \lambda \int_a^b k(x,y)g(y)dy\]
+之后的每一次迭代都重复这个规则，就是说满足下面的 *递推公式* ：
+\[f_{n+1}(x)=g(x)+\lambda \int_a^b k(x,y) f_n(y)dy\] 
+我们使用算子 \(K\) 表示后面的积分运算：
+\[Kf(x)=\lambda\int_a^b k(x,y)f(y)dy\]
+如果我们记每一次迭代的积分项为：
+\begin{align*}
+g_0(x)&=g(x)\\
+g_1(x)&=Kg_0=\lambda\int_a^b k(x,y)g(y)dy\\
+g_2(x)&=Kg_1=K^2 g=\lambda\int_a^b k(x,y)g_1(x)dy\\
+\dots\\
+g_n(x)&=\lambda\int_a^b k(x,y)g_{n-1}(y)dy
+\end{align*}
+那么每次迭代的结果 \(f_n(x)\) 是
+\[f_n(x)=g_0(x)+g_1(x)+\dots+g_n(x)\] 
+当 \(n\to \infty\) 的时候，等式右边就化为一个无穷级数，这个级数就是
+- [[file:20201225213308-诺依曼级数.org][诺依曼级数]]或玻恩级数 :: 又称诺伊曼级数或积分方程的诺伊曼解：
+\[f(x)=g(x)+\sum_{n=1}^\infty \lambda^n \int_a^b k_n(x,y)g(y)dy\] 
+其中：
+\begin{align*}
+k_1(x,y)&=k(x,y)\\
+k_{n+1}(x,y)&=\int_a^b k(x,y')k_n(y',y)dy'\\
+n&=1,2, \dots
+\end{align*}
+可以证明，当 \(k(x,y)\) 和 \(f(x)\) 在 \([a,b]\) 上连续，且 \(\lambda\) 足够小的时候，级数收敛。收敛的结果就是解。
+** 方法步骤总结
+1. 将积分方程化为第二类弗雷德霍姆积分方程的一般形式 \[f(x) = g(x)+\lambda\int_a^b k(x,y)f(y)dy\]，识别各函数和变量
+2. 判别核函数是否在积分区间连续，\(\lambda\) 是否足够小，从而判断是否可用迭代法
+3. 使用递推公式，求出诺依曼级数的各项
+4. 各项构成的诺依曼级数就是所求的函数。
+* 性质或关系
+应用于[[file:20201224111913-例题_用积分方程迭代法求解薛定谔方程.org][例题：用积分方程迭代法求解薛定谔方程]]
+* Footnotes

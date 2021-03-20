@@ -1,0 +1,34 @@
+#+title: 有界线性算子列按范数收敛
+#+roam_tags: 泛函分析
+#+roam_alias: 有界线性算子一致收敛 按一致算子拓扑收敛
+
+* 定义
+若 \(A_n,A \in B(X,X_1)\) ， \(\lVert A_n-A \rVert \to 0\ (n\to \infty)\) ，则称有界线性算子列 \(\{A_n\}\) [[file:20201205122907-按范数收敛.org][按范数收敛]]到有界线性算子 \(A\)
+记作 \(A_n\to A\)
+* 性质或关系
+** 可以推出[[file:20201210215444-有界线性算子列强收敛.org][强收敛]]
+** 等价于 X 的单位球面上的[[file:20201211010342-一致收敛.org][一致收敛]]
+有界线性算子列 \(\{A_n\}\) 按范数收敛到 \(A\)  \(\iff\)  \(\{A_n\}\) 在 \(S=\{x \in X:\lVert x \rVert =1\}\) 上一致收敛到 \(A\)
+
+这里的一致收敛是类似于实数域一致收敛的意思： \(\forall \epsilon >0:\exists N \in N_+:\forall x \in S:n>N \implies \lVert A_nx-Ax \rVert <\epsilon\)
+等价于 \(\lim\limits_{n\to \infty}\sup_{x\in S}\lVert A_nx-Ax \rVert =0 \)
+
+先证明必要性 \(\implies\) ：
+已知 \(\lVert A_n-A \rVert \to 0\) ，那么 \(\forall x \in S:\lVert A_nx-Ax \rVert =\lVert (A_n-A)x \rVert \leq \sup_{\lVert x \rVert =1}\lVert (A_n-A)x \rVert \) ，这个不等号是因为左边取了一个点，而右边取了所有点的上确界。
+按照[[file:20201206174910-算子范数.org][算子范数的定义]]，不等号右边就是算子范数 \(\lVert A_n-A \rVert \to 0\) ，而且他趋于零和 \(x\) *无关* ，所以 \(\lVert (A_nx-Ax) \rVert \to 0\) ，一致收敛。
+充分性 \(\impliedby\) ：\(\lVert A_nx-Ax \rVert <\epsilon \implies \sup_{\lVert x \rVert =1}\lVert A_nx-Ax \rVert \leq \epsilon\) ，而这个就是算子范数小于 \(\epsilon\) 。即证
+** 等价于在有界集上一致收敛
+实际上根据[[file:20201016153155-线性空间.org][线性空间]]的特性，在单位球面上收敛等价于在有界集上收敛。
+设有界线性算子空间的子集 \(M\subset X\) ，那么 \(\forall x\in M: \frac{x}{\lVert x \rVert } \in S\) . 就是说任意一个点都可以放缩到单位球上。
+那么按照上面证明的定理，如果 \(\lVert A_n-A \rVert \to 0\) ，那么满足一致收敛：
+\(\lVert A_n \frac{x}{\lVert x \rVert }-A \frac{x}{\lVert x \rVert } \rVert < \epsilon\) ，使用范数的正齐次性有
+\(\lVert A_nx-Ax \rVert <\epsilon \lVert x \rVert \leq \epsilon K\) ，其中的 \(K\) 是 \(M\) 的界。证明完了。
+*** 几何直观理解
+如果算子列依范数收敛，那么算子列就在有界集上一致收敛，如何理解呢？我们对应一下
+算子范数：算子对于赋范空间元素范数（长度）的放大倍数
+算子列依范数收敛：算子列中无限个算子的放大倍数非常接近于某个非负实数
+有界集： \(X\) 上的有界集，就是说范数（长度）小于某个正数的赋范空间元素的集合。
+一致收敛：算子列映射的像（赋范空间元素）中有无数个都是非常接近非负实数的
+那么就容易理解了， *有限的长度放大有限倍之后得到了有限的长度* 。
+
+* Footnotes

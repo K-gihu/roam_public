@@ -1,0 +1,24 @@
+#+title: git换行符crlf和lf的自动检查和转换
+#+ROAM_TAGS: git
+#+roam_alias: 
+
+* 主要内容
+可以在 gitconfig 配置文件中写
+#+begin_src conf
+[core]
+    # 设置为发现混用crlf和lf则拒绝提交。
+    safecrlf = true
+    # 这里会把crlf自动转为lf。
+    # 参考 https://blog.csdn.net/lxw1844912514/article/details/100028562
+    autocrlf = input
+#+end_src
+** git config --global core.autocrlf [true|input|false]
+    false：不进行转换
+    input：在提交时，把 CRLF 转换成 LF；签出时不转换
+    true：提交时，把 CRLF 转换成 LF；签出时把 LF 转换成 CRLF
+** git config --global core.safecrlf [false|warn|true] 
+    false：不做任何检查
+    warn：在提交时检查并警告
+    true：在提交时检查，如果发现混用则拒绝提交
+* 参考
+参考 https://blog.csdn.net/lxw1844912514/article/details/100028562

@@ -1,0 +1,9 @@
+#+title: 共鸣定理
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+一致有界定理的逆否命题
+* 性质或关系
+非一致有界 \(\implies\) 非逐点有界
+* Footnotes

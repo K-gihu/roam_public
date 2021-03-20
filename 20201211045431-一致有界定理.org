@@ -1,0 +1,14 @@
+#+title: 一致有界定理
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+巴拿赫空间 \(X\) 到赋范空间 \(X_1\) 的有界线性算子族 \(\{T_\alpha\mid \alpha \in I\}\) ， \(I\) 是指标集。如果 \(\forall x\in X:\sup_{\alpha}\lVert T_\alpha x \rVert <\infty\) ，则 \(\{T\alpha\mid \alpha\in I\}\) 是有界集。
+* 性质或关系
+逐点有界 \(\implies\) 一致有界
+
+可以想象这样的几何直观：一个二维平面直角坐标系中，横轴是 \(X\) ，纵轴是 \(X_1\) ， \(T_\alpha\) 是经过原点的线性函数，从原点向各个方向辐射。那么
+\(\lVert T_\alpha x \rVert \) 就是线性函数上的纵坐标，
+说有界就是说 \(\lVert T_\alpha \rVert \leq M\) 。放大倍数对应的就是直线斜率。
+直观上很容易理解
+* Footnotes

@@ -1,0 +1,11 @@
+#+title: 证明：与内积空间的稠密子集垂直的元素为零元素
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+如果 \(L\subset H \) 且 \(L\) [[file:20201012234455-稠密性.org][稠密]]，那么对元素 \(x \in H \) ， \(x \perp L\implies x=0\) 。
+* 证明思路
+\(L\) 稠密 \(\implies\)  \(\forall x \in H \) 都可以被 \(L\) 中的序列收敛到
+\(x \perp L\implies\)  \(x\) 和 \(L\) 中任意元素的内积为零，那么 \(x\) 也一定和收敛于自身的序列正交。
+根据内积的连续性，\(x\) 和收敛于自身的序列元素的内积会收敛到 \(\langle x,x \rangle \) ，那么这个内积是0，从而 \(x=0\) 。
+* Footnotes

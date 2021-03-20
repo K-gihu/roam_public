@@ -1,0 +1,12 @@
+#+title: 算子范数
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+[[file:20201206173838-有界线性算子.org][有界线性算子]] \(T \in B(X,X_1)\) 满足 \(\exists C\geq0:\forall x \in X:\lVert Tx \rVert _1\leq C\lVert x \rVert \)
+借此我们可以定义[[file:20201206174910-算子范数.org][有界线性算子的范数]]：
+\[\lVert T \rVert = \sup_{\substack{x\in X\\x \not=0}}\frac{\lVert Tx \rVert_1 }{\lVert x \rVert }\]
+也就是使得不等式成立的 \(C\) 的下确界。
+* 性质或关系
+这个范数可以验证满足[[file:20201015231757-范数.org][范数的三个公理]]。
+* Footnotes

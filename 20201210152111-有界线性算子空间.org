@@ -1,0 +1,23 @@
+#+title: 有界线性算子空间
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+\(X,X_1\) 都是[[file:20201122220849-赋范空间.org][赋范空间]]，则 \(B(X,X_1)\) 表示从 \(X\) 到 \(X_1\) 的全体[[file:20201206173838-有界线性算子.org][有界线性算子]]
+如果 \(X=X_1\) 那么将 \(B(X,X_1)\) 简记为 \(B(X)\) 。
+* 性质或关系
+如果 \(X_1\) 是巴拿赫空间，那么 \(B(X,X_1)\) 就是[[file:20200930193728-完备赋范线性空间.org][巴拿赫空间]]
+由此的推论是 \(X^{ * } = B(X,P) =\) {X上定义的全体有界线性泛函} 一定是完备的
+** 定义为线性空间
+在这个空间中可以自然地定义线性运算：
+对于任意 \(A,B \in B(X,X_1),\alpha \in P\) 定义元素 \(A+B\) 和 \(\alpha A\) 满足
+\((A+B)x = Ax+Bx,(\alpha A)x=\alpha Ax\)
+可以验证，这两个新元素都是有界线性算子：
+\(\lVert (A+B)x \rVert =\lVert Ax+Bx \rVert \leq \lVert Ax \rVert +\lVert Bx \rVert \leq M\lVert x \rVert +N\lVert x \rVert =(M + N)\lVert x \rVert \)
+\(\lVert (\alpha A)x \rVert =\lVert \alpha A x \rVert \leq |\alpha| M \lVert x \rVert \)
+从而两个新元素都在 \(B(X,X_1)\) 内部，那么我们就定义了[[file:20201022193226-封闭运算.org][封闭]]的加法和数乘运算。
+对加法和数乘封闭，因而 \(B(X,X_1)\) 就是一个[[file:20201016153155-线性空间.org][线性空间]]。（这里没有严格证明）
+** 定义为赋范空间
+定义见[[file:20201206174910-算子范数.org][算子范数]]
+这样 \((B(X,X_1),\lVert \cdot \rVert )\) 就是赋范空间
+* Footnotes

@@ -1,8 +1,0 @@
-#+title: linux简单常用的软件及其功能
-#+roam_tags: linux
-#+roam_alias:
-
-* 主要内容
-KDE 使用 Spectacle 截图。
-
-* 参考

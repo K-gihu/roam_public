@@ -26,12 +26,14 @@ https://github.com/org-roam/org-roam-server
 https://www.orgroam.com/manual/Installation-_00281_0029.html#Installation-_00281_0029
 
 To enable Org-roam’s protocol extensions, you have to add the following to your init file:
+要启用 org-roam 的协议扩展，需要在初始化文件中添加如下语句：
 
 #+begin_src emacs-lisp
 (require 'org-roam-protocol)
 #+end_src
 
 We will also need to create a desktop application for emacsclient. ...For Linux users, create a desktop application in ~/.local/share/applications/org-protocol.desktop:
+我们还需要为 emacsclient 创建一个桌面应用程序。对于 linux 用户，在 =~/.local/share/applications/org-protocol.desktop= 中创建桌面应用程序。
 
 #+begin_src desktop
 [Desktop Entry]
@@ -44,6 +46,7 @@ MimeType=x-scheme-handler/org-protocol
 #+end_src
 
 Associate org-protocol:// links with the desktop application by running in your shell:
+运行以下命令，将 =org-protocol://= 链接和桌面应用程序联系起来。
 
 #+begin_src bash
 xdg-mime default org-protocol.desktop x-scheme-handler/org-protocol

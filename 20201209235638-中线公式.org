@@ -1,0 +1,14 @@
+#+title: 中线公式
+#+roam_tags: 泛函分析
+#+roam_alias: 平行四边形法则
+
+* 定义
+\(\lVert x+y \rVert ^{2} +\lVert x-y \rVert ^{2} =2(\lVert x \rVert ^{2} +\lVert y \rVert ^{2} )\)
+* 性质或关系
+** 反映了平行四边形几何性质
+- *两个元素的范数的平方和的二倍* 等于(两个元素的和与两个元素的差)的平方和
+- 平行四边形 *四条边的平方和* 等于对角线的平方和。
+** 在正交时转化为勾股定理
+如果 \(x \perp y\) ，那么可以推出[[file:20201031215312-勾股定理.org][勾股定理]]
+首先需要用 \(\langle x,y \rangle =0\) 推出 \(\lVert x+y \rVert =\lVert x-y \rVert \) ，然后代入平行四边形法则即可
+* Footnotes

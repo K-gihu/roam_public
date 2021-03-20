@@ -1,0 +1,10 @@
+#+title: 完全标准正交系
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+\(\forall n, <x,e_n>=0 \implies x=0\)
+内积空间中不存在非零元与所有的 \(e_n\) 正交，那么 \(\{e_n\}\) *完全* 。
+* 性质或关系
+
+* Footnotes

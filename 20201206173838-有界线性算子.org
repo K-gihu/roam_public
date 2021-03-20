@@ -1,0 +1,16 @@
+#+title: 有界线性算子
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+两个赋范空间 \((X,\lVert \cdot \rVert _X), (Y,\lVert \cdot \rVert _Y)\) 之间的[[file:20201019112759-线性映射.org][线性算子]] \(T:X\to Y\)
+如果满足 \(\exists C\geq0:\forall x \in X:\lVert Tx \rVert _Y\leq C\lVert x \rVert _X\)
+那么称算子 \(T\) 为有界的。
+* 性质或关系
+线性算子 *有界* 说的是 *放大的倍数* 有界。
+有界线性算子一定是[[file:20201210132455-连续线性算子.org][连续线性算子]]
+** 线性算子有界和函数有界的区别
+\(x\in R,y=Tx = x\) 如果看作函数，就是典型的无界函数。
+而如果看作线性算子， \(\lVert y \rVert  \leq 1\lVert x \rVert \) 。所以是有界线性算子
+线性算子有界说的是 *放大的倍数* 有界。
+* Footnotes

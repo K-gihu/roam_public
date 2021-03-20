@@ -1,0 +1,46 @@
+#+title: linux常用的软件及其功能
+#+roam_tags: linux
+#+roam_alias:
+
+Spectacle 截图
+ventoy 系统盘制作 https://www.ventoy.net/cn/doc_start.html
+
+* KDE软件
+minuet 音乐教育
+marble 地球仪
+kgeography 国家地图
+ktouch 练打字的
+kalzium 元素周期表
+kamoso 相机
+kalgebra 计算器，有绘图功能
+kcalc 普通的科学计算器
+kcharselect 选择字符，查看字符属性
+kcolorchooser 取色器
+kdf=kdiskfree 查看磁盘使用情况
+绘文字选取器
+kgpg 密钥，加密
+kig 画图，类似几何画板
+kimagemapeditor html图像映射编辑器
+kimtoy 设置输入法皮肤
+kirigami 似乎和窗口部件有关
+kiten 日语学习
+kleopatra 证书管理，和gnupg有关
+kmplot 数学绘图
+kmousetool 可以自动点鼠标
+kolourpaint 画图
+kompare 比较 diff
+krdc 远程桌面
+kruler 丈量屏幕的标尺
+
+** 游戏
+kblackbox 根据射线推测盒子中的粒子
+kigo 围棋
+kiriki 摇骰子游戏
+kjumpingcube 领地占领
+knights 国际象棋
+knotes 贴条
+kreversi 黑白棋
+kubrick 魔方
+
+
+* 参考

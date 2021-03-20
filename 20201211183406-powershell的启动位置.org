@@ -1,0 +1,9 @@
+#+title: powershell的启动位置
+#+roam_tags:
+#+roam_alias:
+
+* 主要内容
+powershell 的启动脚本的位置
+在 =%UserProfile%/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1=
+* 参考
+https://jingyan.baidu.com/article/1876c852c48e5ac90a13766d.html

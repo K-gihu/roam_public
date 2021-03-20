@@ -1,0 +1,13 @@
+#+title: 证明：内积空间的任意子集的直交补是内积空间的闭子空间
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 求证
+内积空间的子集 \(M \subset X\) 的正交补 \(M^{\perp} \) 是 \(X\) 的闭子空间.
+1. 线性子空间
+2. 闭集
+* 证明思路
+- 线性很容易证明，只要证明 \(\forall x,y \in M^{\perp} :\alpha x+\beta y \in M^{\perp} \) 即可，或者说
+  \(\forall z \in M:\langle \alpha x+\beta y,z \rangle =0\)
+- 证明它是闭集，需要用[[file:20201028113342-内积空间.org][内积的连续性]]。如果 \(\{x_n\}\subset M^{\perp} ,x_n\to x\) ，那么 \(\langle x,z \rangle =\lim\limits_{n\to \infty}\langle x_n,z \rangle =0\) 这样就能证明 \(x \in M^{\perp} \) ，闭集即证。
+* Footnotes

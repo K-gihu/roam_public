@@ -1,0 +1,9 @@
+#+title: 证明：赋范线性空间有限维等价于局部紧
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+
+* 性质或关系
+
+* Footnotes

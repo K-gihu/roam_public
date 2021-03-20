@@ -1,7 +1,0 @@
-#+title: 集合的可数性
-#+roam_tags: 集合论 泛函分析
-
-集合 \(\mathbb{X}\) 为可数集 \(\iff\) 存在[[file:20201012215352-双射.org][双射]] \(f:X \to \mathbb{N} \) ，这里 \(\mathbb{N} \) 是自然数集。
-
-例子
-- 有理数集 \(\mathbb{Q} \) 。

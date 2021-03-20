@@ -1,0 +1,24 @@
+#+title: 如何在Linux系统中修改 GRUB EFI
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+在使用UEFI引导的时候，为了修改开机时各个操作系统、设备的启动顺序，需要修改GRUB引导的变量。如果是使用Linux系统，该如何修改呢？
+
+下面使用的是Archlinux系统：
+首先安装 grub-customizer 用以修改 grub 设置
+#+begin_src bash
+sudo pacman -S grub-customizer
+#+end_src
+
+然后使用 grub-mkconfig 和 grub-install 将设置安装到系统的 efi 分区中（这里挂载到了 =/efi= 文件夹）。
+#+begin_src bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-install --efi-directory=/efi
+#+end_src
+
+这是成功过的实践。
+* 参考
+https://www.jianshu.com/p/ce60fe0e61e6
+内有GRUB2 终端的使用方法：
+[[https://www.howtoforge.com/tutorial/repair-linux-boot-with-grub-rescue/][Repair Linux boot failures in GRUB 2 rescue mode]]

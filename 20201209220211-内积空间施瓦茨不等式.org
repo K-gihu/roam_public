@@ -1,0 +1,28 @@
+#+title: 内积空间施瓦茨不等式
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+[[file:20201028113342-内积空间.org][内积空间]]中
+\[|\langle x,y \rangle |^{2} \leq \langle x,x \rangle \langle y,y \rangle \]
+* 性质或关系
+** 证明
+https://www.bilibili.com/video/BV1zW411s7o8?p=33 30:30
+任取复数 \(\lambda \in C\) ，则 \(\forall x,y \in H\) ：
+1. \(\langle x+\lambda y,x+\lambda y \rangle \geq0\) 根据内积的[[file:20201028113342-内积空间.org][正定性]]
+2. 上式左边 \(=\langle x,x \rangle +\overline{\lambda} \langle x,y \rangle +\lambda\langle y,x \rangle +|\lambda|^{2} \langle y,y \rangle \)
+3. 若 \(y \not=0\) 令 \(\lambda=- \frac{\langle x,y \rangle }{\langle y,y \rangle }\) 代入得 \(\langle x,x \rangle -2\frac{|\langle x,y \rangle |^{2} }{\langle y,y \rangle }+\frac{|\langle x,y \rangle |^{2} }{\langle y,y \rangle }\geq 0\)
+4. 整理式子可得 \(|\langle x,y \rangle |^{2} \leq \langle x,x \rangle \langle y,y \rangle \)
+5. 若 \(y=0\) 不等式显然成立。
+
+注意等号成立的条件，除了 \(y=0\) 情况以外，还有就是 \(x=-\lambda y\) ，在 \(R^{n} \) 就是说 \(x,y\) 共线. 此时显然是夹角为零的情况。
+** 通过不等式引出“夹角”概念
+原不等式可以推出
+\begin{gather*}
+\frac{|\langle x,y \rangle |^{2} }{\lVert x \rVert ^{2} \lVert y \rVert ^{2} }\leq 1\\
+-1\leq \frac{|\langle x,y \rangle | }{\lVert x \rVert  \lVert y \rVert  }\leq 1
+\end{gather*}
+那么我们就可以把这当作余弦值，定义角度了。
+\[\theta=\arccos \frac{\langle x,y \rangle }{\lVert x \rVert \lVert y \rVert }\]
+\(\langle x,y \rangle =0\) 时， \(\theta =\pi / 2\)
+* Footnotes

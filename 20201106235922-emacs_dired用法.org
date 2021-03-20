@@ -9,13 +9,15 @@ A cheatsheet of basic dired commands for evil users:
 - + to create a directory. C-x C-f / SPC . to create a new file.
 - Z to compress
 - = to diff them.
-- m to mark files, or %m to mark files by regexp. Then ! to run a shell command on the marked files.
+- m 标记文件，或 %m 用正则表达式标记文件。然后用 ! 在标记的文件上运行 shell 命令。
 - d to flag files for deletion and x to delete flagged files.
 - u to unmark a file, U to unmark all marked files.
 - gr to refresh a dired buffer.
 - RET to visit the file/directory and - to go up one directory
 - q to kill all dired buffers
 - C-c C-e to activate wgrep, then modify/delete the files like you're editing plain text. Commit your changes with C-c C-c or abort with C-c C-k
+- ( 可以显示或隐藏文件详细信息
+- ) 可以现实或隐藏文件 git 信息
 
 * 参考
 https://discord.com/channels/406534637242810369/695450585758957609/703788862983635065

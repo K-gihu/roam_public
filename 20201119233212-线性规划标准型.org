@@ -4,16 +4,30 @@
 
 * 定义
 对线性规划数学模型的一种标准形式规定。写成矩阵形式是
-\begin{gather*}
-\min z = c^T x \text{  (representing linear combination of vector x)}\\
-s.t.\  Ax=b (b\geq 0) \\
-x \geq 0
-\end{gather*}
-
-也可以记作：
-\(\min \{z = c^T x : Ax=b, x\geq 0, b\geq 0\}\)
-
+\begin{aligned}
+\min\  &z =c^T x \\
+s.t.\  &Ax=b \ (b\geq 0) \\
+       &x \geq 0
+\end{aligned}
+也可以记作：\(\min \{z = c^T x : Ax=b, x\geq 0, b\geq 0\}\)
+- \(c\) 是价值向量
+- \(x\) 是决策变量
+- \(A=(a_{ij})_{m\times n}\) 是约束方程组的系数矩阵
+- \(m\) 是约束条件（除了决策变量非负声明以外）的个数，也称为线性规划的 *阶数*
+- \(n\) 是决策变量的个数，也称为线性规划的 *维数*
+- \(b\) 是右端向量
 NOTE: 但是为什么约束条件本来是很多不等式，现在可以用等式描述？
-
 * 性质或关系
-目标函数可以取最大值也可以最小值，因为[[file:../20200929211038-工程优化方法课程.org][工程优化课]]上讲取最小值，而[[file:shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002_数学辞海 第5卷.org][shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002: 数学辞海 第5卷]]上面讲取最大值。其他的规定都一样。
+- 目标函数取最小值[fn:1]
+- 决策变量非负
+- 约束条件都是等式
+- 常数项（右端向量）非负
+** 不等式约束如何转换为等式约束
+通过添加[[file:20201207232946-松弛变量.org][松弛变量]]。
+** 无约束变量如何转换为非负约束
+令无约束变量 \(x_j=x_j'-x_j''\) ，其中 \(x_j',x_j''\geq 0\) 。
+就是化为两个非负变量的差。
+
+* Footnotes
+
+[fn:1] 目标函数可以取最大值也可以最小值，因为[[file:../20200929211038-工程优化方法课程.org][工程优化课]]上讲取最小值，而[[file:shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002_数学辞海 第5卷.org][shuxuecihaibianjiweiyuanhuiShuXueCiHaiDi5Juan2002: 数学辞海 第5卷]]上面讲取最大值。其他的规定都一样。

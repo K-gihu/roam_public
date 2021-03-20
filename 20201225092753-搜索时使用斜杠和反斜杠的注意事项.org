@@ -1,0 +1,13 @@
+#+title: 搜索时使用斜杠和反斜杠的注意事项
+#+roam_tags: emacs
+#+roam_alias: 
+
+* 主要内容
+在使用 =search-forward= 或 =search-backward= 进行搜索的时候，与使用 =replace-match= 进行替换的时候，对反斜杠 =\= 的处理是不一样的。使用表格说明：
+|         | search-forward | replace-match |
+| =\=     | =\\=           | =\\\\=        |
+| inline  | =\\(\\)=       | =\\\\(\\\\)=  |
+| display | =\\[\\]=       | =\\\\[\\\\]=  |
+反斜杠搜索的时候要使用2个，替换的时候使用4个
+下面的 inline 和 display 使用例。也是这条笔记的来源，我当时是为了替换这两种latex分隔符才研究了这个问题。
+* 参考

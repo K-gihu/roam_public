@@ -1,0 +1,10 @@
+#+title: linux的分享对象文件（Shared Object,so）
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+.so文件类似于 windows 系统的动态链接库 .dll，文件名后面跟着表示软件版本的信息。比如 =libc.so.6= 。
+系统中的默认库文件往往会连接到最新版本的库文件，例如 =libpcap.so -> libpcap.so.1 -> libpcap.so.1.9.1= 的链接。
+
+* 参考
+https://unix.stackexchange.com/questions/475/how-do-so-shared-object-numbers-work

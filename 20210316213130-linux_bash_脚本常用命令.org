@@ -1,0 +1,8 @@
+#+title: Linux bash 脚本常用命令
+#+roam_tags: 
+#+roam_alias: 
+
+* 将输出重定向到文件，同时在终端输出，可用于记录历史
+command | tee -a \path
+
+* 参考

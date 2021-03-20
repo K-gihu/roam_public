@@ -1,0 +1,14 @@
+#+title: 小知识
+#+roam_tags: 
+#+roam_alias: 
+
+* 获取联通光猫管理员用户名密码的方式
+http://192.168.1.1/backupsettings.conf 下载这个文件;
+用记事本或其他编辑器软件打开backupsettings.conf 文件,查找“AdminUserName”
+
+https://webse.cn/15757.html
+* Archlinux的安装方式
+https://www.jianshu.com/p/05bf79b1878b
+https://www.jianshu.com/p/6fe59c24b3df
+* 清理pacman包缓存的方式
+https://ostechnix.com/recommended-way-clean-package-cache-arch-linux/

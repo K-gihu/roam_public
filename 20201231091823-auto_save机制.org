@@ -1,0 +1,8 @@
+#+title: auto-save删除备份文件的机制
+#+roam_tags: emacs
+#+roam_alias: 
+
+* 主要内容
+查看 =delete-auto-save-files= 变量的文档，可以发现auto-save 的文件如果没有保存，是不会删除自动备份的文件的。只有既保存了又删除buffer了以后，才会删除自动备份。
+
+* 参考

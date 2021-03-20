@@ -1,0 +1,13 @@
+#+title: R^n空间
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 定义
+定义了欧几里得范数的n维赋范空间
+
+内积： \(\langle x,y \rangle =\sum_{i=1}^n x_k y_k\)
+范数： \(\lVert x \rVert =\sqrt{\langle x,x \rangle } =\left(\sum_{i=1}^n |x_k|^{2} \right)^{\frac{1}{2}} \)
+* 性质或关系
+** 子空间都是闭集
+由于 \(R^{n} \) 的子空间一定也是有限维的，而有限维赋范空间一定是完备的，而完备的子空间是闭子空间。
+* Footnotes

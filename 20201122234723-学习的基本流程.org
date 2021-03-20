@@ -1,4 +1,4 @@
-#+title: 学习的核心算法
+#+title: 学习的基本流程
 #+roam_alias:
 #+ROAM_TAGS: 一般学习方法
 

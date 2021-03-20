@@ -1,0 +1,36 @@
+#+title: python ctypes CFUNCTYPE构造函数原型
+#+roam_tags: 
+#+roam_alias: 
+
+* 引例
+libpcap 包中定义函数 =libpcap.findalldevs= 的时候（这其实是对 C 语言库 =libpcap.so= 的一个函数的调用），使用的是下面这段代码：
+#+begin_src python
+findalldevs   = CFUNC(ct.c_int,
+                      ct.POINTER(ct.POINTER(pcap_if_t)),
+                      ct.c_char_p)(
+                      ("pcap_findalldevs", dll), (
+                      (1, "alldevsp"),
+                      (1, "errbuf"),))
+#+end_src
+这是什么意思？
+* CFUNCTYPE
+如果要在 Python 中使用 C 语言中的一个函数，可以使用 ctypes 库的 CFUNCTYPE 创造一个函数原型 =prototype= 。需要指定返回值类型 =restype= 和参数类型 =argtypes= ，另外两个参数参考文档：
+#+begin_src python
+ctypes.CFUNCTYPE(restype, *argtypes, use_errno=False, use_last_error=False)
+#+end_src
+他的返回值就是函数原型，函数原型是一个工厂函数，即 *可以生成给定返回值类型和参数类型的函数* 的函数。
+使用这个原型，我们就可以定义具体函数了。
+
+将原型看作函数，传入以下参数，就可以定义（引用）一个在 C 语言共享库中的函数。
+=prototype(func_spec[, paramflags])=
+这返回一个由共享库导出的外部函数。func_spec 必须是 2-元组 (名称或序数, 库). 第一项是导出函数的名称，或者是导出函数的序数。第二项是共享库的实例。
+
+这里的 =paramflags= 是什么呢？是由多个元组构成的元组，其中每个元组都表示函数的输入参数或输出参数。每个元组的格式是
+(参数指向标识[,参数名称[,参数默认值]])
+指向标识是 1 代表输出参数，2 代表输出参数，4 代表默认值是整型 0 的输入参数。
+参数名称是字符串。
+
+现在，我们看引例：他首先定义了一个原型，这个原型的返回值是整型、参数是一个指向结构体指针的指针和一个字符指针。
+然后他又用原型，加上几个参数（指明函数名、函数来自哪个共享库、函数参数名）定义了外部函数 =findalldevs= 。
+* 参考
+https://docs.python.org/3/library/ctypes.html#function-prototypes

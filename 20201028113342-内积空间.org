@@ -1,15 +1,34 @@
 #+title: 内积空间
 #+roam_tags: 泛函分析
-#+roam_alias:
+#+roam_alias: 内积
 
 * 定义
-内积空间是数域 \(P\) 上的线性空间，如果定义函数 \(< \cdot , \cdot > : H \times H \to P \) ，将有序点对 \(x,y \in H \times H\) 映射到 \(P\) 中一点，记为 \(< x,y > \in P\) ，而且满足下面三条内积公理：
-- \(<x,y>=\overline{<y,x>}\)
-- \(<\alpha x+\beta y,z> = \overline{\alpha}<x,z>+\overline{\beta}<y,z>\)
-- \(<x,x> \geq 0\) 且 \(<x,x> =0 \iff  x=0\)
-
-
+内积空间 \(H\) 是[[file:20201019232551-域.org][数域]] \(P\) 上的线性空间，如果定义函数 \(\langle  \cdot , \cdot  \rangle : H \times H \to P \) ，将有序点对 \(x,y \in H \times H\) 映射到 \(P\) 中一点，记为 \(\langle  x,y  \rangle \in P\) ，而且满足下面三条内积公理：
+- 共轭对称性 :: \(\langle x,y \rangle=\overline{\langle y,x \rangle}\)
+- 第一个变量线性 :: \(\langle \alpha x+\beta y,z \rangle = \alpha\langle x,z \rangle+\beta\langle y,z \rangle\)
+- 正定性 :: \(\langle x,x \rangle \geq 0\) 且 \(\langle x,x \rangle =0 \iff  x=0\)
+那么称函数为内积， \(H\) 为内积空间。
+根据前两条可以推出，内积的第二个变量满足：
+- 第二个变量共轭线性 :: \(\langle x,\alpha y+\beta z \rangle = \overline{\langle\alpha y+\beta z , x\rangle} =\overline{\alpha \langle y,x \rangle }+\overline{\beta \langle z,x \rangle } =\overline{\alpha} \langle x,y \rangle + \overline{\beta} \langle x,z \rangle \)
+根据两个变量的线性和共轭线性可以推出任意变量为0的时候内积为零：
+\(\langle 0,y \rangle =\langle x-x,y \rangle =\langle x,y \rangle -\langle x,y \rangle =0\)
+\(\langle x,0 \rangle =\langle x,y-y \rangle =\langle x,y \rangle -\langle x,y \rangle =0\)
 * 性质或关系
-- 这是一种对欧几里得空间内积概念的推广。相关的还有：向量夹角、向量投影、正交
-- 实内积空间和酉空间。
-- 内积可以定义向量[[file:20201015231757-范数.org][范数]]
+- 这是一种对[[file:20201209143538-r_n空间.org][R^n空间]]内积概念的推广。相关的还有：向量夹角、向量投影、正交
+- 角度概念可以由内积+范数（长度概念）得到
+** 以内积建立公理化体系，定义范数、角度等
+在内积空间这里，内积的定义是理论的 *前提或公理* ，可以由他定义范数、角度、正交等等。正如同赋范空间中用 *范数定义距离* 一样。
+** 内积生成的范数
+类似于 \(R^{2} \) 空间，定义范数 \(\lVert x \rVert =\sqrt{\langle x,x \rangle }\)
+这个范数容易验证满足[[file:20201015231757-范数.org][范数三公理]]的正定性、正齐次性，而三角不等式需要用[[file:20201124212311-柯西_施瓦茨不等式.org][施瓦茨不等式]]帮助证明，也是成立的。所以 *内积空间一定是赋范空间*.
+** 内积生成的范数相较于普通范数的特殊性质：平行四边形法则、极化恒等式
+1. *平行四边形法则* 或[[file:20201209235638-中线公式.org][中线公式]]，
+   - *两个元素的范数的平方和的二倍* 等于(两个元素的和与两个元素的差)的平方和
+   - 平行四边形 *四条边的平方和* 等于对角线的平方和。
+2. 极化恒等式：可以用范数 *来表示* 内积
+** 内积空间具有赋范空间和距离空间的一切性质
+由于内积空间一定是赋范空间，而赋范空间又一定是距离空间。
+** 实内积空间和酉空间
+** [[file:20201208210334-证明_内积是连续函数.org][内积是连续函数]]
+按照证明，我们可将结论写为 \(\lim\limits_{n\to \infty}(x_n,y_n)=(x,y)=(\lim\limits_{n\to \infty}x_n,\lim\limits_{n\to \infty}y_n  ) \)
+那么等式左右端就可以连起来，这告诉我们： *极限算子可以放到内积里面去*

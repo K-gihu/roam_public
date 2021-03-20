@@ -1,0 +1,10 @@
+#+title: texlive在archlinux的包管理工具：tllocalmgr
+#+roam_tags: latex
+#+roam_alias: 
+
+* 主要内容
+要安装CTAN上的包，可以使用tllocalmgr，使用 =tllocalmgr= 的命令可以打开它自己的shell，在那里可以使用 =install= 安装包。安装完后使用 =texhash= 刷新。
+
+* 参考
+命令帮助：
+https://git.archlinux.org/users/remy/texlive-localmanager.git/tree/tllocalmgr#n809

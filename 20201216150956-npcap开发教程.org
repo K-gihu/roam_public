@@ -1,0 +1,14 @@
+#+title: Npcap开发教程
+#+roam_tags: 
+#+roam_alias: 
+
+预备知识：C 语言基础，[[file:20201214170341-计算机网络基础理论.org][网络和网络协议]]
+全部代码都来自 Npcap 源代码的 =example= 文件夹
+* 获得适配器列表
+
+* 抓包、捕获
+* 处理发送队列
+* 获取网络通信统计
+
+* 参考
+https://nmap.org/npcap/guide/npcap-tutorial.html

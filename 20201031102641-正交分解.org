@@ -4,7 +4,8 @@
 
 * 定义
 对于[[file:20201028113342-内积空间.org][内积空间]] \(\mathbb{H} \) 中的子集和元素 \(\mathbb{M} \subset \mathbb{H} ,x \in \mathbb{H} \) ，
-若该元素可以分解为该子集中元素和该子集的正交补中的元素的和 \(\exists x_0 \in \mathbb{M} ,\exists x_1\in \mathbb{M} ^\perp :x=x_0+x_1\) ，
+若该元素可以分解为该子集中元素和该子集的正交补中的元素的和：
+\(\exists x_0 \in \mathbb{M} ,\exists x_1\in \mathbb{M} ^\perp :x=x_0+x_1\) ，
 则称 \(x_0\) 为 \(x\) 在 \(\mathbb{M} \) 的 *投影* 。
 这种分解称为 \(x\) 关于 \(\mathbb{M} \) 的 *正交分解* 。
 

@@ -1,0 +1,14 @@
+#+title: 证明：内积是连续函数
+#+roam_tags: 泛函分析
+#+roam_alias:
+
+* 求证
+内积空间 \(H\) 中的内积 \(\langle x,y \rangle \) 是关于 \(x,y\) 的[[file:20201011153834-连续映射.org][连续函数]]
+\(\iff\) 内积空间中的序列若有极限 \(x_n\to x,y_n\to y\) ，则 \(\langle x_n,y_n \rangle \to \langle x,y \rangle \)
+* 证明思路
+依赖于[[file:20201209220211-内积空间施瓦茨不等式.org][施瓦茨不等式]]和[[file:20201126150916-距离空间的三角不等式.org][三角不等式]]
+1. 首先将 \(|\langle x_n,y_n \rangle -\langle x,y \rangle |\) 使用三角不等式拆成两部分，添加一项： \(\langle x_n,y \rangle \)
+2. 然后将得到的差用施瓦茨不等式拆开
+3. 发现原式小于无穷小项×有界项，即可证明
+
+* Footnotes
