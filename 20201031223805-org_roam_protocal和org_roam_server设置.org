@@ -5,7 +5,7 @@
 * 参考
 ** org-roam-server
 https://github.com/org-roam/org-roam-server
-#+begin_src emacs-lisp
+#+begin_src elisp
 (use-package org-roam-server
   :ensure t
   :config
@@ -21,7 +21,6 @@ https://github.com/org-roam/org-roam-server
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20))
 #+end_src
-
 ** org-roam-protocal
 https://www.orgroam.com/manual/Installation-_00281_0029.html#Installation-_00281_0029
 
