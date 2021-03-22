@@ -1,0 +1,27 @@
+#+title: inode和硬链接hard link基础知识
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容 :ATTACH:
+:PROPERTIES:
+:ID:       b581f43f-aef8-4a98-8842-5f83ecc350dc
+:END:
+inode就是index node（索引节点），用来存储一个文件的metadata.
+任何一个linux系统的文件，都是inode序号+文件名。
+硬链接后的文件和源文件使用同样的inode序号。因而他们具有同样的metadata.
+
+#+attr_org: :width 500
+[[attachment:_20210322_123112screenshot.png]]
+对于如上图所示的目录结构，其inode表和数据池的对应关系如下图所示：
+
+#+attr_org: :width 444
+[[attachment:_20210322_122910screenshot.png]]
+
+如何找到指定文件的全部硬链接？
+先使用 ls查看指定文件的inode号码，然后使用该号码查找。
+#+begin_src sh
+ls -i
+find . -inum inode_number
+#+end_src
+* 参考
+https://linuxhandbook.com/hard-link/

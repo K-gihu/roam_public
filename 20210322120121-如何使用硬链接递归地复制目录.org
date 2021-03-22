@@ -1,0 +1,14 @@
+#+title: 如何使用硬链接递归地复制目录
+#+roam_tags: linux
+#+roam_alias: 
+
+* 主要内容
+应用场景：一个目录是工作的目录，另一个目录放在统一的git文件夹中进行版本控制。
+
+如果想把A目录复制为B目录，可以使用
+#+begin_src bash
+cp -al dirA dirB
+#+end_src
+
+* 参考
+https://itectec.com/unixlinux/how-to-copy-a-directory-recursively-using-hardlinks-for-each-file/

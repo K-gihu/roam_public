@@ -1,0 +1,10 @@
+#+title: 最速下降法
+#+roam_tags: 渐近分析 工程优化方法
+#+roam_alias: 
+
+* 主要内容
+\(\int_c e^f(z) f(z) dz \approx  \left(\frac{2\pi}{sg''(z_0)}\right)^\frac{1}{2} f(z_0) e^{sg(z_0)+\frac{i}{2}\pi }\)
+要求其中，c是复平面上的路径，\(f(z)\) 是缓变函数，\(f,g\) 具有正则性，\(s\) 呈现极大？
+本质上是选取 \(u\) 为最大、 \(v\) 为常数的路径。
+题4.16
+* 参考
