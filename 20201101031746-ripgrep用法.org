@@ -1,8 +1,25 @@
-#+title: ripgrep如何搜索隐藏文件和忽略文件
+#+title: ripgrep fd 如何搜索隐藏文件 忽略文件
 #+roam_alias:
+#+roam_tags: linux
 
+* ripgrep搜索隐藏文件、忽略文件，指定搜索或不搜索的文件
+下面可以搜索隐藏的文件和被 =.gitignore= 等忽略的文件。
 #+begin_src sh
 rg --hidden --no-ignore test
 #+end_src
 
-使用上面的命令可以搜索隐藏的文件和被 =.gitignore= 等忽略的文件。
+使用 =--glob= 或 =-g= 可以指定要搜索的或要忽略的 *文件名* ，比如
+#+begin_src sh
+rg -g "usr" test # 只搜索文件名带有usr的文件
+rg -g "\!usr" test # 只搜索文件名不带有usr的文件
+#+end_src
+
+* fd搜索隐藏文件、忽略文件，指定搜索或不搜索的文件
+=-p,--full-path= 搜索全路径（不只是文件名）可以使用
+=-I,--no-ignore,-u,--unrestricted= 不忽略被 =.gitignore= 忽略的文件
+=-uu= 相当于 =--no-ignore --hidden=
+=E,--exclude= 排除给定 glob 模式的路径
+=-H,--hidden= 搜索结果包含隐藏的文件（默认不包含）
+
+* 参考
+=man fd=

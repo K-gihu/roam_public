@@ -1,0 +1,10 @@
+#+title: 如何使用 interception tool 调换capslock esc ctrl
+#+roam_tags: linux
+#+roam_alias: 
+
+* 主要内容
+使用
+
+* 参考
+https://gitlab.com/interception/linux/plugins/caps2esc
+https://emacsredux.com/blog/2020/07/05/remap-enter-to-control-in-gnu-linux-2020-edition/#fn:1

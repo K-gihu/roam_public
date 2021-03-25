@@ -1,8 +1,8 @@
-#+title: emacs搜索时进行wgrep
+#+title: doom emacs搜索技巧
 #+roam_tags: emacs
 #+roam_alias:
 
-* 主要内容
+* wgrep
 
 These keybindings are available while a search is active:
 
@@ -17,5 +17,12 @@ Changes to the resulting wgrep buffer (opened by =C-c C-e=) can be committed
 with =C-c C-c= and aborted with =C-c C-k= (alternatively =ZZ= and =ZQ=, for evil
 users).
 
-* 参考
-[[file:~/.emacs.d/modules/completion/ivy/README.org::*Project search & replace][Project search & replace]]
+** 参考
+[[file:~/doom-emacs/modules/completion/ivy/README.org::*Project search & replace][Project search & replace]]
+* 搜索org目录中的文件内容
+使用 =SPC n s= 调用 =+default/org-notes-search= 搜索org目录中的文件内容
+* 搜索与替换
+可以使用 anzu-query-replace 进行搜索替换，如果要使用正则表达式，使用 anzu-query-replace-regexp
+emacs 自带的 query-replace 功能已经不错，可以在每个替换处询问用户是否替换。而 anzu 添加了可以即时显示替换结果的功能。
+** 参考
+https://github.com/emacsorphanage/anzu
