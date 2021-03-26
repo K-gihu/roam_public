@@ -1,0 +1,25 @@
+#+title: 如何转换知网的caj为pdf
+#+roam_tags: 
+#+roam_alias: 
+
+使用 [[https://github.com/JeziL/caj2pdf][caj2pdf]]
+* 打印文件基本信息（文件类型、页面数、大纲项目数）
+caj2pdf show [input_file]
+
+* 转换文件
+caj2pdf convert [input_file] -o/--output [output_file]
+
+* 从 CAJ 文件中提取大纲信息并添加至 PDF 文件
+遇到不支持的文件类型或 Bug 时，可用 CAJViewer 打印 PDF 文件，并用这条命令为其添加大纲
+caj2pdf outlines [input_file] -o/--output [pdf_file]
+
+* 例
+
+#+begin_src sh
+caj2pdf show test.caj
+caj2pdf convert test.caj -o output.pdf
+caj2pdf outlines test.caj -o printed.pdf
+#+end_src
+
+* 参考
+https://github.com/JeziL/caj2pdf#%E7%94%A8%E6%B3%95

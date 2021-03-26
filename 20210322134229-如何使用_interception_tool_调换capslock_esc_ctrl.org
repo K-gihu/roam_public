@@ -3,8 +3,11 @@
 #+roam_alias: 
 
 * 主要内容
-使用
-
+udevmon配置文件
+[[file:/etc/interception/udevmon.yaml]]
 * 参考
 https://gitlab.com/interception/linux/plugins/caps2esc
+关于使用inetrception tool的另一些经验：
 https://emacsredux.com/blog/2020/07/05/remap-enter-to-control-in-gnu-linux-2020-edition/#fn:1
+关于如何协同鼠标和键盘：
+https://gitlab.com/interception/linux/plugins/caps2esc/-/issues/9#note_474942893

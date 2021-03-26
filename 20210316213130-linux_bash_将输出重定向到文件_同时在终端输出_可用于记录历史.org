@@ -1,0 +1,7 @@
+#+title: Linux bash 将输出重定向到文件，同时在终端输出，可用于记录历史
+#+roam_tags: linux
+#+roam_alias: 
+
+command | tee -a \path
+
+* 参考

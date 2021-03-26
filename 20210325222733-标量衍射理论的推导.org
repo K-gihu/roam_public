@@ -1,0 +1,26 @@
+#+title: 标量衍射理论的推导
+#+roam_tags: 
+#+roam_alias: 
+
+标量衍射理论的推导过程有很多 *前提* ，这里旨在将这些前提清楚地表现出来。
+* 无自由电荷的麦克斯韦方程组
+\begin{gather*}
+\nabla \times \vec{E} = -\mu \frac{\partial \vec{H} }{\partial t}\\
+\nabla \times \vec{H} = -\epsilon \frac{\partial \vec{E} }{\partial t} \\
+\nabla \cdot \epsilon \vec{E} = 0 \\
+\nabla \cdot \mu \vec{H} = 0
+\end{gather*}
+ 
+* 介质没有磁性
+就是说 \(\mu =\mu_0\) 总是成立的。
+* 介质满足线性
+意义需要阐述
+* 介质满足各向同性
+就是说介电常数和电磁波的偏振方向无关
+* 参考
+@book{傅里叶光学导论,
+  title={傅里叶光学导论:Third Edition},
+  author={古德曼 and J.W.)},
+  publisher={傅里叶光学导论},
+  year={2020},
+}
