@@ -1,0 +1,15 @@
+#+title: 矩形函数
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容 :ATTACH:
+:PROPERTIES:
+:ID:       21df4696-4211-4e69-8c7c-7981805903e7
+:END:
+一维矩形函数的定义为：
+\[rect(\frac{x - x_0}{a}) = \left\{ \begin{gathered} 1, |\frac{x-x_0}{a}|\leq \frac{1}{2}\\ 0, others \end{gathered} \right.\] 
+它的图像是一个以 \(x_0\) 为中心，\(a\) 为长度，1为宽度的矩形。
+二维矩形函数可以用两个一维矩形函数的乘积来定义：
+\[rect(\frac{x-x_0}{a})rect(\frac{y-y_0}{b})\] 
+[[attachment:_20210331_210927screenshot.png]]
+* 参考

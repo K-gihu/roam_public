@@ -1,0 +1,9 @@
+#+title: 压缩软件p7zip和unzip都可以使用natspec的版本以支持中文
+#+roam_tags: "linux"
+#+roam_alias: 
+
+* 主要内容
+archlinux软件包库中可以使用 =p7zip-natspec= 或 =unzip-natspec= ，解压windows系统中的非utf-8编码压缩文件的时候也不会出现乱码。
+
+* 参考
+https://blog.csdn.net/puppylpg/article/details/45488839

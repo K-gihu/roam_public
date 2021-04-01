@@ -1,0 +1,12 @@
+#+title: pycharm显示为空白的解决方法
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+打开pycharm之前执行：
+#+begin_src sh
+wmname LG3D
+#+end_src
+
+* 参考
+https://github.com/baskerville/bspwm/issues/52

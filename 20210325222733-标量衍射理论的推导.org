@@ -1,10 +1,11 @@
 #+title: 标量衍射理论的推导
+#+SETUPFILE: src/theme-readtheorg-local.setup
 #+startup: num
 #+roam_tags: 
 #+roam_alias: 
 
 标量衍射理论的推导过程有很多 *前提* ，这里旨在将这些前提清楚地表现出来。
-* 前提：无自由电荷的麦克斯韦方程组
+* 前提：无源的麦克斯韦方程组
 \begin{gather*}
 \nabla \times \vec{E} = -\mu \frac{\partial \vec{H} }{\partial t}\\
 \nabla \times \vec{H} = -\epsilon \frac{\partial \vec{E} }{\partial t} \\
@@ -31,9 +32,11 @@
 
 * 前提：矢量恒等式
 矢量场旋度的旋度，等于它散度的梯度减去它的拉普拉斯
-#+begin_quote
-拉普拉斯就是用拉普拉斯算子作用的结果，对于标量场就是梯度的散度，和散度的梯度相对应。虽然这是矢量场
-#+end_quote
+#+begin_note
+拉普拉斯就是用拉普拉斯算子作用的结果，对于标量场就是梯度的散度，和散度的梯度相对应，虽然这是矢量场。
+
+关于拉普拉斯算子的作用的探讨可见[[file:20210325110018-拉普拉斯算子的意义.org][拉普拉斯算子的意义]]。
+#+end_note
 \[\nabla \times (\nabla\times \vec{E}) = \nabla(\nabla\cdot \vec{E}) - \triangle \vec{E}\] 
 
 * 前提：旋度和对时间偏导可以交换次序
@@ -71,23 +74,25 @@ https://zhuanlan.zhihu.com/p/161450359
 \[u(P,t) = Re(U(P)\exp(-j2\pi\nu t))\] 
 其中 \(U(P)=A(P)\exp [j\phi(P)]\) ，它只关于空间位置，称为相矢量。
 
-* 5,7的推论：亥姆霍兹方程
+* 5,7的推论：亥姆霍兹方程或单色标量波的波动方程
+
 \[\triangle u(P,t) - \frac{n^2}{c^2} \frac{\partial^2 u(P,t) }{\partial t^2 } = 0\] 
 \[u(P,t) = Re(U(P)\exp(-j2\pi\nu t))\] 
 
 标量波动方程和单色波结合，可以得到
-\(Re\{(\triangle + k^2 )U(P)\exp (-j 2\pi\nu t)\} = 0\) 
-其中的 \(k=2\pi \nu n / c = 2\pi / \lambda \) 
+\[Re\{(\triangle + k^2 )U(P)\exp (-j 2\pi\nu t)\} = 0 ,\quad k=2\pi \nu n / c = 2\pi / \lambda\] 
+
+这个等式，是从标量波动方程和单色标量波的数学形式推导出来的， *因此* 表示的是单色标量波的标量波动方程。
+
+#+begin_note
+这里是如何推出的？现在想到的解决方法是，有一个隐含的前提假设：\(\forall t \in R\) 都有上述方程成立。
+在这个前提下，就只能得到亥姆霍兹方程了。
+#+end_note
 
 从这里可以推导出 \((\triangle + k^2)U = 0\) 
+这就是亥姆霍兹方程。
 
-#+begin_comment
-尚不清楚这里是如何推导的
-#+end_comment
-
-这就是亥姆霍兹方程
-
-* 前提：格林定理
+* 前提：格林定理（格林第二恒等式）
 格林定理是描述空间区域内体积分和边界面积分的某种关系的：
 \[\iiint_V(U\triangle G - G\triangle U)dv = \iint_S(U \frac{\partial G}{\partial n} - G \frac{\partial U}{\partial n})ds\] 
 
@@ -110,13 +115,25 @@ https://zhuanlan.zhihu.com/p/161450359
 
 该定理使得任意一点的场可以用波在包围着一点的任意闭合曲面上的“边值”表示。
 
+* 前提：索末菲辐射条件
+
+* 前提：基尔霍夫边界条件
+对于衍射屏平面上的场，遮挡的地方当作没有场，不遮挡的地方当作和没有衍射屏的场一样，这就是基尔霍夫边界条件。
+只有满足衍射孔孔径远大于波长的情况下，基尔霍夫边界条件才能满足。
+不知道如何证明
+直觉上，孔径尺度远大于波长，会让孔径处的衍射效应平均比较少，从而更接近无遮挡情况下的场。
+
+* 推论：菲涅尔-基尔霍夫衍射公式
+[[前提：索末菲辐射条件]]
+[[前提：基尔霍夫边界条件]]
+
 * 不过，标量衍射理论与微波波谱区的实验符合的很好，只要满足两个条件即可：
-1. 衍射孔比波长大得多
-2. 观察点离衍射孔远一些
+1. 衍射孔径比波长大得多
+2. 观察点离衍射孔远一些 \(k \gg  \frac{1}{r_{10}}\) 
 
 * 参考
 @book{傅里叶光学导论,
-  title={傅里叶光学导论:Third Edition},
+  title={傅里叶光学导论},
   author={古德曼 and J.W.)},
   publisher={傅里叶光学导论},
   year={2020},
