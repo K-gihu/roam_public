@@ -1,0 +1,9 @@
+#+title: java程序的字体颜色等视觉效果如何修改
+#+roam_tags: linux
+#+roam_alias: 
+
+* 主要内容
+使用环境变量 =JDK_JAVA_OPTIONS=
+
+* 参考
+https://wiki.archlinux.org/index.php/Java#Tips_and_tricks

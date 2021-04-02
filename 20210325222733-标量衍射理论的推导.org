@@ -1,5 +1,4 @@
 #+title: 标量衍射理论的推导
-#+SETUPFILE: src/theme-readtheorg-local.setup
 #+startup: num
 #+roam_tags: 
 #+roam_alias: 
@@ -7,10 +6,10 @@
 标量衍射理论的推导过程有很多 *前提* ，这里旨在将这些前提清楚地表现出来。
 * 前提：无源的麦克斯韦方程组
 \begin{gather*}
-\nabla \times \vec{E} = -\mu \frac{\partial \vec{H} }{\partial t}\\
-\nabla \times \vec{H} = -\epsilon \frac{\partial \vec{E} }{\partial t} \\
-\nabla \cdot \epsilon \vec{E} = 0 \\
-\nabla \cdot \mu \vec{H} = 0
+\nabla\times\vec{E} = -\mu\frac{\partial\vec{H}}{\partial t}\\
+\nabla\times\vec{H} = -\epsilon\frac{\partial\vec{E}}{\partial t} \\
+\nabla\cdot\epsilon\vec{E} = 0 \\
+\nabla\cdot\mu\vec{H} = 0
 \end{gather*}
  
 * 前提：介质需要满足的条件
