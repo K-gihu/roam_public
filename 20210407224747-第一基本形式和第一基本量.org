@@ -1,0 +1,8 @@
+#+title: 第一基本形式和第一基本量
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+\[Ⅰ = ds^2 = \vec{dr} \cdot \vec{dr} = \dots =\] 
+
+* 参考

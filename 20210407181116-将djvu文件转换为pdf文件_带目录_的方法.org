@@ -1,0 +1,15 @@
+#+title: 将djvu文件转换为pdf文件（带目录）的方法
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+使用 djvups 和 ps2pdf ，先把 djvu 文件转换为 postscript 文件，然后转换为 pdf 文件。
+#+begin_src sh
+djvups input.djvu | ps2pdf - output.pdf
+#+end_src
+
+速度比较慢，我转换一个20多M的文件用了23分钟左右。
+
+将书签或目录复制过去，可以使用 handyoutliner
+* 参考
+https://superuser.com/questions/100572/how-do-i-convert-a-djvu-document-to-pdf-in-linux-using-only-command-line-tools

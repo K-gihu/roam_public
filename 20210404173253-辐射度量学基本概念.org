@@ -1,0 +1,32 @@
+#+title: 辐射度量学基本概念
+#+roam_tags: 
+#+roam_alias: 
+
+* 目录
+* 主要内容
+辐照度
+辐射亮度
+对比：辐照度和辐射亮度
+
+* 辐射通量
+辐射通量是单位时间发射、反射、透射或接收的能量，也称为攻率。单位是瓦特或流明。
+
+\[\Phi := \frac{dQ}{dt}[W=Watt][lm=lumen]\] 
+* 辐射强度 :ATTACH:
+:PROPERTIES:
+:ID:       6689845e-24c1-4fa3-82f2-d8375146147c
+:END:
+[[attachment:_20210404_174616screenshot.png]]
+
+辐射强度（Radiant Intensity）是单位[[file:20210404175650-立体角.org][立体角]]由点光源发出的功率。单位是瓦每球面度，或流明每球面度（坎德拉）。
+  
+  \(I(\omega):= \frac{d\Phi}{d\omega} [\frac{W}{sr}][\frac{lm}{sr}=cd=candela]\) 
+* 辐照度
+辐照度（Irradiance）是单位面积入射到一个表面上一点的辐射通量。
+\[E(x) := \frac{d\Phi(x)}{dA}[\frac{W}{m^2 }][\frac{lm}{m^2 }=lux]\]
+
+* 朗伯余弦定律
+*表面辐照度* 与 *光方向和表面法线夹角的余弦值* 成正比。
+
+* 参考
+https://zhuanlan.zhihu.com/p/139468429

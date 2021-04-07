@@ -1,0 +1,13 @@
+#+title: linux如何安装zotero的官网下载版本
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+1. 解压压缩包
+2. 执行压缩包内的 =set_launcher_icon= 
+3. 链接一个 =Desktop Entry= ，
+   =ln -s zotero.desktop ~/.local/share/applications/=
+4. 可以使用rofi等执行了。
+
+* 参考
+https://www.zotero.org/support/installation

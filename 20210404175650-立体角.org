@@ -1,0 +1,27 @@
+#+title: 立体角
+#+roam_tags: 
+#+roam_alias: 
+
+* 定义 :ATTACH:
+:PROPERTIES:
+:ID:       6a07f501-4903-4163-b64d-b40287072346
+:END:
+平面角是圆上的投影弧长和半径之比
+
+[[attachment:_20210404_180009screenshot.png]]
+
+同样地，立体角可以认为是球面上的投影面积和半径的平方之比。
+
+[[attachment:_20210404_180124screenshot.png]]
+
+\[\Omega = \frac{A}{r^2 }\] 
+
+* 微分立体角 :ATTACH:
+:PROPERTIES:
+:ID:       1a09d269-b493-4f46-86d8-43364115ad71
+:END:
+使用球面坐标系，可以得到球面积微分的表达式，从而得到立体角微分的表达式
+
+[[attachment:_20210404_180325screenshot.png]]
+
+* 参考

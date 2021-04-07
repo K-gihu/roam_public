@@ -3,12 +3,13 @@
 #+roam_tags: 线性代数
 
 * 定义
+下面两个定义的差别在于，一个要求线性空间，一个要求赋范空间。
 ** 数学物理方法的定义
 对[[file:20201019232551-域.org][数域]] \(\mathbb{P} \) 和[[file:20201016153155-线性空间.org][线性空间]] \(\mathbb{E} ,\mathbb{E} _1\) ，若存在[[file:20201009224938-泛函中的映射.org][映射]] \(T:\mathbb{E} \to \mathbb{E}_1  \) 使得
 \(\forall x,y \in \mathbb{E} ,\forall \alpha \in \mathbb{P} :T(x+y) = T(x)+T(y),T(\alpha x) = \alpha T(x)\) 。
 则称 \(T\) 是线性映射，或线性算子。
 ** 泛函分析的定义
-若有赋范空间 \(X,Y\) 和 \(X\) 的子空间 \(D\subset X\) ，映射 \(T:D\to Y\) 被称为线性算子
+若有赋范空间 \(X,Y\) 和 \(X\) 的子空间 \(D\subset X\) ，以及数域 \(P\) 映射 \(T:D\to Y\) 被称为线性算子
 \(\iff\forall x,y \in D,\alpha \in P:T(x+y)=T(x)+T(y),T(\alpha x)=\alpha T(x)\)
 
 * 关系

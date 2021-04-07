@@ -1,0 +1,8 @@
+#+title: 切平面法向矢量
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+\[\hat{N} = \pm \frac{\vec{r_u} \times \vec{r_v} }{|\vec{r_u} \times \vec{r_v}|}\] 
+
+* 参考

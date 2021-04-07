@@ -1,0 +1,13 @@
+#+title: 主曲率、主方向
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+非[[file:20210407224533-脐点.org][脐点]]有两个正交的主方向
+\begin{gather*}
+k_1= k_{n_\max} \\
+k_2= k_{n_\min} 
+\end{gather*}
+ 
+
+* 参考

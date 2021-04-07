@@ -1,0 +1,14 @@
+#+title: 第二基本形式和第二基本量
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+\[Ⅱ = Ldu^2 + 2Mdudv + Ndv^2 \] 
+
+\begin{gather*}
+L = \vec{r_{uu}} \cdot \hat{N} \\
+M = \vec{r_{uv}} \cdot \hat{N} \\
+N = \vec{r_{vv}} \cdot \hat{N} 
+\end{gather*}
+ 
+* 参考
