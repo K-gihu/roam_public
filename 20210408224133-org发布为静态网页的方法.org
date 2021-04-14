@@ -1,0 +1,12 @@
+#+title: org发布为静态网页的方法
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+有几个工具可以使用：
+- weblorg
+- org-hugo + github action
+- org-page
+
+* 参考
+https://emacs-china.org/t/org-mode-githubpage/16072/4

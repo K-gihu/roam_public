@@ -1,0 +1,550 @@
+#+title: 获取并展示系统信息的方法，命令，软件
+#+roam_tags: linux
+#+roam_alias: 
+
+The following commands will get you some basic details about your setup.These commands can be typed in a terminal.
+When debugging hardware problems, information about one's system is needed.
+Here is how some needed system info can be gathered.
+
+Whenever posting about hardware issues, try to list this information where relevant, by Posting it inside the code blocks (button symbol: # ).
+
+
+1.Brief System Info
+Code: [Select]
+
+inxi -Fxz
+
+
+2.Kernels currently installed
+Code: [Select]
+
+mhwd-kernel -li
+
+
+3.GPU (Graphics) in use
+Code: [Select]
+
+mhwd -li
+
+
+4.USB Devices info
+Code: [Select]
+
+lsusb
+
+
+5.CPU information
+Code: [Select]
+
+lscpu
+
+
+6.Kernel messages
+Code: [Select]
+
+dmesg
+
+
+7.Partitions info
+Code: [Select]
+
+sudo fdisk -l
+
+Code: [Select]
+
+lsblk -f
+
+
+8.System log
+Code: [Select]
+
+journalctl -f
+
+(for full journal dont give -f option)
+
+9.XServer logs
+Code: [Select]
+
+cat /var/log/Xorg.0.log
+
+Code: [Select]
+
+cat /var/log/Xorg.1.log
+
+Code: [Select]
+
+cat /var/log/Xorg.2.log
+
+
+According to the graphics configuration, the files found in /etc/X11/xorg.conf.d and /etc/X11/mhwd.d
+may also be useful.
+
+10.Kernel Modules loaded
+Code: [Select]
+
+lsmod
+
+
+11.Network devices
+Code: [Select]
+
+ip addr
+rfkill list
+
+
+12.Input Devices
+Code: [Select]
+
+xinput
+
+
+13.PCI Devices (like Graphics/DRAM controller & network interfaces) in detail
+Code: [Select]
+
+lspci -v
+
+
+14.Sound Devices
+Code: [Select]
+
+aplay -l
+
+
+15.Real Time System Info (like CPU processes, RAM usage)
+Code: [Select]
+
+top
+
+(Or
+Code: [Select]
+
+htop
+
+if you have it installed and want a ncurses interface)
+
+16.Kernel and System Info
+Code: [Select]
+
+uname -a
+
+
+Note-
+You can suggest more commands you think can be added here.
+Thanks to the people who gave suggestions.
+
+P.S.
+Here is a link where you can Post your hardware you are running Manjaro on.
+« Last Edit: 17. June 2014, 05:51:42 by aaditya »
+Logged
+Complete Spiritual Knowledge
+Offline cumali
+
+    Support Team
+    ****
+    Posts: 827
+        http://www.manjaro-tr.org/
+    Branch: stable
+    Desktop: Manjarobox, Xfce
+    GPU Card: İntel
+    GPU driver: free
+    Kernel: Linux38-x86
+    Skill: Novice
+
+Re: [HowTo] How to post your System Info?
+« Reply #1 on: 29. September 2013, 13:04:42 »
+Was a nice tutorial. Thank you @aaditya ;)
+Logged
+http://manjaro-tr.org/forum/index.php
+http://archtr.org/forum/
+Offline aaditya
+
+    OpenRC Team
+    ****
+    Posts: 2844
+        My Website
+    Branch: Testing
+    Desktop: Xfce, Openbox
+    GPU Card: Intel HD 4000
+    Kernel: Linux 4.4 x86_64
+    Skill: Intermediate
+
+Re: [HowTo] How to post your System Info?
+« Reply #2 on: 29. September 2013, 13:25:02 »
+Thank you Cumali :)
+Logged
+Complete Spiritual Knowledge
+Offline aaditya
+
+    OpenRC Team
+    ****
+    Posts: 2844
+        My Website
+    Branch: Testing
+    Desktop: Xfce, Openbox
+    GPU Card: Intel HD 4000
+    Kernel: Linux 4.4 x86_64
+    Skill: Intermediate
+
+Re: [HowTo] How to post your System Info?
+« Reply #3 on: 01. October 2013, 18:32:31 »
+To check your memory usage-
+Code: [Select]
+
+free -m
+
+(This command is somewhat subjective and should be used for reference only!)
+
+To check which processes are running and CPU load,
+Code: [Select]
+
+top
+
+
+A graphical way to check this information is through the Task Manager/ System Monitor.
+They are found in Applications -> System (varies according to the desktop environment)
+
+A graphical view to view the system  load is htop
+Install it with
+Code: [Select]
+
+sudo pacman -S htop
+
+It would also be probably found in Applications -> System -> Htop
+« Last Edit: 01. October 2013, 19:03:32 by aaditya »
+Logged
+Complete Spiritual Knowledge
+Offline Zileene
+
+    Held Mitglied
+    *****
+    Posts: 536
+    Branch: Stable
+    Desktop: awesomeWM,Gnome
+    GPU Card: various
+    GPU driver: the one that works
+    Kernel: 4.1
+    Skill: Intermediate
+
+Re: [HowTo] How to post your System Info?
+« Reply #4 on: 01. October 2013, 19:47:21 »
+To see who's logged on, what they're running + current time, system uptime and CPU load average:
+Code: [Select]
+
+w
+
+
+A quick temperature check:
+Code: [Select]
+
+sensors
+
+(needs lm_sensors package)
+Logged
+While I may not always have the correct solution, my input could lead you in the right direction...
+If you don't know what a command does, then type 'man <command>' or '<command> --help' to find out.
+Offline mips
+
+    Held Mitglied
+    *****
+    Posts: 2892
+    Valkyrja
+    Branch: Testing
+    Desktop: XFCE
+    GPU Card: GTX 960
+    GPU driver: video-nvidia
+    Kernel: 3.16
+    Skill: Intermediate
+
+Re: [HowTo] How to post your System Info?
+« Reply #5 on: 01. October 2013, 20:09:50 »
+Quote from: aaditya on 01. October 2013, 18:32:31
+
+    To check your memory usage-
+    Code: [Select]
+
+    free -m
+
+    (This command is somewhat subjective and should be used for reference only!)
+
+
+
+free sucks as far as I'm concerned, if you want to check accurate memory usage by application/process try ps_mem.py
+
+
+This will download the script, copy it to sbin and rename it to mem (less to type out) and change rights:
+Code: [Select]
+
+wget https://raw.github.com/pixelb/ps_mem/master/ps_mem.py
+sudo cp ps_mem.py /usr/local/sbin/mem && sudo chmod 755 /usr/local/sbin/mem
+
+
+[Post corrected at forum member's request - carl]
+
+To execute the command simply do:
+Code: [Select]
+
+sudo mem
+
+
+« Last Edit: 11. October 2013, 21:27:45 by Carl »
+Logged
+Offline amboyguy
+
+    Jr. Mitglied
+    **
+    Posts: 50
+    Branch: Testing
+    Desktop: XFCE
+    GPU Card: AMD/ATI
+    GPU driver: free
+    Kernel: linux310-x64
+    Skill: Novice
+
+Re: [HowTo] How to post your System Info?
+« Reply #6 on: 01. October 2013, 22:07:54 »
+Somehow the && between the commands went missing in mips post.
+
+Code: [Select]
+
+sudo cp ps_mem.py /usr/local/sbin/mem && sudo chmod 755 /usr/local/sbin/mem
+
+« Last Edit: 01. October 2013, 22:12:39 by amboyguy »
+Logged
+HP-ENVY-TS-15 Notebook
+HP-dv7 Notebook
+Offline flashboy
+
+    Jr. Mitglied
+    **
+    Posts: 81
+    Linux user in progress!
+        forum practic
+    Branch: ???
+    Desktop: ???
+    GPU Card: Nvidia 6600
+    GPU driver: non-free
+    Kernel: linux4,1
+    Skill: Novice
+
+Re: [HowTo] How to post your System Info?
+« Reply #7 on: 01. October 2013, 23:27:54 »
+How about video acceleration???
+
+I want to active videoacceleration but I did't finde eny INFO about.  :(
+
+I use this comande like in UBUNTU : glxgears    The result was :
+
+Quote
+
+    [booboo@booboo ~]$ glxgears
+    302 frames in 5.0 seconds = 60.398 FPS
+    300 frames in 5.0 seconds = 59.954 FPS
+    300 frames in 5.0 seconds = 59.954 FPS
+    300 frames in 5.0 seconds = 59.954 FPS
+    300 frames in 5.0 seconds = 59.955 FPS
+    300 frames in 5.0 seconds = 59.955 FPS
+    300 frames in 5.0 seconds = 59.954 FPS
+
+
+In UBUNTU I was like this :
+
+Quote
+
+    19948 frames in 5.0 seconds = 3987.691 FPS
+    19040 frames in 5.0 seconds = 3804.944 FPS
+    19660 frames in 5.0 seconds = 3928.221 FPS
+    18775 frames in 5.0 seconds = 3751.409 FPS
+    19472 frames in 5.0 seconds = 3893.304 FPS
+    18800 frames in 5.0 seconds = 3759.677 FPS
+
+
+I think the acceleration is not actived in Manjaro. I have the last updates but I think I need to active video acceleration. But what command do I need to do that?
+Logged
+Live will hit you hard, just fight back as much as you can.
+Offline aaditya
+
+    OpenRC Team
+    ****
+    Posts: 2844
+        My Website
+    Branch: Testing
+    Desktop: Xfce, Openbox
+    GPU Card: Intel HD 4000
+    Kernel: Linux 4.4 x86_64
+    Skill: Intermediate
+
+Re: [HowTo] How to post your System Info?
+« Reply #8 on: 02. October 2013, 06:52:00 »
+@flippy, open a new thread for any problems, this thread only illustrates the commands to perform.
+
+Quote
+
+    $glxgears
+    Running synchronized to the vertical refresh.  The framerate should be
+    approximately the same as the monitor refresh rate.
+    302 frames in 5.0 seconds = 60.390 FPS
+    299 frames in 5.0 seconds = 59.762 FPS
+
+
+Perhaps you have a hybrid graphics card, in which you need to specify which card you have to use for applications. For nvidia its optirun glxgears.
+
+Read the topics in the forums with similar issues, and if you have problems, open a new thread.
+
+Edit-
+I forgot to mention, glxgears is not a benchmark!
+http://wiki.cchtml.com/index.php/Glxgears_is_not_a_Benchmark
+« Last Edit: 02. October 2013, 11:31:36 by aaditya »
+Logged
+Complete Spiritual Knowledge
+Offline Esclapion
+
+    Support Team
+    ****
+    Posts: 5523
+        manjaro
+    Branch: stable
+    Desktop: Lxqt
+    GPU Card: GTX 970
+    GPU driver: nonfree
+    Kernel: 4.4.6
+    Skill: Advanced
+
+Re: [HowTo] How to post your System Info?
+« Reply #9 on: 02. October 2013, 11:20:05 »
+ :)
+
+Try :
+
+Code: [Select]
+
+export vblank_mode=0
+glxgears
+
+Logged
+Venez nous rejoindre sur l'IRC francophone
+Patrice - Violence is the last refuge of the incompetent (Asimov)
+Offline mips
+
+    Held Mitglied
+    *****
+    Posts: 2892
+    Valkyrja
+    Branch: Testing
+    Desktop: XFCE
+    GPU Card: GTX 960
+    GPU driver: video-nvidia
+    Kernel: 3.16
+    Skill: Intermediate
+
+Re: [HowTo] How to post your System Info?
+« Reply #10 on: 02. October 2013, 11:31:44 »
+Quote from: amboyguy on 01. October 2013, 22:07:54
+
+    Somehow the && between the commands went missing in mips post.
+
+    Code: [Select]
+
+    sudo cp ps_mem.py /usr/local/sbin/mem && sudo chmod 755 /usr/local/sbin/mem
+
+
+
+Thanks, copy & paste error on my part, I had it on two separate lines but it somehow ended up on one line.
+
+
+I'll report my post and ask the mods to edit it ;)
+Logged
+Offline LiberteCzech
+
+    Jr. Mitglied
+    **
+    Posts: 76
+    Branch: Unstable
+    Desktop: Xfce 4.11
+    GPU Card: AMD Radeon HD 8570m, 8330
+    GPU driver: Catalyst 14.12, open source MESA
+    Kernel: Linux 3.19 x64
+    Skill: Intermediate
+
+Re: [HowTo] How to post your System Info?
+« Reply #11 on: 03. November 2013, 12:31:12 »
+Aaditya, very good this listing  :) :)
+This will definitely need at work.  ;)
+Logged
+Offline aaditya
+
+    OpenRC Team
+    ****
+    Posts: 2844
+        My Website
+    Branch: Testing
+    Desktop: Xfce, Openbox
+    GPU Card: Intel HD 4000
+    Kernel: Linux 4.4 x86_64
+    Skill: Intermediate
+
+Re: [HowTo] How to post your System Info?
+« Reply #12 on: 04. November 2013, 09:02:58 »
+Thanks LiberteCzech ;)
+
+You can add to it also if you think something is missing. :)
+Logged
+Complete Spiritual Knowledge
+Offline VraiChevalier
+
+    Neuling
+    *
+    Posts: 3
+    Linux User #440357 ------------ Ubuntu User #11205
+    Branch: Netbook 0.8.9pre2.1 i686
+    Desktop: Xfce4
+    GPU Card: Intel Mobile 945GM/GMS/GME Express Integrated Graphics
+    GPU driver: Intel
+    Kernel: 3.12.7-1-MANJARO-netbook i686 (32 bit, gcc: 4.8.2)
+    Skill: Intermediate
+
+Re: [HowTo] get and post your System Info
+« Reply #13 on: 27. January 2014, 01:49:00 »
+I've always liked this one; outputs a lot of information.
+
+Code: [Select]
+
+sudo lshw
+
+
+And this will output it in a nifty html format which is easily read in the web browser;
+
+Code: [Select]
+
+sudo lshw -html > your-file-name.html
+
+
+This tool <lshw> was not installed by default in my Manjaro Netbook Xfce installation. I had to get it from the community repo.
+Logged
+Miseris Succurrere Disco
+Offline Zileene
+
+    Held Mitglied
+    *****
+    Posts: 536
+    Branch: Stable
+    Desktop: awesomeWM,Gnome
+    GPU Card: various
+    GPU driver: the one that works
+    Kernel: 4.1
+    Skill: Intermediate
+
+Re: [HowTo] get and post your System Info
+« Reply #14 on: 14. February 2014, 20:51:42 »
+Quote from: aaditya on 29. September 2013, 12:03:57
+
+    15.Real Time System Info (like CPU processes, RAM usage)
+    Code: [Select]
+
+    top
+
+
+I never got comfortable with top. My brain simply can't parse it.  ???  :-\
+I found htop much more comfortable to use. I'm guessing the ncurses interface has something to do with that...
+
+* 参考
+https://classicforum.manjaro.org/index.php?topic=7176.0

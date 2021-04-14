@@ -1,0 +1,17 @@
+#+title: qt designer 的设计方法
+#+roam_tags: 
+#+roam_alias: 
+
+* 设计步骤
+- 拖动部件进来
+- 设置部件名称类属性： objectName、windowTitle 等
+- 布局
+- 预览
+- 迭代
+  
+* 将Widget提升为Matplotlib Widget
+可以写一个类，继承 =matplotlib.backends.backend_qt5agg.FigureCanvasQTAgg= ，代码就保存在其他UI代码的同级以供调用。这样就写成了一个 Matplotlib Widget。
+
+使用 Matplotlib Widget 直接在 qt designer 中使用。
+
+* 参考

@@ -1,0 +1,24 @@
+#+title: 角谱
+#+roam_tags: 
+#+roam_alias: 
+
+* 角谱要解决的问题 :ATTACH:
+:PROPERTIES:
+:ID:       8e640ea2-df0b-4e26-85f1-36d34f9f4cfc
+:END:
+如果一个波入社到横向 \((x,y)\) 平面上，波有 \(z\) 正方向分量，令 \(z=0\) 平面上的复场为 \(U(x,y,0)\) ，那么由这个场引起的距离该平面为 \(z\) 的另一个平面上的场 \(U(x,y,z)\) 为？
+
+\(z=0\) 平面上，函数 \(U\) 的二维傅里叶变换式为：
+
+\[A(f_X,f_Y; 0) = \iint_{-\infty}^{+\infty} U(x,y,0)\exp[-j 2\pi (f_X x + f_Y y)]dxdy\] 
+
+
+[[attachment:_20210413_221616screenshot.png]]
+
+[[attachment:_20210413_221726screenshot.png]]
+
+[[attachment:_20210413_221744screenshot.png]]
+
+[[attachment:_20210413_221749screenshot.png]]
+
+* 参考

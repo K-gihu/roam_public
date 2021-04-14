@@ -1,0 +1,9 @@
+#+title: 使用vlc捕获摄像头的方法
+#+roam_tags: linux
+#+roam_alias: 
+
+* 主要内容
+需要安装zvbi这个包
+
+* 参考
+https://wiki.archlinux.org/index.php/Webcam_setup

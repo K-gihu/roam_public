@@ -1,0 +1,60 @@
+#+title: 瑞利-索末菲衍射公式（第一种）的推导
+#+roam_tags: 
+#+roam_alias: 
+
+[[file:20210325222733-基尔霍夫标量衍射公式的推导.org][基尔霍夫标量衍射公式]]有一个缺点，在基尔霍夫边界条件中要求场强和场强的法向导数都是0，而势论中有一个定理告诉我们，如果一个二维势函数及其法向导数在一个有限的曲线段同时为零，那么这个势函数一定在整个平面上为零。这个定理应用到基尔霍夫标量衍射公式，就意味着衍射孔后面的场强都是零，这无论与基尔霍夫自身的结论还是实际的结果都是不一致的。理论存在这样的不自洽性。
+
+而索末菲的理论不需要同时对场和场的法向导数施加边界条件，所以解决了这种不自洽性。
+
+我们先看看基尔霍夫标量衍射公式推导过程中的一步：
+[[file:20210325222733-基尔霍夫标量衍射公式的推导.org::*推导：观察点的场可以通过计算衍射屏上的积分得到][推导：观察点的场可以通过计算衍射屏上的积分得到]]
+
+\[U(P_0) = \frac{1}{4\pi }\int_{S_1} \left\{\frac{\partial U}{\partial n}G - U \frac{\partial}{\partial n}G\right\}ds\] 
+
+如果能够将这里的格林函数 \(G\) 换一下，使之仍然可以被推导出来，而且新的 \(G\) 满足在 \(S_1\) 面上为零或方向导数为零，那么边界条件就不必取两个都是零了，不自洽性就可以消除了。
+
+* 前提：索末菲的第一种格林函数:在衍射屏上的值为零
+\[G_-(P_1) = \frac{\exp (jk r_{01})}{r_{01}} - \frac{\exp (jk \tilde{r_{01}} )}{\tilde{r_{01}} }\] 
+
+这个格林函数由两个相位相差180度的球面波叠加而成，除了原格林函数中从 \(P_0\) 发出的球面波之外，还有从 \(P_0\) 关于衍射屏的镜像点 \(\tilde{P}_0\) 发出的球面波。他们的波长相同，相位相反。
+
+显然，在衍射屏上这个函数等于零。这意味着
+\[U(P_0) = \frac{1}{4\pi }\int_{S_1} \left\{\frac{\partial U}{\partial n}G - U \frac{\partial}{\partial n}G\right\}ds\] 
+
+这个积分变成了
+\[U(P_0) = \frac{1}{4\pi }\int_{S_1} \left\{U \frac{\partial}{\partial n}G\right\}ds\] 
+
+那么边界条件只需要取 \(U_{S_1-\Sigma }\) 为零即可。
+
+* 前提：索末菲的第二种格林函数:在衍射屏上的值的方向导数为零
+\[G_+(P_1) = \frac{\exp (jk r_{01})}{r_{01}} + \frac{\exp (jk \tilde{r_{01}} )}{\tilde{r_{01}} }\] 
+
+把索末菲的第一种格林函数改成使用加号链接，也就是两个同相的球面波的叠加。
+可以求得这个函数的法向导数在衍射屏上为零。
+
+* 推导：第一种瑞利-索末菲解
+使用索末菲的第一种格林函数，
+
+\[\frac{\partial G_-}{\partial n}(P_1) = \cos(\vec{n}, \vec{r}_{01})\left(jk-\frac{1}{r_{01}}\right)\frac{\exp (jk r_{01})}{r_{01}} - \cos(\vec{n}, \vec{\tilde{r}}_{01})\left(jk-\frac{1}{\tilde{r}_{01}}\right)\frac{\exp (jk \tilde{r}_{01})}{\tilde{r}_{01}}\] 
+
+对称性条件：
+\begin{gather*}
+r_{01} = \tilde{r}_{01} \\
+\cos (\vec{n} ,\vec{r}_{01}) = -\cos(\vec{n} , \vec{\tilde{r}}_{01})
+\end{gather*}
+ 
+从而可以得到新的格林函数的法向导数，将它带入到
+\[U(P_0) = \frac{1}{4\pi }\int_{S_1} \left\{U \frac{\partial}{\partial n}G\right\}ds\] 
+
+而且使用边界条件： \(U_{S_1-\Sigma} = 0\) 就可以得到第一种瑞利-索末菲解。
+
+\[U(P_0) = -\frac{1}{2\pi }\iint_\Sigma U(P_1)\left(jk-\frac{1}{r_{01}}\right)\frac{\exp (jk r_{01})}{r_{01}}\cos (\vec{n} , \vec{r}_{01}) ds\] 
+
+可以表示为卷积：
+\begin{gather*}
+U(x,y,z) = h(x,y,z)*U(x,y,0) \\
+h(x,y,z) = \frac{1}{2\pi }\frac{z}{r}\left(\frac{1}{r}-jk\right)\frac{\exp (jkr)}{r}
+\end{gather*} 
+
+这里的 \(\frac{z}{r} = \cos (\vec{n} , \vec{r} _{01}), r = \sqrt{x^2 +y^2 +z^2 }\) 
+* 参考

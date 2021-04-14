@@ -1,0 +1,9 @@
+#+title: 扫描的文档图片黑白化
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+
+
+* 参考
+https://staff.washington.edu/corey/camscan/

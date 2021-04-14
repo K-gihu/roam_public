@@ -1,0 +1,10 @@
+#+title: 不定积分的线性
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+问题在于不定积分算子作用于函数之后，给出的并不是函数，而是一个函数的[[file:20210410145656-等价类.org][等价类]]。
+
+* 参考
+https://math.stackexchange.com/questions/2775143/linearity-of-indefinite-integrals
+https://math.stackexchange.com/questions/1069664/is-indefinite-integration-non-linear

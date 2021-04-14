@@ -1,0 +1,14 @@
+#+title: 富比尼定理
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+根据引用的帖子，首先有tonelli定理告诉我们，如果 \(\forall n,x: f_n(x) \geq 0\) ，那么
+\[\sum_{} \int f_n(x)dx = \int \sum f_n(x)dx\] 
+
+而富比尼定理告诉我们，对一般的 \(f_n\) 如果有 \(\int \sum |f_n| < \infty \) ，那么 \(\int\sum f_n = \sum\int f_n\) 。
+
+就是说，只要函数的模的求和并积分的结果是有限的，那么求和和积分就可以互换。
+
+* 参考
+https://math.stackexchange.com/questions/83721/when-can-a-sum-and-integral-be-interchanged

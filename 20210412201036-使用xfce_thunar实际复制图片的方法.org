@@ -1,0 +1,14 @@
+#+title: 使用xfce-thunar实际复制图片的方法
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+由于thunar在复制文件的时候，复制的其实是路径（可以通过xfce4-clipman看出来），所以我们自定义一个命令复制。
+
+新建自定义命令：
+#+begin_src sh
+xclip -sel clip -t $(file -b --mime-type %f) < %f && notify-send "Copied to clipboard" "Copied the contents of %f to clipboard"
+#+end_src
+
+这个命令不止会复制实际文件，还会在复制成功之后发出通知。
+* 参考

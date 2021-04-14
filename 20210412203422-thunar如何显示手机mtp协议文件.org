@@ -1,0 +1,9 @@
+#+title: thunar如何显示手机mtp协议文件
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+安装 =gvfs-mtp= 重启。
+
+* 参考
+https://wiki.archlinux.org/index.php/thunar

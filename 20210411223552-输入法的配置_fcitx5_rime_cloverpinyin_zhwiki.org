@@ -1,0 +1,11 @@
+#+title: 输入法的配置：fcitx5-rime+cloverpinyin+zhwiki
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+我使用 fcitx5，rime，cloverpinyin，zhwiki 这一套配置。关于前三者的配置方法可以见[[https://github.com/fkxxyz/rime-cloverpinyin][官方仓库]]
+
+zhwiki词库我是将它放在 =/usr/share/rime-data/clover.dict.yaml= 的 =import-presets= 里面的。
+
+不知道为什么，新建一个包含原词库和zhwiki的新词库的尝试失败了。
+* 参考

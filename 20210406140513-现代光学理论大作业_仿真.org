@@ -2,7 +2,11 @@
 #+roam_tags: 
 #+roam_alias: 
 
-* 主要内容
+* 题目 :ATTACH:
+:PROPERTIES:
+:ID:       245ba1c9-1692-4940-91a6-5dbf93e2fa22
+:END:
+第二题：
 有一单位振幅平面光波垂直照射一个半径为 \(a\) 的圆孔衍射物，设入射光波长为 \(\lambda = 632.8nm, a = 1.0mm\) ，在距离衍射物 \(z_1\) 处有一个观察屏。
 1. 分析 \(z_1\) 至少多远处可观察到圆孔的菲涅耳衍射和夫琅禾费衍射图像
 2. 仿真给出不同衍射距离下的菲涅耳衍射和夫琅禾费衍射图像。
@@ -12,7 +16,31 @@
 2. 给出系统脉冲响应函数
 3. 仿真给出不同观察距离下屏上的光场强度分布
 
-* 菲涅尔衍射和夫琅禾费衍射
+第五题：
+[[attachment:_20210413_094326screenshot.png]]
 
+* python光学仿真的书中，瑞利索末菲公式是从哪里来的？ :ATTACH:
+:PROPERTIES:
+:ID:       522aa55b-57f4-4400-8395-ea42e371d083
+:END:
+
+[[attachment:_20210413_094452screenshot.png]]
+
+这个公式据书中所说是 *平面波以任意入射角照射时，观察屏上任意一点（M）的光强度* 
+为了达到这个公式，依然需要从现有的理论开始[[file:20210325222733-标量衍射理论的推导.org][标量衍射理论的推导]]
+
+* 上次各自展示作业后需要注意的地方 :ATTACH:
+:PROPERTIES:
+:ID:       ab502a31-15d1-402b-a39b-79871dd889a4
+:END:
+
+#+attr_html: :width 550px
+[[attachment:_20210412_200109My88eJ247A8V7DECy09FKPK4.jpg]]
+
+#+attr_html: :width 550px
+[[attachment:_20210412_200205WPLQSC2QA0r1JL5dQDEV9K7E.jpg]]
+
+#+attr_html: :width 550px
+[[attachment:_20210412_200142Q881WWYCFaKerrThbTtYH7HJ.jpg]]
 
 * 参考
