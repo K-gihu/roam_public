@@ -1,0 +1,11 @@
+#+title: matplotlib使用slider交互式控制图像的参数
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+
+
+* 参考
+https://stackoverflow.com/questions/56804223/changing-animation-parameters-interactively-in-matplotlib
+https://matplotlib.org/stable/gallery/widgets/slider_demo.html
+https://www.geeksforgeeks.org/matplotlib-slider-widget/

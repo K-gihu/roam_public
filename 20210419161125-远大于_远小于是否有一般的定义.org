@@ -1,0 +1,22 @@
+#+title: 远大于、远小于是否有一般的定义？
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+没有。它反映的是一种 *控制误差* 思想。
+
+#+begin_quote
+The entire point is that *it's NOT very clear* what "much less than" is. What is "much less than"? In some contexts \(1≪2\) and in others \(1≪̸2\) but \(1≪100000\) and in others, even \(1 ≪̸ 100000\) . What precisely makes something "much less than"?
+
+In most contexts, ≪ is used in approximation. For example: for \(0<x≪1,(1+x)^n≈1+nx\) .
+
+So how small does x have to be? Well small enough for the approximation to be "good enough"! What is good enough? It seems like I'm just pushing off the question, and that's indeed what I'm doing!
+
+The entire point isn't whether something is "small enough" (big enough), or if the approximation is "good enough", the point is *control*. Can you *control the error in a manageable way*.
+
+For the example \(0 < x \ll 1,(1+x)^n≈1+nx\) . You can make \((1+x)^n\) as close as you'd like to \(1+nx\) by making x small enough! I think this is a more rigorous meaning.
+
+≪ is imprecise in the sense that you don't know how "small" something is. But it is precise in the sense that it implies that there is some control. *There is some way of making the error* in the approximation, argument, etc. *as small as you'd like*, provided that you make x small enough.
+#+end_quote
+* 参考
+https://math.stackexchange.com/questions/1516976/much-less-than-what-does-that-mean

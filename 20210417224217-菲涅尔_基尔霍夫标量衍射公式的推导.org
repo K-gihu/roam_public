@@ -1,4 +1,4 @@
-#+title: 基尔霍夫标量衍射公式的推导
+#+title: 菲涅尔-基尔霍夫标量衍射公式的推导
 #+startup: num
 #+roam_tags: 
 #+roam_alias: 
@@ -172,9 +172,32 @@ U(P_0) &= \frac{1}{4\pi }\int_S \left\{\frac{\partial U}{\partial n}[\frac{\exp(
 直觉上，孔径尺度远大于波长，会让孔径处的衍射效应平均比较少，从而更接近无遮挡情况下的场。
 #+end_note
 
-* 推导：基尔霍夫衍射公式
+* 推导：观察点的场可以通过计算衍射孔径上的积分得到
 既然满足基尔霍夫边界条件，只需要对孔径（这里 \(\Sigma\) 表示孔径）上的场求积分就能得到观察点的场了。
 \[U(P_0) = \iint_{S_1} \frac{\partial U}{\partial n} G - U\frac{\partial G}{\partial n} ds = \iint_\Sigma \frac{\partial U}{\partial n} G - U\frac{\partial G}{\partial n} ds\] 
+
+* 前提：孔径到观察点的距离远大于波长
+孔径点用 \(P_1\) 表示，观察点用 \(P_0\) 表示，那么
+\[k \gg \frac{1}{r_{01}}\]
+
+这会导致格林函数 \(G(P_1)\) 对于衍射面法向的导数发生近似：
+\begin{align*}
+\frac{\partial G(P_1)}{\partial n} &= \cos(\vec{n}, \vec{r_{01}})\left(jk-\frac{1}{r_{01}}\right)\frac{\exp(jk r_{01})}{r_{01}}\\
+&\approx jk\cos(\vec{n} , \vec{r_{01}} )\frac{\exp(jk r_{01})}{r_{01}}
+\end{align*}
+* 前提：光源是单个点光源，光源到孔径的距离远大于波长
+光源位于 \(P_2\) ，下面是孔径上的 \(P_1\) 点受到的来自 \(P_1\) 的扰动：
+\[U(P_1) = \frac{A\exp(jk r_{21})}{r_{21}}\] 
+
+另外 \(r_{21} \gg \lambda \) 
+
+* 推论：菲涅尔-基尔霍夫衍射公式
+经过上面几个条件，可以将观察点的场表示为：
+
+\[U(P_0) = \frac{A}{j\lambda } \iint_\Sigma \frac{\exp[jk(r_{21}+r_{01})]}{r_{21}r_{01}}\frac{1}{2}\left[\cos(\vec{n} ,\vec{r}_{01}) - \cos(\vec{n}, \vec{r}_{21})\right]ds\] 
+
+这就是
+- 菲涅尔-基尔霍夫衍射公式 :: 反映的只是点光源发出的发散球面波照明到衍射屏后，打在屏幕上的光场的分布情况。
 
 * 标量衍射理论与微波波谱区的实验符合的很好，只要满足两个条件即可：
 1. 衍射孔径比波长大得多，也就是[[前提：基尔霍夫边界条件]]

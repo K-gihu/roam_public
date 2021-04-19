@@ -1,0 +1,24 @@
+#+title: scipy中的贝赛尔函数
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容 :ATTACH:
+:PROPERTIES:
+:ID:       92c7841e-53a7-424a-98ea-28cd04a9eccd
+:END:
+
+[[attachment:_20210415_215551screenshot.png]]
+
+| Math  | SciPy   |
+|-------+---------|
+| Jν    | jv      |
+| Yν    | yv      |
+| Iν    | iv      |
+| Kν    | kv      |
+| Hν(1) | hankel1 |
+| Hν(2) | hankel2 |
+| jν    | sph_jn  |
+| yν    | sph_yn  |
+
+* 参考
+https://www.johndcook.com/blog/bessel_python/

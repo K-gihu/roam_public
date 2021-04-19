@@ -1,0 +1,9 @@
+#+title: matplotlib的使用
+#+roam_tags: 
+#+roam_alias: 
+
+* 设置坐标轴的刻度标签
+=Matplotlib.axes.Axes.set_xticklabels()= 可以设置刻度，结合一起设置。
+
+* 参考
+https://www.geeksforgeeks.org/matplotlib-axes-axes-set_xticklabels-in-python/

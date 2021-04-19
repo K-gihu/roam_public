@@ -1,0 +1,15 @@
+#+title: 圆形函数
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+\begin{equation}
+circ(r) = \left\{
+\begin{aligned}
+1, &r < 1 \\
+\frac{1}{2}, &r = 1 \\
+0, &其他
+\end{aligned}\right.
+\end{equation} 
+
+* 参考

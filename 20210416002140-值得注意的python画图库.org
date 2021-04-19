@@ -1,0 +1,10 @@
+#+title: 值得注意的python画图库
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+pyqtgraph快速绘图
+pyecharts漂亮的web图
+matplotlib
+
+* 参考
