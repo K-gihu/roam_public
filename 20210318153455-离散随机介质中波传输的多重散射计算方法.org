@@ -1,5 +1,5 @@
 #+title: 离散随机介质中波传输的多重散射计算方法
-#+roam_tags: 
+#+roam_tags: 随机介质中的波传播与散射
 #+roam_alias: 
 
 * 主要内容

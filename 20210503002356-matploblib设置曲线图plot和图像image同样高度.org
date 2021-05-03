@@ -1,0 +1,15 @@
+#+title: matploblib设置曲线图plot和图像image同样高度
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+可以对曲线图使用如下代码使得曲线的aspect依赖于它的轴的界限（axis limits）。这样曲线图和图像（image）就能具有相同的尺寸了。
+
+前提是图像的高和宽是相等的。
+#+begin_src python
+asp = np.diff(ax2.get_xlim())[0] / np.diff(ax2.get_ylim())[0]
+ax2.set_aspect(asp)
+#+end_src
+* 参考
+https://stackoverflow.com/questions/44654421/getting-the-same-subplot-size-using-matplotlib-imshow-and-scatter

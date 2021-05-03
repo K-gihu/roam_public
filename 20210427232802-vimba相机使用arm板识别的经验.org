@@ -1,0 +1,11 @@
+#+title: Vimba相机使用arm板识别的经验
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+- 必须关闭rp_filter，防火墙
+- 首先在arm上安装VimbaGige的 =install.sh=
+- 将arm上的网络接口（网卡）打开，并设置IP
+- arm的IP和电脑的IP在同一网段，这样二者才能使用ssh链接。
+* 参考

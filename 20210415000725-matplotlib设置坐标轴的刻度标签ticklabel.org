@@ -1,4 +1,4 @@
-#+title: matplotlib的使用
+#+title: matplotlib设置坐标轴的刻度标签ticklabel
 #+roam_tags: 
 #+roam_alias: 
 

@@ -1,0 +1,17 @@
+#+title: matplotlib改变dpi清晰度
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+可以使用如下函数
+#+begin_src python
+def scale_plot_size(factor=1.5):
+    """该函数将matplotlib图像dpi变成默认大小的factor倍。"""
+    import matplotlib as mpl
+    default_dpi = mpl.rcParamsDefault['figure.dpi']
+    mpl.rcParams['figure.dpi'] = default_dpi*factor
+#+end_src
+
+* 参考
+https://stackoverflow.com/questions/44724369/scale-plot-size-of-matplotlib-plots-in-jupyter-notebooks

@@ -1,0 +1,9 @@
+#+title: 使用emacs自带帮助文档manual的方法
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+使用 =info-emacs-manual= 打开manual，然后可以使用 =i= 搜索索引。
+* 参考
+[[file:config.org][klu's Configuration]]

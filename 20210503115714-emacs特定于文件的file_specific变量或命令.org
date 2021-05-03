@@ -1,0 +1,14 @@
+#+title: emacs特定于文件的file-specific变量或命令
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+将这种代码块添加到文件最上方
+#+begin_src elisp
+;; Local Variables:
+;; eval: (myFunction arg1 arg2)
+;; End:
+#+end_src
+* 参考
+https://emacs.stackexchange.com/questions/13004/how-to-run-file-specific-commands/13035#13035

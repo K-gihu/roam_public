@@ -1,0 +1,1016 @@
+#+title: LVM2逻辑卷创建及扩容
+#+roam_tags: linux
+#+roam_alias: 
+
+* 概括
+Copyright © 2020 konglingbin
+Powered by .NET Core on Kubernetes
+
+LVM是Logical Volume Manager（逻辑卷管理器）的简写，又译为逻辑卷宗管理器、逻辑扇区管理器、逻辑磁盘管理器。是Linux核心所提供的逻辑卷管理（Logical Volume Management）功能。它在硬盘的硬盘分区之上，又创建了一个逻辑层以方便系统管理硬盘分区系统。
+
+最早由IBM开发，在AIX系统上实现，OS/2操作系统与HP-UX也支持这个功能；
+
+在1998年，Heinz Mauelshagen根据HP-UX上的逻辑卷管理器，写作出第一个Linux版本的逻辑卷管理器；并将其发布到Linux社区中，它允许用户在Linux系统上用简单的命令行管理一个完整的逻辑卷管理环境。
+
+* LVM的优点：
+
+它是建立在物理存储设备之上的一个抽象层，允许用户生成逻辑存储卷，与直接使用物理存储在管理上相比，提供了更好灵活性；
+
+LVM将存储虚拟化，使用逻辑卷，用户不会受限于物理磁盘的大小；另外，与硬件相关的存储设置被器隐藏，用户可以不用停止应用或卸载文件系统来调整卷大小或数据迁移，可以减少操作成本。
+
+LVM与直接使用物理存储相比，有以下优点：
+
+1、  灵活的容量
+
+当使用逻辑卷时,文件系统可以扩展到多个磁盘上,你可以聚合多个磁盘或磁盘分区成单一的逻辑卷.
+
+2、  可伸缩的存储池；
+
+你可以使用简单的命令来扩大或缩小逻辑卷大小,不用重新格式化或分区磁盘设备.
+
+3、  在线的数据再分配
+
+你可以在线移动数据,数据可以在磁盘在线的情况下重新分配.比如,你可以在线更换可热插拔的磁盘.
+
+4、  方便的设备命名；
+
+逻辑卷可以按你觉得方便的方式来起任何名称.
+
+5、  磁盘条块化
+
+你可以生成一个逻辑盘,它的数据可以被条块化存储在2个或更多的磁盘上.这样可以明显提升数据吞吐量.
+
+6、  镜像卷
+
+逻辑卷提供方便的方法来镜像你的数据.
+
+7、  卷快照
+
+使用逻辑卷,你可以获得设备快照用来一致性备份或者测试数据更新效果而不影响真实数据.
+
+* 查看版本：
+
+#+begin_src bash
+[root@localhost ~]#uname -a
+Linux localhost.localdomain2.6.32-504.el6.x86_64 #1 SMP Wed Oct 15 04:27:16 UTC 2014 x86_64 x86_64 x86_64GNU/Linux
+[root@localhost ~]#uname -r
+2.6.32-504.el6.x86_64
+[root@localhost ~]#rpm -qa | grep lvm
+mesa-private-llvm-3.4-3.el6.x86_64
+lvm2-libs-2.02.111-2.el6.x86_64
+lvm2-2.02.111-2.el6.x86_64
+#+end_src
+
+* 3.LVM基本术语：
+
+物理存储介质（The Physical Media）：
+
+这里指系统的存储设备，如：/dev/hda1、/dev/sda等等，是存储系统最低层的存储单元。
+
+物理卷（PV,Physical Volume）：
+
+物理卷就是指磁盘,磁盘分区或从逻辑上与磁盘分区具有同样功能的设备(如RAID)，是LVM的基本存储逻辑块，但和基本的物理存储介质（如分区、磁盘等）比较，却包含有与LVM相关的管理参数。当前LVM允许你在每个物理卷上保存这个物理卷的0至2份元数据拷贝。默认为1,保存在设备的开始处。为2时,在设备结束处保存第二份备份。
+
+卷组（VG,Volume Group）：
+
+LVM卷组类似于非LVM系统中的物理硬盘，其由物理卷组成。可以在卷组上创建一个或多个“LVM分区”（逻辑
+
+卷），LVM卷组由一个或多个物理卷组成。
+
+逻辑卷（LV,Logical Volume）：
+
+LVM的逻辑卷类似于非LVM系统中的硬盘分区，在逻辑卷之上可以建立文件系统(比如/home或者/usr等)。
+
+线性逻辑卷(Linear Volumes)：
+
+一个线性逻辑卷聚合多个物理卷成为一个逻辑卷.比如,如果你有两个60GB硬盘,你可以生成120GB的逻辑卷.
+
+条块化的逻辑卷(Striped Logical Volumes)
+
+当你写数据到此逻辑卷中时,文件系统可以将数据放置到多个物理卷中.对于大量连接读写操作,它能改善数据I/O效率.
+
+镜像的逻辑卷(MirroredLogical Volumes)
+
+镜像在不同的设备上保存一致的数据.数据同时被写入原设备及镜像设备.它提供设备之间的容错。
+
+快照卷(SnapshotVolumes)
+
+快照卷提供在特定瞬间的一个设备虚拟映像，当快照开始时，它复制一份对当前数据区域的改变，由于它优先执行这些改变，所以它可以重构当前设备的状态。
+
+PE（physical extent）
+
+每一个物理卷被划分为称为PE(Physical Extents)的基本单元，具有唯一编号的PE是可以被LVM寻址的最小单元。PE的大小是可配置的，默认为4MB。
+
+LE（logical extent）
+
+逻辑卷也被划分为被称为LE(Logical Extents) 的可被寻址的基本单位。在同一个卷组中，LE的大小和PE是相同的，并且一一对应。
+
+和非LVM系统将包含分区信息的元数据保存在位于分区的起始位置的分区表中一样，逻辑卷以及卷组相关的元数据也是保存在位于物理卷起始处的VGDA(卷组描述符区域)中。VGDA包括以下内容： PV描述符、VG描述符、LV描述符、和一些PE描述符。系统启动LVM时激活VG，并将VGDA加载至内存，来识别LV的实际物理存储位置。当系统进行I/O操作时，就会根据VGDA建立的映射机制来访问实际的物理位置。
+
+* 4.LVM模块：
+
+Physicalvolume (PV)、Volume group (VG)、Logicalvolume(LV)、 Physical extent (PE)，下面我们用一个简单
+
+的图来说明下物理卷、卷组、逻辑卷他们之间的关系：（该图来自于网络）
+
+LVM2详解
+
+逻辑卷的创建，就是将多块硬盘创建物理卷，而将这些物理卷以逻辑的形式总成一个容器，然后从这个容器里面创建大小不同的分区文件，而这个容器就是所谓的卷组（VG），而从这个容器里创建大小不同的分区文件，这个分区文件就叫做逻辑卷。
+
+* 5.具体操作：
+
+** a.分区：
+
+#+begin_src bash
+[root@localhost ~]#fdisk -l
+
+Disk /dev/sda: 128.8 GB, 128849018880 bytes
+
+255 heads, 63 sectors/track, 15665cylinders
+
+Units = cylinders of 16065 * 512 = 8225280bytes
+
+Sector size (logical/physical): 512 bytes /512 bytes
+
+I/O size (minimum/optimal): 512 bytes / 512bytes
+
+Disk identifier: 0x00060f25
+
+  Device Boot      Start        End      Blocks  Id  System
+
+/dev/sda1  *          1        26      204800  83 Linux
+
+Partition 1 does not end on cylinderboundary.
+
+/dev/sda2              26        7859  62914560  8e  Linux LVM
+
+/dev/sda3            7859        8512    5252256  83  Linux
+
+/dev/sda4            8513        9166    5253255    5 Extended
+
+/dev/sda5            8513        8644    1060258+  82  Linux swap / Solaris
+
+[root@localhost ~]# fdisk -l /dev/sdb    #新添加的硬盘sdb
+
+Disk /dev/sdb: 21.5 GB, 21474836480 bytes
+
+255 heads, 63 sectors/track, 2610 cylinders
+
+Units = cylinders of 16065 * 512 = 8225280bytes
+
+Sector size (logical/physical): 512 bytes /512 bytes
+
+I/O size (minimum/optimal): 512 bytes / 512bytes
+
+Disk identifier: 0x00000000
+
+
+
+[root@localhost ~]# fdisk /dev/sdb          #对sdb进行分区
+
+Command (m for help): n        #新建一个分区；
+
+Command action
+
+  e  extended
+
+  p  primary partition (1-4)
+
+p
+
+Partition number (1-4): 3          #分区号；
+
+First cylinder (1309-2610, default 1309):        #开始柱面，直接默认
+
+Using default value 1309
+
+Last cylinder, +cylinders or +size{K,M,G}(1309-2610, default 2610): +5G              #指定分区大小
+
+Command (m for help): p                  #查看所有分区
+
+Disk /dev/sdb: 21.5 GB, 21474836480 bytes
+
+255 heads, 63 sectors/track, 2610 cylinders
+
+Units = cylinders of 16065 * 512 = 8225280bytes
+
+Sector size (logical/physical): 512 bytes /512 bytes
+
+I/O size (minimum/optimal): 512 bytes / 512bytes
+
+Disk identifier: 0x71f66aa7
+
+Device Boot      Start        End      Blocks  Id  System
+
+/dev/sdb1            1        654    5253223+  83  Linux                #id字段表示分区类型；
+
+/dev/sdb2          655        1308    5253255  83  Linux                #改分区类型需要使用子命令t
+
+/dev/sdb3          1309        1962    5253255  83  Linux
+
+Command (m for help): p
+
+Disk /dev/sdb: 21.5 GB, 21474836480 bytes
+
+255 heads, 63 sectors/track, 2610 cylinders
+
+Units = cylinders of 16065 * 512 = 8225280bytes
+
+Sector size (logical/physical): 512 bytes /512 bytes
+
+I/O size (minimum/optimal): 512 bytes / 512bytes
+
+Disk identifier: 0x71f66aa7
+
+#此时分区id已修改为8e，分区类型为Linux LVM；
+
+  Device Boot      Start        End      Blocks  Id  System
+
+/dev/sdb1              1        654    5253223+  8e  Linux LVM
+
+/dev/sdb2            655        1308    5253255  8e  Linux LVM
+
+/dev/sdb3            1309        1962    5253255  8e  Linux LVM
+
+Command (m for help): w                          #保存更改退出
+
+[root@localhost ~]# partx -a /dev/sdb                      #让内核重新读取硬盘sdb的分区信息；
+
+BLKPG: Device or resource busy
+
+
+
+error adding partition 3
+
+[root@localhost ~]# fdisk -l /dev/sdb                        #查看硬盘sdb的分区信息；
+
+Disk /dev/sdb: 21.5 GB, 21474836480 bytes
+
+255 heads, 63 sectors/track, 2610 cylinders
+
+Disk identifier: 0x71f66aa7
+
+  Device Boot      Start        End      Blocks  Id  System
+
+/dev/sdb1              1        654    5253223+  8e  Linux LVM
+
+/dev/sdb2            655        1308    5253255  8e  Linux LVM
+
+/dev/sdb3            1309        1962    5253255  8e  Linux LVM
+
+[root@localhost ~]#
+
+#+end_src
+
+** b、将物理分区与硬盘创建为物理卷(pvcreate)
+
+#+begin_src bash
+[root@localhost ~]# pvcreate /dev/sdb[1-3]                    #将sdb上的三个分区创建为物理卷；
+
+ Physical volume "/dev/sdb1" successfully created
+
+ Physical volume "/dev/sdb2" successfully created
+
+ Physical volume "/dev/sdb3" successfully created
+
+[root@localhost ~]# pvcreate /dev/sdc                              #将硬盘sdc创建为物理卷；
+
+ Physical volume "/dev/sdc" successfully created
+
+[root@localhost ~]# pvs                                                          #查看创建的物理卷
+
+ PV        VG  Fmt Attr PSize  PFree
+
+ /dev/sda2  vg0  lvm2 a-- 59.99g  7.99g
+
+ /dev/sdb1      lvm2 ---  5.01g 5.01g
+
+ /dev/sdb2      lvm2 ---  5.01g 5.01g
+
+ /dev/sdb3      lvm2 ---  5.01g 5.01g
+
+ /dev/sdc        lvm2 ---  20.00g 20.00g
+#+end_src
+
+Note：在VMwareWorkstations 11上使用CentOS6.6系统，新添加的硬盘需要在系统进行重启后方能操作，如sdc，需要继续验证；
+
+** c、将物理卷(pv)创建为卷组（vgcreate），名为myvg：
+
+#+begin_src bash
+[root@localhost ~]# vgcreate myvg/dev/sdb[1-3] /dev/sdc          #创建卷组（VG），卷组名为myvg，使用物理卷: /dev/sda[1-3]和/dev/sdc
+
+ Volume group "myvg" successfully created
+
+[root@localhost ~]# vgs                                                                            #查看创建的卷组；
+
+ VG  #PV #LV #SN Attr  VSize VFree
+
+ myvg  4  0  0wz--n- 35.02g 35.02g
+
+ vg0    1  4  0wz--n- 59.99g  7.99g
+
+[root@localhost ~]# vgdisplay                                                                #查看卷组的详细信息；
+
+  ---Volume group ---
+
+  VGName              myvg                                                      #卷组名
+
+ System ID
+
+ Format                lvm2                                                        #格式
+
+ Metadata Areas        4
+
+ Metadata Sequence No  1
+
+  VGAccess            read/write
+
+  MaxPV                0
+
+  CurPV                4
+
+  ActPV                4
+
+  VGSize              35.02 GiB                                                #卷组的空间大小，是所有物理卷之和；
+
+  PESize              4.00 MiB                                                    #物理盘的基本单位：默认4MB；
+
+ Total PE              8965
+
+ Alloc PE / Size      0 / 0
+
+ Free  PE / Size      8965 / 35.02 GiB
+#+end_src
+
+** d、在卷组里创建逻辑卷并格式化、挂载使用；
+
+[root@localhost ~]# lvcreate -L 5G -n mylv1myvg                    #创建逻辑卷，卷名为mylv1，卷大小为5G；
+
+ Logical volume "mylv1" created
+
+[root@localhost ~]# lvs                                                                    #查看逻辑卷；
+
+ LV    VG  Attr      LSize  Pool Origin Data%  Meta% Move Log Cpy%Sync Convert
+
+
+
+ var  vg0  -wi-ao---- 20.00g
+
+[root@localhost ~]# mke2fs -j /dev/myvg/mylv1                    #格式化逻辑卷，文件系统创建为ext系列；
+
+mke2fs 1.41.12 (17-May-2010)
+
+Filesystem label=
+
+OS type: Linux
+
+Writing inode tables: done
+
+Creating journal (32768 blocks): done
+
+Writing superblocks and filesystemaccounting information: done
+
+This filesystem will be automaticallychecked every 25 mounts or
+
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+
+[root@localhost ~]# mkdir /mydata                                                      #创建挂载目录；
+
+[root@localhost ~]# mount /dev/myvg/mylv1/mydata/                  #挂载逻辑卷；
+
+[root@localhost ~]# mount                                                                      #查看已挂载的设备；
+
+/dev/mapper/vg0-root on / type ext4 (rw)
+
+proc on /proc type proc (rw)
+
+sysfs on /sys type sysfs (rw)
+
+none on /proc/sys/fs/binfmt_misc typebinfmt_misc (rw)
+
+/dev/mapper/myvg-mylv1 on /mydata type ext3(rw)                      #刚挂载的逻辑卷；
+
+[root@localhost ~]# ls /mydata/                                                            #查看挂载目录；
+
+lost+found        #听说ext系列的文件系统格式化完成后都会有这个目录；
+
+[root@localhost ~]# df -h                #查看硬盘；
+
+Filesystem            Size  Used Avail Use% Mounted on
+
+/dev/mapper/vg0-root  20G 333M  19G  2% /
+
+tmpfs                931M    0 931M  0% /dev/shm
+
+/dev/sda1            190M  33M 148M  18% /boot
+
+/dev/mapper/vg0-usr  9.8G 1.9G  7.4G  21% /usr
+
+/dev/mapper/vg0-var    20G 200M  19G  2% /var
+
+/dev/mapper/myvg-mylv1  5.0G 139M  4.6G  3% /mydata
+
+** e、如果卷组空间不够，扩大卷组空间；
+
+#+begin_src bash
+Command (m for help): p
+
+Disk /dev/sdb: 21.5 GB, 21474836480 bytes
+
+255 heads, 63 sectors/track, 2610 cylinders
+
+Units = cylinders of 16065 * 512 = 8225280bytes
+
+Sector size (logical/physical): 512 bytes /512 bytes
+
+I/O size (minimum/optimal): 512 bytes / 512bytes
+
+Disk identifier: 0x71f66aa7
+
+#在硬盘sdb上创建了一个扩展分区sdb4,在扩展分区上创建了逻辑分区sdb5，并将sdb5的id该为8e；
+
+  Device Boot      Start        End      Blocks  Id  System
+
+/dev/sdb1              1        654    5253223+  8e  Linux LVM
+
+/dev/sdb2            655        1308    5253255  8e  Linux LVM
+
+/dev/sdb3            1309        1962    5253255  8e  Linux LVM
+
+/dev/sdb4            1963        2485    4200997+  5 Extended
+
+/dev/sdb5            1963        2485    4200966  8e  Linux LVM
+
+[root@localhost ~]# partx -a /dev/sdb                                #内核重新读取sdb的分区表；
+
+
+
+[root@localhost ~]# pvcreate /dev/sdb5                                    #创建物理卷/dev/sdb5
+
+ Physical volume "/dev/sdb5" successfully created
+
+[root@localhost ~]# pvs                                                                  #查看物理卷
+
+ PV        VG  Fmt Attr PSize  PFree
+
+ /dev/sda2  vg0  lvm2 a-- 59.99g  7.99g
+
+ /dev/sdb1  myvg lvm2 a--  5.01g 8.00m
+
+ /dev/sdb2  myvg lvm2 a--  5.01g 5.01g
+
+ /dev/sdb3  myvg lvm2 a--  5.01g 5.01g
+
+ /dev/sdb5      lvm2 ---  4.01g 4.01g            #新增的物理卷/dev/sdb5
+
+ /dev/sdc  myvg lvm2 a--  20.00g 20.00g
+
+[root@localhost ~]# vgextend myvg /dev/sdb5                        #扩展卷组，使用vgextend命令；
+
+ Volume group "myvg" successfully extended
+
+[root@localhost ~]# vgs                                                                  #查看扩展后的卷组的大小；
+
+ VG  #PV #LV #SN Attr  VSize VFree
+
+ myvg  5  1  0wz--n- 39.02g 34.02g
+
+ vg0    1  4  0wz--n- 59.99g  7.99g
+#+end_src
+
+** f、扩展逻辑卷（支持在线扩展）
+
+#+begin_src bash
+[root@localhost ~]# cd /mydata/
+
+[root@localhost mydata]# touchkalaguiyin.html
+
+[root@localhost mydata]# echo "This isKaLaguiyin's test blog." > kalaguiyin.html
+
+[root@localhost mydata]# catkalaguiyin.html
+
+This is KaLaguiyin\'s test blog.
+
+[root@localhost mydata]# vgs
+
+  VG  #PV #LV #SN Attr  VSize  VFree
+
+  myvg  5  1  0 wz--n- 39.02g 34.02g                      #查看VG扩展前的信息，与扩展后对比；
+
+ vg0    1  4  0wz--n- 59.99g  7.99g
+
+[root@localhost mydata]#
+
+[root@localhost mydata]# lvextend -L +4G/dev/myvg/mylv1      #扩展逻辑卷mylv1，空间+4G；
+
+ Size of logical volume myvg/mylv1 changed from 5.00 GiB (1280 extents)to 9.00 GiB (2304 extents).
+
+ Logical volume mylv1 successfully resized
+
+ [root@localhostmydata]# resize2fs -p /dev/myvg/mylv1    #通过resize2fs将文件系统的容量确实增加；
+
+resize2fs 1.41.12 (17-May-2010)
+
+Filesystem at /dev/myvg/mylv1 is mounted on/mydata; on-line resizing required
+
+old desc_blocks = 1, new_desc_blocks = 1
+
+Performing an on-line resize of/dev/myvg/mylv1 to 2359296 (4k) blocks.
+
+The filesystem on /dev/myvg/mylv1 is now2359296 blocks long.
+
+
+
+[root@localhost mydata]# lvs                                              #查看逻辑卷容量；
+
+ LV    VG  Attr      LSize  Pool Origin Data%  Meta% Move Log Cpy%Sync Convert
+
+ mylv1 myvg -wi-ao----  9.00g
+
+ root  vg0  -wi-ao---- 20.00g
+
+ swap  vg0  -wi-ao---- 2.00g
+
+ usr  vg0  -wi-ao---- 10.00g
+
+ var  vg0  -wi-ao---- 20.00g
+
+[root@localhost mydata]# catkalaguiyin.html              #查看文件内容是否完整
+
+This is KaLaguiyin's test blog.
+
+[root@localhost mydata]# df –h                                          #查看逻辑卷的容量是否增加；
+
+Filesystem            Size  Used Avail Use% Mounted on
+
+/dev/mapper/vg0-root  20G 333M  19G  2% /
+
+tmpfs                931M    0 931M  0% /dev/shm
+
+/dev/sda1            190M  33M 148M  18% /boot
+
+/dev/mapper/vg0-usr  9.8G 1.9G  7.4G  21% /usr
+
+/dev/mapper/vg0-var    20G 200M  19G  2% /var
+
+/dev/mapper/myvg-mylv1  8.9G 140M  8.3G  2% /mydata
+#+end_src
+
+** g、缩减逻辑卷
+
+缩减前准备：
+
+查看逻辑卷使用空间情况；
+
+不能在线缩减，得先卸载；
+
+确保缩减后的空间大小依然能存储原有的所有数据；
+
+在缩减之后应该先强行检查文件，以确保文件系统处于一致性状态；
+
+将/dev/myvg/mylv1 缩减到5G，并且要求数据可以正常访问：
+
+#+begin_src bash
+[root@localhost ~]# df –lh                                            #查看已用空间大小；
+
+Filesystem            Size  Used Avail Use% Mounted on
+
+/dev/mapper/vg0-root  20G 333M  19G  2% /
+
+tmpfs                931M    0 931M  0% /dev/shm
+
+/dev/sda1            190M  33M 148M  18% /boot
+
+/dev/mapper/vg0-usr  9.8G 1.9G  7.4G  21% /usr
+
+/dev/mapper/vg0-var    20G 201M  19G  2% /var
+
+/dev/mapper/myvg-mylv1
+
+                      8.9G  140M 8.3G  2% /mydata
+
+[root@localhost ~]# umount /dev/myvg/mylv1              #卸载分区；
+
+[root@localhost~]# e2fsck -f /dev/myvg/mylv1 #强制检查文件系统；
+
+e2fsck 1.41.12 (17-May-2010)
+
+Pass 1: Checking inodes, blocks, and sizes
+
+Pass 2: Checking directory structure
+
+Pass 3: Checking directory connectivity
+
+Pass 4: Checking reference counts
+
+Pass 5: Checking group summary information
+
+/dev/myvg/mylv1: 12/589824 files (0.0%non-contiguous), 72705/2359296 blocks
+
+[root@localhost ~]# resize2fs/dev/myvg/mylv1 5G                                  #缩减逻辑卷大小至5G
+
+resize2fs 1.41.12 (17-May-2010)
+
+Resizing the filesystem on /dev/myvg/mylv1to 1310720 (4k) blocks.
+
+The filesystem on /dev/myvg/mylv1 is now1310720 blocks long.
+
+
+
+[root@localhost ~]# lvreduce -L 5G/dev/myvg/mylv1            #缩减物理边界大小；
+
+ WARNING: Reducing active logical volume to 5.00 GiB
+
+ THIS MAY DESTROY YOUR DATA (filesystem etc.)
+
+Do you really want to reduce mylv1? [y/n]:y                              #需要确认。
+
+ Size of logical volume myvg/mylv1 changed from 9.00 GiB (2304 extents)to 5.00 GiB (1280 extents).
+
+ Logical volume mylv1 successfully resized
+
+[root@localhost ~]# lvs                              #查看逻辑卷；
+
+ LV    VG  Attr      LSize  Pool Origin Data%  Meta% Move Log Cpy%Sync Convert
+
+ mylv1 myvg -wi-a-----  5.00g
+
+ root  vg0  -wi-ao---- 20.00g
+
+ var  vg0  -wi-ao---- 20.00g
+
+[root@localhost ~]# mount /dev/myvg/mylv1 /mydata/                #重新挂载；
+
+[root@localhost ~]# ls /mydata/
+
+kalaguiyin.html  lost+found                                                          #文件依然存在；
+
+[root@localhost ~]# cat/mydata/kalaguiyin.html
+
+This is KaLaguiyin\'s test blog.                                                #文件内容依然完整；
+
+[root@localhost ~]#
+#+end_src
+
+** h、缩减磁盘空间；
+
+发现物理磁盘空间使用不足，将其中一块硬盘或分区拿掉；
+
+pvmove/dev/sdb5    #将/dev/sdb5上存储的数据移到其他物理卷中；
+
+vgreducemyvg /dev/sdb5  #将/dev/sdb5从myvg卷组中移除；
+
+pvremove/dev/sdb5      #将/dev/sdb5从物理卷上移除；
+
+#+begin_src bash
+[root@localhost ~]# pvs                              #查看物理卷；
+
+ PV        VG  Fmt Attr PSize  PFree
+
+ /dev/sda2  vg0  lvm2 a-- 59.99g  7.99g
+
+ /dev/sdc  myvg lvm2 a--  20.00g 20.00g
+
+[root@localhost ~]# pvmove /dev/sdb5                    #将/dev/sdb5上存储的数据移到其他物理卷中；
+
+  Nodata to move for myvg
+
+[root@localhost ~]# vgreduce myvg /dev/sdb5      #将/dev/sdb5从myvg卷组中移除；
+
+ Removed "/dev/sdb5" from volume group "myvg"
+
+[root@localhost ~]# pvremove /dev/sdb5                #将/dev/sdb5从物理卷中移除；
+
+ Labels on physical volume "/dev/sdb5" successfully wiped
+
+[root@localhost ~]# pvs                                      #查看物理卷，/dev/sdb5已经被移除；
+
+ PV        VG  Fmt Attr PSize  PFree
+
+ /dev/sda2  vg0  lvm2 a-- 59.99g  7.99g
+
+ /dev/sdc  myvg lvm2 a--  20.00g 20.00g
+
+[root@localhost ~]#
+
+#+end_src
+
+** i、实现快照，进行备份还原；
+
+在/mnt/lvm目录上，我们将原始的目录文件进行快照，然后将/mydata目录中的内容清空，并进行还原；
+
+#+begin_src bash
+[root@localhost ~]# cd /mydata/
+
+[root@localhost mydata]# ls
+
+kalaguiyin.html  lost+found
+
+[root@localhost mydata]# catkalaguiyin.html
+
+This is KaLaguiyin's test blog.
+
+[root@localhost mydata]# lvcreate -L 30M -nbackup -s -p r /dev/myvg/mylv1            # -L 快照大小； -n：快照名称；
+
+# -p 保持权限为read and write；
+
+ Rounding up size to full physical extent 32.00 MiB
+
+ Logical volume "backup" created
+
+[root@localhost mydata]# ll
+
+-rw-r--r-- 1 root root    32 Aug 26 17:14 kalaguiyin.html
+
+drwx------ 2 root root 16384 Aug 26 16:42lost+found
+
+[root@localhost mydata]# mkdir /tmp/backup                        #创建挂载目录；
+
+[root@localhost mydata]# mount/dev/myvg/backup /tmp/backup/              #挂载快照逻辑卷；
+
+mount: block device /dev/mapper/myvg-backupis write-protected, mounting read-only
+
+[root@localhost mydata]# cd /tmp/backup/
+
+[root@localhost backup]# ls
+
+kalaguiyin.html  lost+found
+
+[root@localhost backup]# mkdir /tmp/lvmbackup                    #创建备份目录；
+
+[root@localhost backup]# tar jcf/tmp/lvmbackup/Sunday.tar.bz2 kalaguiyin.html  #打包并压缩文件；
+
+ [root@localhosttmp]# cd lvmbackup/
+
+[root@localhost lvmbackup]# ls
+
+Sunday.tar.bz2
+
+[root@localhost ~]# cd /mydata/        #进入原逻辑卷挂载目录；
+
+[root@localhost mydata]# ll
+
+total 20
+
+-rw-r--r-- 1 root root    32 Aug 26 17:14 kalaguiyin.html
+
+drwx------ 2 root root 16384 Aug 26 16:42lost+found
+
+[root@localhost mydata]# rm -rf *          #删除所有文件；
+
+[root@localhost mydata]# ll
+
+total 0
+
+[root@localhost mydata]# tar xvf/tmp/lvmbackup/Sunday.tar.bz2              #还原备份数据；
+
+kalaguiyin.html
+
+[root@localhost mydata]# ll
+
+total 4
+
+-rw-r--r-- 1 root root 32 Aug 26 17:14kalaguiyin.html
+
+[root@localhost mydata]# catkalaguiyin.html                                          #查看文件内容；
+
+This is KaLaguiyin's test blog.
+
+[root@localhost mydata]# df -h
+
+Filesystem            Size  Used Avail Use% Mounted on
+
+/dev/mapper/vg0-root  20G 333M  19G  2% /
+
+tmpfs                931M    0 931M  0% /dev/shm
+
+/dev/sda1            190M  33M 148M  18% /boot
+
+#+end_src
+
+设备映射，功能比MD强大
+
+作用：
+
+     1.动态扩展或缩减磁盘分区；
+
+　  2.快照
+
+     3.多路径
+
+     4.实现LVM2
+
+     5.RAID
+
+PV（物理卷）------>VG（卷组）------->LV（逻辑卷）------>快照
+** PV：物理卷，单位：PE（物理盘区）
+
+   管理命令：
+
+       pvcreate：创建物理卷
+
+　　pvremove：擦出PV中的数据
+
+　　pvmove：将物理盘区中的数据移至其他设备
+
+　　pvdisplay：查看物理卷
+
+　　pvscan：扫面物理卷
+** VG：多个PV组合成1个VG
+
+  管理命令：
+
+        vgcreate VG_NAME  /PATH/TO/PV
+
+ 　　　　-s  Num：指定PE大小，默认4M，创建后不可修改
+
+　　vgremove   VG_NAME  #删除VG
+
+　　vgextend  VG_NAME /PATH/TO/PV  　　#扩展VG大小，新增PV至VG
+
+　　vgreduce VG_NAME /PATH/TO/PV 　　#缩减VG大小，缩减前需将PV中的数据挪走，即pvmove命令
+
+　　vgs
+
+ 　  vgdisplay　　
+
+　　vgscan
+
+　　vgremove
+
+　　vgcfgbackup
+
+　　vgcfgrestore
+
+      。。。。。
+** LV：逻辑卷
+
+     在卷组上可以创建逻辑卷，不能大于VG的大小。
+
+     快照（数据备份）：数据在某一个时间点的状态，大多数是元数据，所以快照较小（有点像软连接），取代大容量备份和还原。
+1.创建逻辑卷：lvcreate
+
+    lvcreate -n LV_NAME -L  #{K/M/G/T}  VG_NAME    #创建逻辑卷
+
+          -s：创建快照卷
+
+ 　　　　1.数据的增长量不能超过快照卷大小；
+
+　　　　 2.快照卷应该是只读的；
+
+ 　　　　3.跟原卷在同一卷组内。（所以划分时，需给快照卷预留空间）
+2. 擦除逻辑卷数据：lvremove
+3.缩减逻辑卷：lvreduce  -L  [-]#{K/MG/T} /PATH/TO/LV
+
+注意：
+
+　　1.不能在线缩减，得先卸载；
+
+　　2.确保缩减后的空间大小，依然存储原有的所有数据；
+
+　　3.缩减前检查文件系统，确保文件系统处于一致性状态；
+
+　　4.缩减后，重新挂载。
+3.扩展逻辑卷：lvextend -L  [+]#{K/M/G/T} /PATH/TO/LV
+
+   lvextend -L +3G /dev/myvg/testlv
+3.resize2fs /PATH/TO/LV #{K/M/G/T}
+
+   扩展/缩减文件系统的逻辑边界，针对ext类型
+
+      -p   ：能扩展到多大，就扩展到多大
+
+   resize2fs /PATH/TO/LV 5G  修改逻辑边界为5G
+
+   resize2fs  -p  /PATH/TO/LV  修改到跟物理边界一样大。
+示例1：
+
+1.创建PV
+
+#fdisk /dev/sda命令创建3个分区/dev/sda10、/dev/sda/11、/dev/sdb12，分区类型均为8e（LVM）
+
+#vgcreate /dev/sda{10,11}
+
+#pvs   #查看分区大小（会产生元数据，实际无物理磁盘大）
+
+#pvdisplay /dev/sda10
+
+#pvscan   #扫描当前系统一个有多少个PV。（在PV拆到其他主机时，可使用此命令，扫描PV上的源数据被其他主机所识别）
+
+2.创建VG
+
+vgcreate myvg /dev/sda{10,11}
+
+vgs
+
+vgdisplay  myvg
+
+3.修改物理盘区大小=8M
+
+vgcreate -s 8M myvg /dev/sda{10,11}
+
+4.缩减VG的大小，保留其大小为7G（移除PV）
+
+pvs
+
+pvmove /dev/sda11   把sda11的数据移至其他的盘区
+
+vgreduce myvg  /dev/sda11   #将sda11从myvg中拿掉
+
+ pvremove /dev/sda11   #移除PV
+
+5.扩展VG大小
+
+pvcreate /dev/sda12
+
+vgextend myvg /dev/sda12
+
+pvdisplay /dev/sda12
+
+6.创建LV
+
+lvcreate -L 50M -n testlv myvg
+
+lvs
+
+lvsdisplay  [/dev/myvg/testlv]
+
+mke2fs -j /dev/myvg/testlv   #格式化
+
+mount /dev/myvg/testlv/ /mnt    #挂载
+
+7.移除逻辑卷
+
+umount /mnt
+
+lvremove  /dev/myvg/testlv
+
+8.扩展逻辑卷
+
+顺序：先扩展物理边界，再扩展逻辑边界
+
+lvcreate -L 2G -n testlv myvg
+
+mke2fs -j /dev/myvg/testlv
+
+mkdir /users
+
+vim /etc/fstab
+
+/dev/myvg/testlv  /users  ext3    defaults,acl  0 0
+
+mount -a
+
+vgs  #查看vg是否有足够的空间
+
+resize2fs -p /dev/myvg/testlv   扩展逻辑边界
+
+9.缩减逻辑卷
+
+顺序：先缩减逻辑边界，再缩减物理边界
+
+df -Plh   #确保缩减后的空间不小于Used显示的空间
+
+umount /users
+
+强行进行文件检查：
+
+e2fsck -f /dev/myvg/testlv
+
+缩减逻辑边界，将逻辑卷缩减至3G
+
+resize2fs /dev/myvg/testlv 3G
+
+缩减物理边界
+
+lvreduce -L 3G  /dev/myvg/testlv
+
+重新挂载
+
+mount -a
+
+10.快照卷
+
+对testlv创建大小=50M的只读快照卷
+
+lvcreate -L 50M -n testlv-snap -s -p r /dev/myvg//testlv
+
+lvs    查看快照卷的路径、属性、大小等信息
+
+挂载快照卷
+
+mount /dev/myvg/testlv-snap /mnt
+
+#cp /etc/inittab /mnt
+
+定期备份快照卷
+
+#tar -jcf /tmp/users.tar.bz2  /mnt/inittab
+
+#umount /mnt
+
+删除快照卷
+
+lvremove /dev/myvg/testlv-snap
+
+* 参考

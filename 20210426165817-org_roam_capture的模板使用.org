@@ -1,0 +1,40 @@
+#+title: org-roam-capture的模板使用
+#+roam_tags: emacs
+#+roam_alias: 
+
+* 概括
+* 主要内容
+使用 =org-roam-capture= 可以在已经建立的笔记中添加新内容。这不同于 =org-roam-find-file= 。
+
+以下面的模板为例
+#+begin_src elisp
+'(("d" "default" plain (function org-roam-capture--get-point)
+   "%?"
+   :file-name "%<%Y%m%d%H%M%S>-${slug}"
+   :head "#+title: ${title}\n"
+   :unnarrowed t))
+#+end_src
+
+| 模板组成    | 对应默认模板中的内容                  | 描述                               |
+|-------------+---------------------------------------+------------------------------------|
+| key         | "d"                                   | 用来选择模板的快捷键               |
+| description | "default"                             | 展示用的模板描述                   |
+| type        | plain                                 | 新增内容的类型                     |
+| target      | (function org-roam-capture–get-point) | 新增内容的位置， 不可更改          |
+| template    | "%?"                                  | 新增内容的模板                     |
+| file-name   | :file-name "%<%Y%m%d%H%M%S>-${slug}"  | 新增笔记文件的文件名模板           |
+| head        | :head "#+title: ${title}\n"           | 新增笔记的初始化内容，仅新建时生效 |
+| properties  | :unnarrowed t                         | 新增笔记的其他属性                 |
+
+在或template中，可以使用下面的特殊标记：
+| 标记     | 描述                                                               |
+| %<…>     | 自定义格式的时间戳，如: %<%Y-%m-%d>，会得到 <2018-03-04 日>        |
+| %t       | 当前日期，展开后的格式固定为 <2018-03-04 日> 这样                  |
+| %T       | 当前日期和时间，展开后的格式固定为 <2018-03-04 日 19:26> 这样      |
+| %u       | 当前日期，展开后的格式固定为 [2018-03-04 日] 这样                  |
+| %U       | 当前日期和时间，展开后的格式固定为 [2018-03-04 日 19:26] 这样      |
+| %^prompt | 用 prompt 作为提示要求我们输入并填充在这个模板元素所在的位置       |
+| %?       | 其他所有特殊标记填充完毕后，光标将停留在这个元素的位置等待我们编辑 |
+
+* 参考
+https://www.zmonster.me/2020/06/27/org-roam-introduction.html

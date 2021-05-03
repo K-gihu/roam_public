@@ -6,8 +6,8 @@
 
 These keybindings are available while a search is active:
 
-| Keybind   | Description                                   |
-|-----------+-----------------------------------------------|
+| Keybind | Description                                   |
+|---------+-----------------------------------------------|
 | =C-c C-o= | Open a buffer with your search results        |
 | =C-c C-e= | Open a writable buffer of your search results |
 | =C-SPC=   | Preview the current candidate                 |

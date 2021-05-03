@@ -1,4 +1,4 @@
-#+title: 富比尼定理
+#+title: 积分与求和何时可以互换｜富比尼-tonelli定理
 #+roam_tags: 
 #+roam_alias: 
 
@@ -12,3 +12,4 @@
 
 * 参考
 https://math.stackexchange.com/questions/83721/when-can-a-sum-and-integral-be-interchanged
+https://en.wikipedia.org/wiki/Fubini%27s_theorem

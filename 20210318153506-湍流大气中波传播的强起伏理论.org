@@ -1,5 +1,5 @@
 #+title: 湍流大气中波传播的强起伏理论
-#+roam_tags: 
+#+roam_tags: 随机介质中的波传播与散射
 #+roam_alias: 
 
 * 主要内容

@@ -1,0 +1,25 @@
+#+title: python判断奇偶数的性能优化
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+一般判断奇偶数可以使用求余：
+#+begin_src python
+num = int(input("输入一个数字: "))
+if (num % 2) == 0:
+   print("{0} 是偶数".format(num))
+else:
+   print("{0} 是奇数".format(num))
+#+end_src
+
+但是求余比较慢，可以使用和 1 按位与
+#+begin_src python
+num = int(input("输入一个数字: "))
+if (num & 1) == 0:
+    print("{0} 是偶数".format(num))
+else:
+    print("{0} 是奇数".format(num))
+#+end_src
+* 参考
+https://www.runoob.com/python3/python3-odd-even.html

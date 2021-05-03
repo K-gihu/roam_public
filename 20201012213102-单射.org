@@ -1,6 +1,6 @@
-#+title: 一对一映射
+#+title: 单射
 #+roam_tags: 泛函分析
-#+roam_alias: 单射
+#+roam_alias: 一对一映射
 
 一对一[[file:20201009224938-映射.org][映射]]就是满足 \(\forall x_1,x_2 \in \mathbb{X}, when\  x_1 \neq x_2, Tx_1 \neq Tx_2\) 的映射。
 

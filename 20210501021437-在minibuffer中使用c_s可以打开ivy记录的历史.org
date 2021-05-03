@@ -1,0 +1,8 @@
+#+title: 在minibuffer中使用C-s可以打开ivy记录的历史
+#+roam_tags: emacs
+#+roam_alias: 
+
+* 概括
+* 主要内容
+
+* 参考

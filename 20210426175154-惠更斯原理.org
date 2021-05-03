@@ -1,0 +1,10 @@
+#+title: 惠更斯原理
+#+roam_tags: 随机介质中的波传播与散射 
+#+roam_alias: 
+
+* 概括
+* 参考
+* 主要内容
+\[\nabla \times \nabla \times \mathbf{G}(\vec{r} ,\vec{r'}) - k^2 \mathbf{G} (\vec{r} ,\vec{r'}) =  \mathbf{I} \delta (\vec{r} -\vec{r'})\] 
+
+

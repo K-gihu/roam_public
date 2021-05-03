@@ -10,6 +10,7 @@ djvups input.djvu | ps2pdf - output.pdf
 
 速度比较慢，我转换一个20多M的文件用了23分钟左右。
 
-将书签或目录复制过去，可以使用 handyoutliner
+将书签或目录复制过去，可以使用 handyoutliner, 或jpdf tweak
 * 参考
 https://superuser.com/questions/100572/how-do-i-convert-a-djvu-document-to-pdf-in-linux-using-only-command-line-tools
+http://jpdftweak.sourceforge.net/manual/index.html
