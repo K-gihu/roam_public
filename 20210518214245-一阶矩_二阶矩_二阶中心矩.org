@@ -1,0 +1,16 @@
+#+title: 一阶矩、二阶矩、二阶中心矩
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括 :ATTACH:
+:PROPERTIES:
+:ID:       4fcc161d-cb2c-4778-9fa1-48aa3142cb51
+:END:
+[[attachment:_20210518_214302screenshot.png]]
+* 主要内容
+一阶矩和二阶矩都是原点矩
+- 原点矩 :: 指向原点的力矩的阶数次幂的平均值，推广为 \(a_k = \frac{1}{n}\sum_{i=1}^n X_i^k\) 
+- 中心矩 :: 指向平均值的力矩的阶数次幂的平均值，推广为 \(m_k = \frac{1}{n}\sum_{i=1}^n (X_i - \overline{X}_n)^k\) 
+
+* 参考
+https://zhuanlan.zhihu.com/p/57802400

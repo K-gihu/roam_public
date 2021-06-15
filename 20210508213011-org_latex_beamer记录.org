@@ -1,0 +1,79 @@
+#+title: org latex beamer记录
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+参考 org-mode 文档 13.10.3：latex 文件头以及分节的结构：
+
+LATEX_CLASS_OPTIONS 以及 EXPORT_LATEX_CLASS_OPTIONS 属性的值会被 latex 导出的后端添加到导出的 tex 文件的 =\documentclass= 的选项。
+
+* 13.8.3 beamer 中的 frame 和 block 以及各种属性
+org 会把标题层级转换为 beamer 的分节 elements、frame、block。任何一个 org tree，只要不太深，原则上都可以导出为 beamer。
+- org 中的标题层级如果等于 org-beamer-frame-level[fn:1] 或等于 OPTIONS 中的 H 的值（即开始导出的层级），那个标题就会成为 frame。如果遇到某个 tree 的 property 中的 beamer_env 设为 frame 或 fullframe（就是没有标题的 frame），org 会将这个 tree 转换为 frame，override 掉 org-beamer-frame-level 中的设置。
+- org 将 beamer frame 的对象（objects）导出为块环境（block environment）。如果设置了 BEAMER_ENV 属性，那么 org 可以强行在特殊块类型中进行包装（wrapping）。如果设置了 BEAMER_ENV，那么 org 会添加一个 =B_envrionment= 的 tag，以使其可见。tag 只是方便看的，没有语义（sematic relevance）。BEAMER_ENV 的有效值可以参见 =org-beamer-environment-default= 。可以用 =org-beamer-envirionments-extra= 添加更多的值。
+- 如果 =BEAMER_ENV= 设为
+  - =appendix= ，那么 org 将该条目导出为附录。
+  - =note= 就导出为 frame 之内或 frame 之间的注释。
+  - =noteNH= 对应无标题的注释
+  - =againframe= 对应 =\againframe= 命令，这使得必须设置 =BEAMER_REF= ，因为 =\againframe= 需要一个能继续的 frame
+  - =ignoreheading= ，则 org 导出的时候忽略该条目的标题，但不忽略内容。可应用于在 frame 之间插入内容。也可用于合理地关闭一个 column 环境。
+- 如果某个标题设置了 BEAMER_ACT，那么 org 将该标题转换为一个覆盖层（overlay）或者动作指示（action specification）。如果用方括号括起来，org 就会将该覆盖层设置为默认的。
+- BEAMER_OPT 用来设置任何可应用于当前 frame 或 block 的选项。beamer 导出后端会使用合适的尖括号和方括号将它包起来，而且对任何需要使用 verbatim block 的代码，都添加 fragile 选项。
+- BEAMER_COL 属性可以用来在 beamer 幻灯片中创建列（column）。将这个值设为一个表示相对于总文本宽度的比例的小数。beamer 导出的时候使用这个值设置列的宽度，并将该列填入该 org 条目的内容。如果该 org 条目没有定义环境，beamer 导出时忽略其标题。如果有定义的环境，beamer 将使用 heading 作为 title 。在背后，beamer 自动处理 latex 连续 headlines 的列分离问题。如果要手动处理，使用 BEAMER_ENV 属性。
+  
+* 13.8.4 beamer 特有的句法（syntax）
+beamer 导出后端是 latex 导出后端的一个插件，所以它能够识别其他 latex 特有的句法。例如 =#+LATEX= 或 =#+ATTR_LATEX= 。
+
+beamer 包裹了用 =toc:t= 和 =OPTION= 关键词在 frame 环境中生成的目录，而不包裹用 =TOC= 关键词生成的目录。可以使用方括号指定选项：
+#+begin_quote
+#+TOC: headlines [currentsection]
+#+end_quote
+
+使用下面的构造插入 beamer 特有的代码：
+#+begin_quote
+#+BEAMER: \pause
+
+#+BEGIN_EXPORT beamer
+Only Beamer export back-end exports this.
+#+END_BEAMER
+
+Text @@beamer:some code@@ within a paragraph.
+#+end_quote
+
+行内构造，例如上面的最后一行，用于为带有 bold, item, link, radio-target and target types 的对象添加叠加层指示（overlay specification）。将值包含在尖括号中，并将指示放在对象的起始处，如下所示：
+#+begin_quote
+A *@@beamer:<2->@@useful* feature
+#+end_quote
+
+beamer 导出时可以识别 =ATTR_BEAMER= 关键词，以及下面的来自 beamer 配置的属性：
+- :environment 用来改变局部 beamer 环境
+- :overlay 指定 beamer 叠加层，用尖括号或方括号括起来
+- :options 插入选项参数
+
+#+begin_quote
+#+ATTR_BEAMER: :environment nonindentlist
+- item 1, not indented
+- item 2, not indented
+- item 3, not indented
+#+ATTR_BEAMER: :overlay <+->
+- item 1
+- item 2
+#+ATTR_BEAMER: :options [Lagrange]
+Let $G$ be a finite group, and let $H$ be
+a subgroup of $G$.  Then the order of $H$ divides the order of $G$.
+#+end_quote
+* 13.8.5 编辑支持
+可以使用 org beamer mode 快速编辑 org 文档
+#+begin_quote
+#+startup: beamer
+#+end_quote
+
+使用 =org-beamer-select-environment= 快速选择 beamer 的常规环境，还可以选 =BEAMER_COL= 属性。
+
+* 参考
+https://orgmode.org/manual/LaTeX-header-and-sectioning.html
+
+* Footnotes
+
+[fn:1] 注意，根据 org-beamer-frame-level的文档的内容，所谓higher level指的是更加靠右的，或者 * 更多的。

@@ -1,0 +1,11 @@
+#+title: 科研学术仿真软件索引
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+
+* 参考
+[[file:~/org_notebooks/journal/2021-06-14.org::*fluent 可以用来仿真高超声速流场][fluent 可以用来仿真高超声速流场]]
+[[file:~/org_notebooks/journal/2021-06-14.org::*建模软件：犀牛][建模软件：犀牛]]
+[[file:~/org_notebooks/journal/2021-06-14.org::*离散偶极子近似 (DDA)][离散偶极子近似 (DDA):DDSCAT]]

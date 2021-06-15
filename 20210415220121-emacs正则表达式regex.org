@@ -1,9 +1,0 @@
-#+title: emacs正则表达式regex
-#+roam_tags: 
-#+roam_alias: 
-
-* 主要内容
-
-
-* 参考
-http://ergoemacs.org/emacs/emacs_regex.html

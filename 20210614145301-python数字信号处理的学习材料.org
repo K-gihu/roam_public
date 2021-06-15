@@ -1,0 +1,14 @@
+#+title: python数字信号处理的学习材料
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+[[file:~/Downloads/Python for Signal Processing Featuring IPython Notebooks by José Unpingco (auth.) (z-lib.org).pdf][python for signal processing]]
+https://github.com/spatialaudio/digital-signal-processing-lecture
+https://github.com/calebmadrigal/FourierTalkOSCON
+https://zhuanlan.zhihu.com/p/77271148
+[[https://zhuanlan.zhihu.com/p/77275353][加窗原理和频谱泄露 深入理解]]
+https://nbviewer.jupyter.org/github/calebmadrigal/FourierTalkOSCON/tree/master/
+* 参考
+[[file:~/org_notebooks/journal/2021-06-14.org][星期一, 2021年06月14日]]

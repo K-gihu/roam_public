@@ -1,0 +1,10 @@
+#+title: 情报、文献、资料库索引
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+http://rs.xidian.edu.cn/forum.php?mod=viewthread&tid=1033520
+
+* 参考
+[[file:~/org_notebooks/journal/2021-06-14.org::*20210608 scihub 客户端，据说可下载全球 99%文献][20210608 scihub 客户端，据说可下载全球 99%文献]]

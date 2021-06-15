@@ -3,8 +3,14 @@
 #+roam_alias: 
 
 * 主要内容
-udevmon配置文件
+In archlinux, first install =interception-caps2esc=.
+It will install =/usr/lib/systemd/system/udevmon.service=, which has been writtern to use =/etc/interception/udevmon.yaml= for its task.
+
+Then create that file(configuring what keys are exchanged), copied from caps2esc gitlab repo.
 [[file:/etc/interception/udevmon.yaml]]
+
+Then enable the service with =sudo sysetmctl enable --now udevmon.service=.
+
 * 参考
 https://gitlab.com/interception/linux/plugins/caps2esc
 关于使用inetrception tool的另一些经验：

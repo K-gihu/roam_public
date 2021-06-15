@@ -1,0 +1,231 @@
+#+title: 标准彩虹测量术的提出文献解读
+#+roam_tags: 
+#+roam_alias: 
+
+* 摘要 :ATTACH:
+:PROPERTIES:
+:ID:       00e17720-314d-4e29-b64a-ef2becacbf4d
+:END:
+[[attachment:_20210607_094342screenshot.png]]
+很多液滴尺寸测量的光学方法中，折射率必须预知。能查到还好，要是查不到，或者折射率会因为加热或化学反应发生变化，那就必须 *测量* 折射率才能得到准确的尺寸。本文提出一种方法： *使用一级彩虹的位置偏移得到折射率的实部* 。本文还将这种方法应用于燃烧液滴流，并展示了结果。
+
+* 背景
+气象学、化学工程、燃烧研究中都可以研究小粒子。
+
+液体粒子出现在大气中的云雾雨中，或化学反应器的喷雾中，或注入燃烧室的燃料喷雾中。
+
+我们要对它们的尺寸进行测量。而光学测量方法是具有无接触的优势的。
+
+光学测量方法中，折射率是重要参数。例如
+
+    相位多普勒法和其他干涉法
+
+而折射率可能在测量中变化，如加热的时候或化学反应的时候。所以文章给出了一个在测量尺寸的同时测量折射率的装置，从而给出更精确的尺寸。
+
+这个装置的原理就是液滴的一级彩虹随折射率变化产生的位移。
+
+* 本文主要内容
+使用一级彩虹测量了液滴的折射率
+
+使用精确的干涉法测量了燃烧的单分散液滴流（burning monodisperse droplet stream）的液滴尺寸。
+
+* 测量技术 :ATTACH:
+:PROPERTIES:
+:ID:       dd192b93-da9f-4474-909f-5bc18ac5470b
+:END:
+液滴速度使用传统的激光多普勒测速仪技术测量。多普勒脉冲使用瞬态记录仪记录，存储在微型计算机中，存储的信号使用快速傅里叶算法计算。
+
+使用一种干涉法测量液滴尺寸，方法已在文献 2、4、5 中描述，本文仅作回顾。
+
+为测量尺寸，需给出前向散射光的光强度的空间分布。这种测量方法好在可以无视绝对强度。
+
+单个液滴产生的光强度分布如图所示，这是被单分散液滴散射的光的光强场：
+
+[[attachment:_20210607_094740screenshot.png]]
+激光束从右边入射，击中中心的液滴（亮点），散射到前半球的光如图左侧所示。光强度分布可以用米理论的方程描述，这些方程告诉我们散射光强度取决于：
+
+- 偏振角
+- 液体复折射率
+- 无量纲的 Mie 参数（液滴尺寸参数，正比于直径和波长的比）
+
+当 mie 参数远大于 1 的时候，可以使用几何光学方法预测散射光强度。但是几何光学近似不能用于 *前向近区以及接近彩虹角的地方* 。
+
+mie 参数远大于 1 时，散射角 30 度到 80 度的区域可以使用几何光学近似。在这个区间范围内，散射光强度极大值之间的间隔可以用 0 阶和 1 阶光线的叠加来描述。阶数的定义见下面：
+
+[[attachment:_20210607_094843screenshot.png]]
+在 p+1 次与液滴表面作用后离开液滴的光线称为 p 阶光线。所以 0 阶光线就是反射光线，不被吸收影响。1阶光线因吸收而衰减。
+
+因而在来自两阶光线的干涉发生之后，只有明暗条纹对比受吸收的影响。条纹间距是液滴直径的精确量度。下面的方程可以给出：
+\[\Delta\theta = \frac{2\lambda}{d_T\{\cos(\theta_M /2) + {\large\frac{m\sin (\theta_M /2)}{[1+m^2 -2m\cos (\theta_M /2)]^{1 /2}}} \}}\] 
+
+两个最大值或最小值之间的夹角 \Delta\theta 是折射率实部 m 和观察角\theta_M 的函数，这里的 d_T 就是液滴直径。
+
+对于通常的液体，该方程对折射率实部的依赖关系比较弱，所以在知道折射率近似值的时候，可以用这个方程加上测量条纹间距\Delta\theta得到比较精确的 d_T。该方法对液滴尺寸的测量精度为 2%。
+
+一级虹的位置变化可以导出折射率的变化。
+
+（自然界中的多彩的彩虹是由于太阳白光，实验中使用单色光照液滴，散射出来也是单色光）
+
+在上面的单个液滴散射强度图中的右侧可以看到彩虹：
+
+[[attachment:_20210607_095532screenshot.png]]
+
+虹的光是后向散射光。第一个强度极大值处就是一级虹。在更小的散射角处的更小的强度极大值处就是二级虹。
+
+使用几何光学方法是无法描述散射光在接近虹极大值处的光强分布的。然而一级虹的位置可以取决于几何光学，如果液滴够大。这种简化计算可以用于给出各种基本现象的第一印象。入射角余角为\tau 的照射到液滴表面的光线如图：
+
+每次与液滴表面相互作用时，光线都被折射或反射。除了第一次相互作用，光线每次被折射的部分都以散射角\theta 离开液滴，每次被反射的部分都留在液滴之内。\theta 通过几何关系可以是\tau,\tau',p 的函数：
+\[\theta = 2\tau - 2p\tau'\] 
+
+而由于斯耐尔定律有：
+\[\cos \tau = m\cos \tau'\] 
+
+所以可以画出\theta 和\tau 的函数关系：
+
+[[attachment:_20210607_095714screenshot.png]]
+
+二阶以上的光线都有极值，在极值处，相对\tau 的变化，光线的偏转程度比较平稳。在这里 \(\frac{d\theta}{d\tau}=0\) ，对应的散射角为\theta_{RG}。\tau_{RG}可以用下式给出：
+\[\sin \tau_{RG} = [(m^2 -1) /(p^2 -1)]^{1 /2}\] 
+
+该方程是经过代数运算后导出的，根据几何光学对彩虹角\theta_{RG}进行代数运算。该角度附近光的聚集形成了虹。一级虹是 p=2 的光线产生，二级虹是 p=3 的光线产生。p>1 的各级都会产生虹，但只有一级虹和二级虹足够强，比较容易检测。
+
+仅使用几何光学的话，彩虹角就只是折射率和阶数 p 的函数。p=2 时的关系如下图所示：
+
+
+[[attachment:_20210607_095822screenshot.png]]
+
+波动光学可以给出彩虹角对液滴尺寸的依赖关系（比较弱）。这个关系在液滴直径变化较小的时候可以忽略。
+
+根据艾里的理论，walker 给出了第一个彩虹的主极大的位置：
+\[\theta_R = \theta_{RG} + \frac{1.0845}{\sin \tau_{RG} }(\lambda ^2 \cos \tau_{RG} / 16d_T^2 )^{1 /3}\] 
+
+这里的\theta_{RG}就是只用几何光学得到的彩虹角，\lambda 是入射光波长，\tau_{RG}就是\theta_{RG}对应的入射角（余角）。
+
+在迭代过程中，折射率和尺寸的真实值就可以近似得到了。
+
+折射率是密度的函数，而密度依赖于温度，因而可以通过测量彩虹角得到液滴温度。如果假定温度恒定，双组分混合物的折射率是构成比率的函数。
+
+下图显示了不同尺寸的液滴的散射光强度图样的叠加。右手边可以明显看到一级虹和二级虹。然而左边的前向散射光看不到条纹，因为前向散射光图样对液滴 尺寸比较敏感。自然界中，多分散（polydisperse）的雨滴也可以看到同样的现象。所以液滴的折射率可以通过测量彩虹位置得到。如果液滴尺寸有更 大的变化，折射率的测量可以通过同时进行上述的粒径测量进行修正。
+
+（单分散和多分散的区别是其中的颗粒粒径是不是都一样）
+
+[[attachment:_20210607_100027screenshot.png]]
+
+* 液滴系统 :ATTACH:
+:PROPERTIES:
+:ID:       5f176d29-b0e1-4012-9fa6-4329e8ea2a79
+:END:
+
+多分散液滴流是研究基本现象的好工具。可以通过振动孔板液滴发生器（orifice droplet generator）产生。液滴的初速度和初大小可以在宽范围内选择。使用加热的生成器可以让初始液滴温度上升到 300 摄氏度。初始折射率会随着初始温度 变化。在孔的一定距离处，每个液滴都经历相同的过程。因此如果液滴沿着路径的速度已知，那么液滴性质随着时间的变化可知。
+
+燃烧实验中，液滴通过灯丝线圈，并在那里被点燃。液滴系统被平稳的层流火焰包围，如图：
+
+[[attachment:_20210607_100111screenshot.png]]
+
+该系统测量了液滴的粒径、折射率、速度。温度通过折射率导出。
+
+* 实验 :ATTACH:
+:PROPERTIES:
+:ID:       e669f621-12ca-4349-b86d-a098adaa6cfe
+:END:
+
+光学装置示意图：
+
+[[attachment:_20210607_100143screenshot.png]]
+燃烧实验中，灯丝线圈被加热，点燃液滴。液滴被连续波激光器 L 照射。由于各个液滴在他们的路线上经历了相同的历史，它们在经过激光束的时候产生相同的光强度分布。由于液滴频率很高，屏幕上就可以看到平稳的光强分布，像上面的单液滴散射光强度分布一样。
+
+分束器 P 和透镜 F 是激光多普勒测速仪（LDV）的一部分，用来测量液滴速度。多普勒信号被光电二极管 D_2 接收，用瞬态记录仪记录。
+
+光电二极管 D_1 和示波器监控液滴流的规律性。
+
+为了记录散射角\theta_M 附近的前向散射场的规律条纹图样，我们使用了 ccd 阵列 C_1。
+
+ccd 阵列 C_2 记录一级虹的光。ccd 阵列的典型输出信号如下图所示：
+
+[[attachment:_20210607_100201screenshot.png]]
+
+这些输出信号使用微型计算机记录。
+
+使用关联成像算法（correlation algorithm）作为数字滤波器，把小波结构平滑掉，我们得到了一级虹的主极大相对于 ccd 阵列第一个像素的位置。如果彩虹极大值的偏移大于 ccd 阵 列宽度，ccd 阵列自身可以精确移动，彩虹极大相对于零位置处的总偏移就可以计算出来。
+
+为了用记录的彩虹位置导出折射率，仪器必须校准。比如使用 5 种已知折射率的液体进行校准。液体折射率来自参考文献 12。每种液体的初始条件相同，初始速度是 11m/s，初始直径是 48 微米，初始温度 23 摄氏度。
+
+对于相同的直径，有必要进行校准，以消除液滴直径变化对彩虹角的影响。
+
+已知 5 种液体的折射率，液滴的确切直径可以使用测得的条纹间距\Delta\theta+方程 1 得到。方程 1 就是
+
+\[\Delta\theta = \frac{2\lambda }{d_T\{\cos (\theta_M /2) + \frac{m\sin (\theta_M /2)}{[1+m^2 -2m\cos (\theta_M /2)]^{1 /2}} \}\] 
+
+有了这个直径，和已知的折射率，5种液体的一级虹的主极大的散射角\theta_R 就可以使用方程 5 得到了
+
+\[\theta_R = \theta_{RG} + \frac{1.0845}{\sin \tau_{RG} }(\lambda ^2 \cos \tau_{RG} / 16d_T^2 )^{1 /3}\] 
+
+参考文献 13 中给出使用基于 mie 理论的程序进行计算，结果表明即使对于更小的液滴，艾里理论也是好的近似。
+
+因此在校准中，主极大用像素数 n_R 表示的相对位置可以根据方程 5 相关于对应的角度\theta_R。结果显示在下图中
+
+[[attachment:_20210607_100433screenshot.png]]
+
+实线是最佳拟合线
+
+如果液滴折射率、温度在变化，就必须测量彩虹位置；如果液滴直径在变化，就必须测量条纹间距\Delta\theta。
+
+测得的彩虹位置以像素数 n_R 表示，它可以使用图 8 转换为彩虹角. 彩虹角\theta_R 以及条纹间距\Delta_{\theta}都是液滴尺寸和折射率的函数，函数关系就在方程 1 和方程 5.
+
+在迭代过程中，同时满足两个方程的（液滴尺寸和折射率）对必须被找到。使用另一种测尺寸方法就必须考虑对应的依赖关系。
+
+温度测量在第五节展示过，折射率必须和温度相联系。图 9 显示了 n-十六烷的测量结果：
+
+[[attachment:_20210607_100451screenshot.png]]
+
+初始液体温度随着液滴发生器而变化，从而获取这些数据。生成器内部的热电偶可以立即测量刚生成的、孔前方的液体温度。对于每个初始温度，彩虹位置是 在液滴路径上不同位置处确定的。温度高时，彩虹位置沿着路径微微变化（由于液滴的冷却）。对应于初始液体温度的彩虹位置是通过观察到的趋势推断获得的。因 此液滴温度和折射率的相关性可以像图 9 一样建立起来。
+
+在文献中可以找到某些液体折射率与温度的依赖关系的数据。因此使用这些数据就更方便了，就像第五节实验中对异辛烷做得那样。
+
+* 结果 :ATTACH:
+:PROPERTIES:
+:ID:       68080249-0de0-4a2b-8dd5-d9778fdf3ae6
+:END:
+
+这里展示一些异辛烷的结果。液滴尺寸、速度、温度，包括折射率的值，都作为到液滴到线圈的距离 x 的函数。线圈处的初始温度是 T_0。液滴初始速度保持恒定。实验中各个初始温度下液滴速度下降的规律一样。
+
+图 10 是 2 种初始温度下，液滴温度的时间演化。这个没有用液滴直径变化来修正，只是简单使用了几何光学。
+
+[[attachment:_20210607_100516screenshot.png]]
+
+图 11 显示 2 个数据，一个是图 10 的数据，还有为了对比的、考虑到液滴直径变化（根据方程 1 和方程 5）的数据。
+
+[[attachment:_20210607_100532screenshot.png]]
+
+为了从测得的折射率计算得到温度，使用了文献 14 中使用的线性插值，如前所述。
+
+T_0=96 摄氏度时测得的液滴直径相对于燃烧时间的图就是图 12：
+
+[[attachment:_20210607_100601screenshot.png]]
+
+这些结果假定了恒定的折射率，只使用方程 1. 相对液滴尺寸的平方(d_T/d_{T_0})^2 的时间演化规律如图 13 和 14 所示。d_{T_0}是初始液滴直径：
+
+[[attachment:_20210607_100622screenshot.png]]
+
+[[attachment:_20210607_100627screenshot.png]]
+曲线是数据点的最佳拟合。
+
+图 13 中初始温度 T_0=23 摄氏度，图 14 中 T_0=96 摄氏度。图 13 中实线表示没有折射率修正的数据，假定了折射率恒定于 1.3915，虚线 是使用方程 1 和方程5修正的结果。可以发现折射率变化的影响虽然小但不可以忽视。图14中的未修正和修正的曲线一样，因为液滴的温度几乎恒定。在图11中 显示了温度的这种规律。
+
+本论文中的结果都是使用良定义的单分散液滴系统得到的。然而应该强调，本文描述的效应在实际喷雾系统中的各种测量尺寸方法里，也起着重要作用。
+
+* 参考
+1. W. D. Bachaloand M.J. Houser,"Particle and spray sizingusing laser diffraction," in Optics in Quality Assurance II, H. L. Kasdan, ed., Proc. Soc. Photo-Opt. Instrum. Eng. 170, 53-62 (1979).
+2. G. K6nig, K. Anders, and A. Frohn, "A new light scattering technique to measure the size of periodically generated moving particles," J. Aerosol Sci. 17, 157-167 (1986).
+3. F. Durst, F. Ernst, and J. V6lklein, "Laser-Doppler-Anemometer-System fur lokale Geschwindigkeitsmessungenin Windkanalen," Z. Flugwiss. Weltraumforschung 11, 61-70 (1987).
+4. K. Anders, N. Roth, and A. Frohn, "Study of the evaporation and combustion of droplets by a new sizing method," in Proceedings, Internal Conferenceon Optical Methods in Flowand Particle Diagnostics, LIA, Vol. 63 (1987),pp. 205-214.
+5. K. Hesselbacher, K. Anders, and A. Frohn, "Experimental investigation of the influence of a Gaussian intensity distribution on the scattering characteristics of droplets," in Proceedings, Second International Congresson Optical Particle Sizing (1990), pp. 491-500.
+6. G. Mie, "Beitrige zur optik trUber medien, speziell kolloidaler metall6sungen," Ann. Phys. 25, 377-445 (1908).
+7. H. C. van de Hulst, Light Scattering by Small Particles (Dover, New York, 1981).
+8. J. D.Walker, "Multiple rainbows from singledrops of waterand other liquids," Am. J. Phys. 44(5), 421-433 (1976).
+9. K. Anders, N. Roth, and A. Frohn, "Operation characteristics of vibrating-orifice generators as calibration standard for sizing methods and for the study of basicphenomena," in Proceedings, Second International Congress on Optical Particle Sizing, (1990), pp. 325-334.
+10. N. Roth, K. Anders,and A. Frohn, "Simultaneous measurement of temperature and size of droplets in the micrometer range," in Proceedings, International Conference on Optical Methods in Flowand Particle Diagnostics,LIA, Vol.67(1988),pp. 294-304.
+11. N. Roth, K. Anders, and A. Frohn, "Temporal evolution of size and temperature measurements of burning ethanol droplets for different initial temperatures," in Proceedings, Joint Meeting of the German and Italian Sections of the Combustion Institute, Ravello (1989).
+12. R. C. Weast, ed., CRC Handbook of Chemistry and Physics (CRC Press, Boca Raton, Fla., 1978).
+13. C. F. Bohrenand D. R. Huffmann, Absorption and Scattering of Light by Small Particles (Wiley, New York, 1983).
+14. J. Bartels, H. Borchers, H. Hausen, K.-H. Hellwege,K. Schafer, and E. Schmidt, eds., Landolt-BBrnstein, Zahlenwerte und Funktionen aus Physik, Chemie, Astronomie, Geophysik und Technik, 6, Aufl., II. Band, 8. Teil (Springer-Verlag, Berlin, 1962).

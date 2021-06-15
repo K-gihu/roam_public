@@ -1,0 +1,8 @@
+#+title: qv2ray速度图像speedgraph不显示问题
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+删除 =~/.config/qv2ray/= 文件夹下的内容，重新启动 qv2ray 然后重新设置即可。
+* 参考
+https://github.com/Qv2ray/Qv2ray/issues/1360

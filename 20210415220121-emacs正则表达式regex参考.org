@@ -1,0 +1,11 @@
+#+title: emacs正则表达式regex参考
+#+roam_tags: 
+#+roam_alias: 
+
+* 常用的模式（pattern）
+[0-9]+
+    One or more digits
+[^0-9]+
+    One or more non-digit characters
+* 参考
+http://ergoemacs.org/emacs/emacs_regex.html
