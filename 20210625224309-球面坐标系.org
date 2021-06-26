@@ -1,0 +1,15 @@
+#+title: 球面坐标系
+#+roam_tags: 
+#+roam_alias: 
+
+* 坐标系图像 :ATTACH:
+:PROPERTIES:
+:ID:       bb6495a5-ff2d-4ee0-bc2a-95a293caa897
+:END:
+[[attachment:_20210625_224545screenshot.png]]
+注意球面坐标系的两个角，\(\phi \) 是方位角，\(\theta \) 是俯仰角。
+
+* 球面面元的表示
+\[dS = r d\theta \cdot r\sin \theta \cdot d\varphi = r^2 \sin \theta d\theta d\varphi\] 
+
+* 参考

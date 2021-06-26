@@ -1,0 +1,13 @@
+#+title: org latex中公式标号和引用
+#+roam_tags: 
+#+roam_alias: 
+
+可以使用下面的格式给公式加上标号
+#+name: eqn:1
+\begin{equation}
+E = mc^2
+\end{equation} 
+
+之后引用公式可以使用[[eqn:1]]
+* 参考
+[[file:20210405144438-点目标_线目标_面目标的激光雷达方程的推导.org][点、线、面目标的双站激光雷达方程]]

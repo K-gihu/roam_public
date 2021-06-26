@@ -1,0 +1,9 @@
+#+title: 反照率
+#+roam_tags: 
+#+roam_alias: 
+
+单个粒子的反照率是散射截面与总衰减截面的比值。
+\[W_0 = \frac{\sigma_s}{\sigma_t}\] 
+
+* 参考
+[[file:~/org_notebooks/roam/public/20210428092804-散射截面.org::*散射截面和一般的截面的概念][散射截面和一般的截面的概念]]

@@ -1,0 +1,16 @@
+#+title: zotero+firefox+singlefile实现网页文献保存标注工作流
+#+roam_tags: 
+#+roam_alias: 
+
+* 主要内容
+浏览一篇网页的时候，觉得内容很好，而且想做一些标注、笔记，可以使用以下三者共同实现
+- firefox
+- firefox 扩展 singlefile
+- zotero
+- firefox 扩展 zotero connecter
+
+具体流程是
+1. 在 firefox 中点击 zotero connecter，beta 版会将网页使用 singlefile 机制存储，存成单个文件
+2. 在 zotero 界面对网页快照文件右键，上下文菜单中有 zotfile 的重命名命令，点击可以将文件移动到 zotfile 文件夹中。
+3. 双击 zotero 中存储的快照即可在 firefox 中打开，如果设置了 singlefile 存储的文件默认用 singlefile 编辑，那么打开文件的同时会开启编辑工具。这样就可以标注了
+* 参考

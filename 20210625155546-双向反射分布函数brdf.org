@@ -1,0 +1,16 @@
+#+title: 双向反射分布函数BRDF
+#+roam_tags: 
+#+roam_alias: 
+
+沿 \((\theta_r,\phi_r)\) 方向的出射辐射强度与沿 \((\theta_i,\phi _i)\) 方向入射到被测表面的辐照度之比。
+\[f_r(\theta_i,\phi _i,\theta _r,\phi _r) = \frac{dL_r(\theta_i,\phi _i,\theta _r,\phi _r)}{dE_i(\theta _i,\phi _i)}\] 
+这里自变量的含义是，出射辐射亮度和入射方向、出射方向都有关，而入射照度只和入射方向有关。
+
+为什么这里要使用两个微分做商呢？因为除了 \(dE_i(\omega_i)\) 以外的、对 \(f_r\) 无贡献的其他照射光，也可能照射到表面，而这会影响到 \(L_r(\omega_r)\) ，而 \(dL_r(\omega _r)\) 只受 \(dE_i(\omega _i)\) 的影响。
+
+就是说，这个出射亮度仅仅是由那个方向的入射照度引起的这个方向的出射亮度。
+
+这可能也是出射亮度由2个方向决定，而入射照度只由1个方向决定的原因。
+
+* 参考
+https://en.wikipedia.org/wiki/Bidirectional_reflectance_distribution_function

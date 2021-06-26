@@ -1,4 +1,4 @@
-#+title: org latex beamer记录
+#+title: org latex beamer 中的 frame 和 block 以及各种属性
 #+roam_tags: 
 #+roam_alias: 
 

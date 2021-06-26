@@ -1,0 +1,110 @@
+#+title: 点目标、线目标、面目标的激光雷达方程的推导
+#+author: 郭子辰 20051212120
+#+setupfile: src/jake-latex-standard.org
+#+roam_tags: 
+#+roam_alias: 
+* 朗伯面的性质 :ATTACH:
+:PROPERTIES:
+:ID:       05f2b5f0-9d7e-4795-825e-ffd0b1179085
+:END:
+推导激光雷达方程的时候，我们将被光束辐照的目标表面看作朗伯面，这一点所带来的性质在本节阐述。
+
+如果激光雷达发射机输出的激光发散角比较小（mrad量级），那么可以把目标被激光照射的部分看作小平面。
+目标辐照和辐射的几何图像如下图所示\cite{hu2005}：
+
+[[attachment:_20210620_191959screenshot.png]]
+
+假定目标表面小平面是朗伯面，则目标辐射强度的空间角分布遵从朗伯余弦定律
+\[I_{\theta} = I_0\cos \theta\] 
+即与朗伯面法方向夹角为 \(\theta\) 的方向的辐射强度 \(I_{\theta}\) ，是法向辐射强度 \(I_0\) 乘夹角的余弦。
+
+根据该朗伯余弦定律可以推出\cite{hu2005}，朗伯面的辐射通量等于法向辐射强度的 \(\pi\) 倍。这里设 \(P_e\) 为小平面的辐射通量。
+\[P_e = \pi I_0\] 
+结合上面两个式子可以得到
+#+name: eqn:1
+\begin{equation}
+I_{\theta }= \frac{P_e}{\pi }\cos \theta
+\end{equation} 
+这就是小朗伯平面在任意辐射方向上的辐射强度和它的照射通量的关系。
+
+* 一般的双站激光雷达方程 :ATTACH:
+:PROPERTIES:
+:ID:       159ccc58-4679-4582-8ca4-52d3856d1716
+:END:
+我们分析较为一般的双站激光雷达。
+
+激光雷达方程描述的整个过程是：发射系统发射一束激光，在大气中传播到目标处，目标被激光辐照后辐射出散射光，散射光在大气中传播，接收系统接收部分散射光。
+
+我们从发射激光束开始。如果以功率 \(P_t\) 发射激光束，那么经过发射光学系统的衰减（用发射光学系统效率 \(\eta_t\) 表示\cite{yao2008}），和发射机到目标的大气衰减（用发射机到目标单程大气透过率 \(\tau_t\) 表示）到达目标处时，光束的功率降为：
+\[P_t \eta_t \tau_t\]
+
+[[attachment:_20210620_203112screenshot.png]]
+
+如图\cite{hu2005}，发射机发射的光束在目标处的横截面积是 \(A_l\)，目标被照射部分在 \(A_l\) 上的投影面积是 \(A_t\)。
+注意，目标被照射部分的面积可以小于或等于激光束横截面积。那么图中的面积有如下关系：
+\[A_t \leq A_l\] 
+目标被照射部分的照射通量应该是整个光束横截面上的照射通量的一部分，二者的比率应该是二者对应面积的比率，所以，目标被照射部分的照射通量是：
+\[\frac{A_t}{A_l}P_t \eta_t \tau_t\] 
+这个小平面的辐射通量可以用辐照通量乘反射率得到：
+\[P_e = \rho \frac{A_t}{A_l} P_t \eta_t \tau_t\]
+结合方程[[eqn:1]]，可以得到
+#+name: eqn:2
+\begin{equation}
+I_{\theta }= \frac{\rho A_t P_t \eta_t \tau_t}{\pi A_l}\cos \theta
+\end{equation} 
+也就是目标辐射时，在目标处向任意空间方向的辐射强度。
+
+这个辐射强度传播到接收机处时，会因为目标到接收机的大气衰减（用目标到接收机的单程大气透过率 \(\tau_r\) 表示）变为 \(I_{\theta }\tau_r\)。
+
+如果接收机的有效接收面积为 \(A_r\)，那么在目标距离接收机 \(R_r\) 时，该面积对目标张的立体角为：
+\[\Omega_r = \frac{A_r}{R_r^2 }\]
+目标的辐射传播到接收机处的辐射通量为 \(I_{\theta}\tau_r\Omega_r\)。
+
+用 \(\eta_r\) 表示接收光学系统的效率，那么接收光学系统接收到的功率为：
+#+name: eqn:general
+\begin{equation}
+P_r = I_{\theta}\tau_r\Omega_r\eta_r = \frac{\rho \eta_t\eta_r\tau_t\tau_r P_t A_t A_r\cos \theta}{\pi R_r^2 A_l}
+\end{equation} 
+
+这就是一般的双站激光雷达方程。\cite{hu2005,yao2008,zhao2012}
+
+* 点、线、面目标的双站激光雷达方程 :ATTACH:
+:PROPERTIES:
+:ID:       d60cb849-fcc0-4f31-926d-3e19a61849d4
+:END:
+下面对点目标、线目标、面目标分别推导激光雷达方程。
+- 点目标 :: 其面积小于发射激光光束在目标处面积，且全部被激光照射的目标。
+- 线目标 :: 形状为条形的目标，长度大于激光光束直径，宽度小于直径，位于光束中央。
+- 面目标 :: 面积大于发射激光光束在目标处面积的目标。
+三种目标和光束的几何关系如图\cite{hu2005}
+[[attachment:_20210620_220540screenshot.png]]
+[[attachment:_20210620_220554screenshot.png]]
+三种目标的特殊之处是使用 \(A_l,A_t\) 的表达式表示的。
+
+对于点目标有
+#+name: eqn:A_l
+\begin{equation}
+A_l = \Omega_tR_t^2
+\end{equation} 
+其中 \(\Omega_t\) 是发射光束立体角，\(R_t\) 是发射机到目标的距离。
+
+因此根据[[eqn:general]]，可得点目标的激光雷达方程。
+\[P_r = I_{\theta}\tau_r\Omega_r\eta_r = \frac{\rho \eta_t\eta_r\tau_t\tau_r P_t A_t A_r\cos \theta}{\pi \Omega_t R_r^2 R_t^2}\] 
+对于线目标有
+\[A_t = 2\left(\frac{\Omega_tR_t^2}{\pi}\right)^{\frac{1}{2} }W_t = 2\left(\frac{\Omega_t}{\pi}\right)^{\frac{1}{2}}R_tW_t\]
+其中的 \(2\left(\frac{\Omega_tR^2}{\pi}\right)^{\frac{1}{2}}\) 是照射激光光束在目标处的横截面直径，也就是线目标被照射部分在光束横截面投影的长度，\(W_t\) 是线目标被照射部分在光束横截面投影的宽度。
+
+根据该方程和[[eqn:A_l]]、[[eqn:general]]可得线目标的激光雷达方程。
+\[P_r = \frac{2\rho \tau_t\tau_r\eta_t\eta_rP_tA_rW_t\cos\theta}{\pi^{\frac{3}{2}}\Omega_t^{\frac{1}{2}}R_tR_r^2}\] 
+对于面目标有 \(A_t = A_l\)，故根据[[eqn:general]]有
+\[P_r = \frac{\rho \tau_t\tau_r\eta_t\eta_rP_tA_r\cos \theta}{\pi R_r^2}\] 
+
+* 参考文献
+\begingroup
+\renewcommand{\section}[2]{}
+\begin{thebibliography}{4}
+\bibitem{hu2005}胡春生. 脉冲半导体激光器高速三维成像激光雷达研究[D]. 国防科学技术大学, 2005[2021–06–20].
+\bibitem{yao2008}姚庆良. 双基地激光雷达系统原理研究[D]. 西安电子科技大学, 2008[2021–04–02].
+\bibitem{zhao2012}赵延杰. 目标激光雷达探测性能分析及实验研究[D]. 西安电子科技大学, 2012.
+\end{thebibliography}
+\endgroup

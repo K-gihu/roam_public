@@ -1,0 +1,11 @@
+#+title: 对各种粗糙度的、不同均匀性的表面散射问题的研究路径
+#+roam_tags: 
+#+roam_alias: 
+
+
+* 主要内容 :ATTACH:
+:PROPERTIES:
+:ID:       037dae44-3b8d-4e03-9411-c3f13e0805e2
+:END:
+
+[[attachment:_20210625_212846screenshot.png]]

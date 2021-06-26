@@ -1,0 +1,25 @@
+#+title: 辐射亮度
+#+roam_tags: 
+#+roam_alias: 
+
+* 辐射亮度的传输不变性 :ATTACH:
+:PROPERTIES:
+:ID:       7a0f2c20-4e4b-4119-835a-a823178b28e2
+:END:
+在光从一个平面微元直线传输到另一个平面微元的过程中，第一个平面的辐射亮度和第二个平面的被辐射亮度是一样的。
+#+attr_html: :width 400px
+[[attachment:_20210625_211503screenshot.png]]
+如果设第一个平面的辐射亮度为 \(L(x_1,\theta ,\phi )\)，第二个平面的被辐射亮度是 \(L(x_2,\theta ,\phi )\)，那么从第一个平面辐射到第二个平面的辐射通量可以表示为两种形式：
+\begin{gather*}
+L(x_1,\theta ,\phi )(dA_1\cos \theta_1)\left(\frac{dA_2\cos \theta _2}{r^2 }\right) \\
+L(x_2,\theta ,\phi )(dA_2\cos \theta_2)\left(\frac{dA_1\cos \theta _1}{r^1 }\right) \\
+\end{gather*} 
+显然，由于后面的面积项乘积是相同的，所以两个亮度是相同的。即
+\[L(x_1,\theta ,\phi ) = L(x_2,\theta ,\phi )\] 
+
+* 辐射亮度是描述点光源的
+正因为它有单位立体角的概念，和辐射强度一样，而构建立体角需要一个顶点，这个顶点就是我们所描述的点光源。
+
+哪怕计算一个有一定体积的物体的亮度，我们也是将这个物体近似成了一个点光源。类似于质点。
+
+* 参考

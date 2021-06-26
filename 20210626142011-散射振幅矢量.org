@@ -1,0 +1,18 @@
+#+title: 散射振幅矢量
+#+roam_tags: 
+#+roam_alias: 
+
+* 散射振幅矢量 :ATTACH:
+:PROPERTIES:
+:ID:       b97084e4-a224-45b9-a0c3-9899ef9e8f76
+:END:
+[[attachment:_20210626_142312screenshot.png]]
+有单位幅度的线极化平面波 \(\vec{E}(\vec{r}) = \hat{e_i}\exp (jk \hat{i}\cdot \vec{r})\) 照射到介质上，复介电常数为 \(\epsilon_r(\vec{r}) = \epsilon_r'(\vec{r})+j\epsilon_r''(\vec{r})\) 
+如果使用远场近似 \(R>D^2 /\lambda \) ，那么散射场可以表示为
+\[\vec{E_s}(\vec{r})=\vec{f}(\hat{o},\hat{i})\frac{\exp (jkR)}{R}\] 
+这里的 \(\vec{f}\) 就是散射振幅矢量。
+- 散射振幅矢量 :: 表示相对介电常数为 \(\epsilon_r(\vec{r})\) 的介质体，在 \(\hat{i}\) 方向入射的线极化平面波照射下，在 \(\hat{o}\) 散射方向上产生的散射波场的振幅、相位、极化特性。
+
+如果入射波不是线极化，该矢量应该为矩阵。
+
+* 参考

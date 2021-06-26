@@ -9,3 +9,4 @@ zhwiki词库我是将它放在 =/usr/share/rime-data/clover.dict.yaml= 的 =impo
 
 不知道为什么，新建一个包含原词库和zhwiki的新词库的尝试失败了。
 * 参考
+https://fcitx-im.org/wiki/Configure_(Other)/zh-hans

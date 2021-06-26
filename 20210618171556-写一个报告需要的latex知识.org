@@ -1,0 +1,9 @@
+#+title: 写一个报告需要的latex知识
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+使用 underscore 宏包在 latex 中输入下划线的时候，可以直接输入下划线，而不是使用 =\_= 。
+* 参考
+[[file:~/org_notebooks/journal/2021-06-18.org::*20210113 latex下划线宏包https://blog.csdn.net/hongnuaa/article/details/6901658][20210113 latex下划线宏包https://blog.csdn.net/hongnuaa/article/details/6901658]]

@@ -1,0 +1,17 @@
+#+title: emacs改变文件编码
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+1. =revert-buffer-with-coding-system= 用来将文件用原来的编码打开
+2. =set-buffer-file-coding-system= 用来设置文件的新编码
+
+例如可以使用下面的命令将 chinese-gb-18030-dos 转换为 utf-8-unix
+#+begin_src elisp
+(progn
+  (revert-buffer-with-coding-system 'gb18030-dos)
+  (set-buffer-file-coding-system 'utf-8-unix))
+#+end_src
+
+* 参考

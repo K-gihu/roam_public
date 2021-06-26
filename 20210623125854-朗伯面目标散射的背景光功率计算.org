@@ -1,0 +1,59 @@
+#+title: 朗伯面目标散射的背景光功率计算
+#+author: 郭子辰 20051212120
+#+setupfile: src/jake-latex-standard.org
+#+roam_tags: 
+#+roam_alias: 
+
+* 朗伯面的性质 :ATTACH:
+:PROPERTIES:
+:ID:       35f38ffe-ace6-4649-aa40-2fe1fea83152
+:END:
+在研究激光被目标散射的时候，如果我们将被光束辐照的目标表面看作朗伯面，所带来的性质在本节阐述。
+
+如果激光雷达发射机输出的激光发散角比较小（mrad量级），那么可以把目标被激光照射的部分看作小平面。
+目标辐照和辐射的几何图像如下图所示\cite{hu2005}：
+
+[[attachment:_20210620_191959screenshot.png]]
+
+假定目标表面小平面是朗伯面，则目标辐射强度的空间角分布遵从朗伯余弦定律
+\[I_{\theta} = I_0\cos \theta\] 
+即与朗伯面法方向夹角为 \(\theta\) 的方向的辐射强度 \(I_{\theta}\) ，是法向辐射强度 \(I_0\) 乘夹角的余弦。
+
+根据该朗伯余弦定律可以推出\cite{hu2005}，朗伯面的辐射通量等于法向辐射强度的 \(\pi\) 倍。这里设 \(P_e\) 为小平面的辐射通量。
+\[P_e = \pi I_0\] 
+结合上面两个式子可以得到
+#+name: eqn:1
+\begin{equation}
+I_{\theta }= \frac{P_e}{\pi }\cos \theta
+\end{equation} 
+这就是小朗伯平面在任意辐射方向上的辐射强度和它的照射通量的关系。
+
+* 朗伯体目标散射的背景光功率计算 :ATTACH:
+:PROPERTIES:
+:ID:       93eee740-51c5-4f33-8e6b-8e30ceb55384
+:END:
+
+[[attachment:_20210623_130033screenshot.png]]
+
+如图，背景光以 \(E\) 的照度辐照在目标表面，目标表面的反射率为 \(\rho \) ，现在求与目标法方向夹角为 \(\theta _s\) 处的接收机接收到多少功率。
+
+目标受到辐照后，产生的辐射通量可以用下式表示：
+\[P_e = \rho E S\]
+其中的 \(S\) 是目标被照射的面积。
+
+根据式[[eqn:1]]可得在与目标平面法向夹角为 \(\theta _s\) 的方向上，目标的辐射强度可以表示为
+\[I(\theta _s) = \frac{\rho ES\cos \theta_s}{\pi }\] 
+而由于接收机孔径对目标成的立体角一般比较小，所以可以近似认为在接收机孔径的立体角范围内，目标发出的辐射强度不变，保持在中心 \(\theta _s\) 方向的辐射强度。
+
+那么，如果设接收机的有效孔径面积为 \(A_r\)，那么接收机孔径对目标中心的立体角是 \(A_r / R^2 \)，那么接收机接收到的目标的辐射通量就是：
+\[P_r = I(\theta _s) \frac{A_r}{R^2 } = \frac{\rho ESA_r\cos \theta_s }{\pi R^2 }\] 
+
+这就是我们要求的。
+
+* 参考文献
+\begingroup
+\renewcommand{\section}[2]{}
+\begin{thebibliography}{4}
+\bibitem{hu2005}胡春生. 脉冲半导体激光器高速三维成像激光雷达研究[D]. 国防科学技术大学, 2005[2021–06–20].
+\end{thebibliography}
+\endgroup

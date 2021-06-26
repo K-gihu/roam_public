@@ -1,0 +1,26 @@
+#+title: 修复linux alsa声音问题
+#+roam_tags: 
+#+roam_alias: 
+
+* 声音系统的层次结构
+- 驱动和接口——硬件支持、控制
+- Usermode API （函数库）——应用程序使用
+- (optional) Usermode 声音服务 —— 适用于复杂桌面，多个音频同时播放，对更复杂的应用也很重要，比如专业音频。
+- (optional) 声音框架 —— 更高级别的应用程序环境，不包含服务进程。
+ 
+* alsa and pulseaudio
+alsa是linux内核的一部分，提供驱动
+
+pulseaudio 是多功能的声音服务。
+
+* 维修过程
+首先安装 =alsa-utils= ，alsa的基础工具包，包含 alsamixer、amixer 等。
+alsamixer是有图形界面的，amixer是命令行程序
+
+以下两个守护进程是随着上面的包安装的，但是只有用户有意识地执行了一些命令之后才会运行。
+- alsa-restore.service 在开机时读取 /var/lib/alsa/asound.state 关机时将更新的值写入。*前提是*事先已经使用了 =alsactl store= 生成该文件。
+- alsa-state.service 以守护模式重启 alsactl 并持续跟踪并保存音量的更改，*前提是*用户有意识地启动了至少一次 alsactl 守护进程。
+
+* 参考
+https://wiki.archlinux.org/title/Sound_system
+https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture

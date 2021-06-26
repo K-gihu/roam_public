@@ -25,14 +25,16 @@ Then restart computer. Or network will not work(Don't know why)
 安装 fcitx5,fcitx5-qt,fcitx5-configtool,rime-cloverpinyin,fcitx5-rime
 modify =~/.xprofile=, add the following:
 #+begin_src sh
-export XMODIFIERS="@im=fcitx"
-export GTK_IM_MODULE="fcitx5"
-export QT_IM_MODULE="fcitx5"
+export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
 #+end_src
 
 重启之后发现在 firefox 中不跟随光标，又安装 fcitx5-gtk 重启之后解决了。
 *所以 gtk 和 qt 都要安装*
 
 其实可以直接安装 fcitx5-im 组，其中包含 fcitx5,fcitx5-configtool,fcitx5-qt,fcitx5-gtk
+** 磁盘分区软件 gparted
 
 * 参考
+https://fcitx-im.org/wiki/Configure_(Other)/zh-hans

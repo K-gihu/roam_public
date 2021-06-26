@@ -1,0 +1,8 @@
+#+title: org导出latex时不想输出标签tag怎么办
+#+roam_tags: 
+#+roam_alias: 
+
+buffer 中使用=#+OPTIONS: tags:nil=。
+或使用变量 =org-export-with-tags= 。
+* 参考
+https://stackoverflow.com/questions/50531117/org-mode-how-to-hide-tag-name-when-exporting

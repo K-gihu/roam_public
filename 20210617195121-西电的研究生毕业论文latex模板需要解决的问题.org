@@ -1,0 +1,68 @@
+#+title: 西电的研究生毕业论文latex模板需要解决的问题
+#+roam_tags: 
+#+roam_alias: 
+
+* 概括
+* 主要内容
+
+** （1）hyperref宏包报错
+
+! Package hyperref Error: Wrong DVI mode driver option `dvipdfm',
+(hyperref)                because XeTeX is running.
+
+原因：dvipdfm这个选项不适用于XeTeX
+解决：可以不指定driver，即直接引hyperref宏包，或者写成driverfallback=dvipdfm
+
+#+begin_latex
+%% hyperref
+\ifpdf
+    \RequirePackage[pdftex]{hyperref}
+\else
+    \ifXDU@Option@dvipdfm
+    \RequirePackage[driverfallback=dvipdfm]{hyperref}
+    \else
+    \RequirePackage[dvips]{hyperref}
+    \fi
+\fi
+#+end_latex
+    
+复制代码
+
+** （2）未定义命令\par
+
+    ! Undefined control sequence.
+    \XDU@value@thesis@title ->西安电子科技大学研究生学位论文\par撰写要求
+                                                      （2015年修订版）
+
+原因：\par和后面的文字连在一起
+解决：在\par和文字之间增加一个空格，请在cfg文件中修改。
+
+    % 论文信息
+    \def\XDU@value@thesis@title{西安电子科技大学研究生学位论文\par 撰写要求（2015年修订版）}
+
+复制代码
+
+** （3）未定义命令\CTEXunderline
+
+    ! Undefined control sequence.
+    \XDU@@underline [#1]#2->\CTEXunderline
+                                           {\hbox to #1{\hfill {#2}\hfill }}
+
+原因：命令过时，该命令为\LoadClass[a4paper,cs4size,twoside,openright,fntef,fancyhdr,punct]{ctexbook}
+中的过时选项fntef的衍生命令，主要用于生成下划线
+解决：引入xeCJKfntef宏包，即\RequirePackage{xeCJKfntef}，将\CTEXunderline命令替换为\CJKunderline
+
+    #+begin_latex
+    %% underline
+        \RequirePackage{xeCJKfntef}
+        \def\CJKunderlinecolor{}
+        \def\XDU@@underline[#1]#2{\CJKunderline{\hbox to #1{\hfill{#2}\hfill}}}
+        \DeclareRobustCommand{\XDU@underline}
+          {\@ifnextchar[\XDU@@underline\CTEXunderline}
+    #+end_latex
+    
+复制代码
+编译通过，其它因为命令过时出现的waring可自行处理，具体修改方法可参考ctex宏包说明。
+
+* 参考
+http://rs.xidian.edu.cn/forum.php?mod=viewthread&tid=1093981&highlight=%E8%B8%A9%E5%9D%91%2Blatex
