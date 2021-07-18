@@ -6,4 +6,4 @@
 \[W_0 = \frac{\sigma_s}{\sigma_t}\] 
 
 * 参考
-[[file:~/org_notebooks/roam/public/20210428092804-散射截面.org::*散射截面和一般的截面的概念][散射截面和一般的截面的概念]]
+[[file:~/org_notebooks/roam/public/20210428092804-散射截面_微分散射截面_吸收截面_消光截面_雷达截面.org][散射截面和一般的截面的概念]]

@@ -1,0 +1,59 @@
+#+title: 瑞利近似下的瑞利散射
+#+roam_tags: 随机介质中的波传播与散射
+#+roam_alias: 
+
+瑞利散射主要是由远小于波长、且光学意义上软（折射率接近1）的粒子产生的光或其他电磁波的弹性散射。
+它是粒子电极化的结果，光的震荡电场作用于粒子内的电荷，使其振动，粒子于是成为了一个辐射的偶极子，发出散射光。
+（[[https://en.wikipedia.org/wiki/Rayleigh_scattering][维基百科]]）
+
+* 近似条件
+- 粒子尺度远小于波长： \(x = ka \ll 1\) 且
+- 粒子材料折射率别太大： \(ka|n-1|\ll 1\) 
+侧重于约束波长，同时也约束折射率，而[[file:20210701131659-波恩近似.org][波恩近似]]与之正相反。
+
+* 均匀电场近似
+粒子尺度远小于波长，可以认为在粒子内和粒子周围的电场基本不变，是均匀电场（空间导数为零，时间导数不为零）。
+因此可以使用一些静电学的结论来研究粒子中的电场。
+根据Stratton(1941)Electromagnetic Theory，外加均匀静电场时，介质球内电场和外加电场的关系是：
+#+name: dipole
+\begin{equation}
+\bm{E} = \frac{3}{\varepsilon_r + 2}\bm{E}_i, \bm{E}_i = E_i \hat{x}
+\end{equation} 
+将该公式代入[[file:20210627231524-张量格林函数求无源介质的矢量波动方程_散射问题.org::eqn:sca-amp-func][散射振幅函数公式]]可以得到：
+
+* 瑞利散射的散射振幅函数
+\[\bm{f}(\hat{o},\hat{i}) = \frac{k^2}{4\pi }\frac{3(\varepsilon_r-1)}{\varepsilon_r+2}V(-\hat{o}\times (\hat{o}\times \hat{x}))\] 
+由于[[file:20210428092804-散射截面_微分散射截面_吸收截面_消光截面_雷达截面.org::*微分散射截面][微分散射截面可以表示为散射振幅函数的模方]]，所以得到
+
+* 瑞利散射的[[file:20210428092804-散射截面_微分散射截面_吸收截面_消光截面_雷达截面.org][微分散射截面]]
+\[\sigma _d(\hat{o},\hat{i}) = \frac{k^{4}}{(4\pi)^2 } \left|\frac{3(\varepsilon_r-1)}{\varepsilon_r+2}\right|^2 V^2 \sin^2 \chi
+= \frac{\pi^2}{\lambda ^{4} }\left|\frac{3(\varepsilon _r -1)}{\varepsilon _r +2}\right|^2 V^2 \sin ^2 \chi \] 
+这里的 \(\sin ^2 \chi = |-\hat{o}\times (\hat{o}\times \hat{x})|^2 \)，\(\chi \) 是 \(\langle \hat{o},\hat{x} \rangle\) 
+对微分散射截面进行全立体角积分，就得到散射截面
+
+* 瑞利散射的[[file:20210428092804-散射截面_微分散射截面_吸收截面_消光截面_雷达截面.org][散射截面]] :ATTACH:
+:PROPERTIES:
+:ID:       d0bcc9cc-ff64-42d4-a103-c0b48b667ef3
+:END:
+\[\sigma_s = \int_{4\pi}\sigma_d d\Omega
+= \frac{\pi^2}{\lambda^{4}}\left|\frac{3(\varepsilon _r -1)}{\varepsilon _r +2}\right|^2 V^2 \int_0^\pi \sin^3 \chi d\chi \int_0^{2\pi}d\phi 
+= \frac{24\pi^2 V^2 }{\lambda ^{4} }\left|\frac{(\varepsilon _r -1)}{\varepsilon _r +2}\right|^2\] 
+这里的积分要注意一下：首先以入射波偏振方向 \(\hat{x}\) 为轴，以散射体中某点为原点建立一个[[file:20210625224309-球面坐标系.org][球面坐标系]]，
+[[attachment:_20210701_192826screenshot.png]]
+\(\chi \) 是散射方向和入射波偏振方向的夹角，从而就是极角；
+\(\phi \) 的含义就是散射方向在参考平面上的投影方向的方位角。
+那么两个积分的含义就是遍历全部散射方向。
+
+另外，立体角元在球面坐标系中的表示是
+\[d\Omega = \sin \chi d\chi d\phi \] 
+因此与相关的 \(\sin ^2 \chi \) 结合起来变成了 \(\sin ^3 \chi d\chi d\phi \) 
+
+* 瑞利散射的[[file:20210428092804-散射截面_微分散射截面_吸收截面_消光截面_雷达截面.org][吸收截面]]
+根据吸收截面的定义？
+\[\sigma_a = P_a / S_i\] 
+其中\(P_a = \int_{V'}\omega\varepsilon_0\varepsilon_r''|\bm{E}(\bm{r}')|^2 dV' / 2\), \(S_i = |\bm{E}_i|^2 / (2\eta_0)\) 
+其中真空波阻抗 \(\eta_0 = \sqrt{\frac{\mu_0}{\varepsilon_0}\) ，而根据[[dipole]]方程表达的 \(\bm{E}(\bm{r}')\) ，我们可以得到
+\[\sigma_a = \int_{V'}k\varepsilon_r''\left|\frac{3}{\varepsilon_r+2}\right|^2 dV' = k\varepsilon_r''\left|\frac{3}{\varepsilon_r+2}\right|^2 V\] 
+
+* 参考
+[[file:20210317172349-随机介质中的波传播与散射.org][随机介质中的波传播与散射]]

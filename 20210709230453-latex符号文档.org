@@ -1,0 +1,9 @@
+#+title: latex符号文档
+#+roam_tags: 
+#+roam_alias: 
+
+📄可以用来查询各种符号和它们的所属包。
+
+* 参考
+[[file:~/.texlive/texmf-var/arch/builds/comprehensive-doc/pkg/texlive-local-comprehensive-doc/usr/local/share/texmf/doc/latex/comprehensive/symbols-a4.pdf]]
+[[file:~/.texlive/texmf-var/arch/builds/comprehensive-doc/pkg/texlive-local-comprehensive-doc/usr/local/share/texmf/doc/latex/comprehensive/rawtables-a4.pdf]]

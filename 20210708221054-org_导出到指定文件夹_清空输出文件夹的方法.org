@@ -1,0 +1,22 @@
+#+title: org 导出到指定文件夹、清空输出文件夹的方法
+#+roam_tags: 
+#+roam_alias: 
+
+可以使用如下代码
+#+begin_quote
+#+PROPERTY: header-args :mkdirp yes :dir ~/output
+#+EXPORT_FIle_NAME: ~/output/writing_tech_docs.html
+#+end_quote
+
+创建一个文件 =code.inc= ，里面放上
+#+begin_src org
+,# -*- mode: org; -*-
+,
+,#+NAME: init
+,#+BEGIN_SRC shell :exports none
+,rm -rf ~/output
+,#+END_SRC
+#+end_src
+
+* 参考
+[[file:~/Downloads/_Literature/undefined/alpha2phi_2021_Writing Technical Documentation with Emacs.html]]

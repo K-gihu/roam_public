@@ -1,0 +1,57 @@
+#+title: 波恩近似
+#+roam_tags: 随机介质中的波传播与散射
+#+roam_alias: 
+
+* 近似条件
+- 相对介电常数接近1，\(|\varepsilon_r-1|\ll 1\) 
+- 粒子尺度别太大，\(kD|\varepsilon_r-1|\ll 1\) 
+侧重于约束折射率，同时也约束波长，而[[file:20210427205055-瑞利近似下的瑞利散射.org][瑞利近似]]与之正相反。
+
+此时，散射体分界面上的电磁波没有明显的反射、折射，散射体内部的电场幅度与相位也没有明显变化。
+此时，散射体内部电场可以近似看作等于入射场。
+#+name: born-approx
+\[\bm{E}(\bm{r}') = \bm{E}_i(\bm{r}') = \hat{e}_i\exp(jk \hat{x}\cdot \bm{r})\] 
+
+* 波恩近似的散射振幅函数 :ATTACH:
+:PROPERTIES:
+:ID:       be49c9b0-0ea7-4fdb-b754-9ff0ecd24737
+:END:
+可以将上式代入单粒子对平面波散射的散射振幅函数[[file:20210626142011-散射振幅矢量.org][表达式]]：
+\[\bm{f}_s(\hat{o},\hat{i}) = \frac{k^2}{4\pi}\int_{V'} -\hat{o}\times (\hat{o}\times \bm{E}(\bm{r}'))(\varepsilon_r(\bm{r}')-1) \exp (-jk \hat{o}\cdot \bm{r}')dV'\] 
+\[\bm{f}_s(\hat{o},\hat{i}) = \frac{k^2}{4\pi}(-\hat{o}\times(\hat{o}\times \hat{e}_i))VS(k_s)\] 
+其中
+\[S(k_s) = \frac{1}{V}\int_{V'}(\varepsilon_r(\bm{r}')-1)\exp(-jk\hat{o}\cdot \bm{r}')\exp(jk \hat{i}\cdot \bm{r'})dV'
+= \frac{1}{V} \int_{V'} (\varepsilon_r(\bm{r}')-1)\exp(-j \bm{k}_s\cdot \bm{r}')dV'\] 
+其中 \(\bm{k}_s = k(\hat{i}-\hat{o}) = 2k\sin(\theta /2)\) ，\(\theta\) 就是散射角。角度关系如图：
+[[attachment:_20210701_223209screenshot.png]]
+
+上面的式子 \(S(k_s)\) 可以看作对 \(\varepsilon_r-1\) 的傅立叶变换（三维）。
+在这里，空间域对应了空间频域，波长就是空间周期，波数就是空间频率。
+- 如果空间域范围比较小，小于空间周期尺度（即粒子尺度小于波长），那么根据傅立叶变换的性质可知，空间频域范围会比较大，即波数 \(k_s\) 、从而散射角 \(\theta\) 的取值范围比较大，散射分布得很广，几乎各向同性。
+- 如果粒子尺度比较大，大于波长，散射就基本集中在 \(\theta\approx 0\) 的很小范围。（几何光学近似）
+
+* 波恩近似的[[file:20210428092804-散射截面_微分散射截面_吸收截面_消光截面_雷达截面.org][吸收截面]]
+吸收截面的公式在入射波大小取为1的时候是
+\[\sigma_a = k\int_V \varepsilon_r''(\bm{r}) |\bm{E}(\bm{r})|^2dV = k\int_V \varepsilon_r''(\bm{r}) dV\]
+这里的第二个等号就使用了波恩近似条件。
+
+* 特例：均匀球散射，半径为a :ATTACH:
+:PROPERTIES:
+:ID:       e715e580-fe3e-4646-9ca2-dfeae124f19c
+:END:
+此时 \(S(k_s)\) 中的介电常数可以提出，使得散射振幅函数可以写为
+\[\bm{f}(\hat{o},\hat{i}) = \frac{k^2}{4\pi}(-\hat{o}\times(\hat{o}\times \hat{e}_i))(\varepsilon_r-1)VF(\theta)\] 
+其中 \(F(\theta) = \frac{1}{V}\int_{V'} \exp(-j \bm{k_s}\cdot \bm{r}')dV'\) 
+
+做一个球面坐标系的三重积分，可以得到 \(F(\theta) = 3j_1(k_sa) / (k_sa)\) ，使用了贝赛尔函数
+画个图出来就是这样的：
+
+[[attachment:_20210702_125542screenshot.png]]
+
+
+* 稀薄分布随机粒子的波传播与散射中的波恩近似
+将波场使用级数表示
+\[u(\bm{r}, t) = \sum_{i} u_i(\bm{r},t)\]
+可用于[[file:20210318153219-稀薄分布随机粒子的波传播与散射.org][稀薄分布随机粒子的波传播与散射]]。
+
+* 参考

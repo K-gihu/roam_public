@@ -2,7 +2,136 @@
 #+roam_tags: 随机介质中的波传播与散射
 #+roam_alias: 
 
-* 主要内容
+* 弱起伏理论的适用范围
+一般对数振幅的方差大约小于 \(0.2-0.5\) 时弱起伏理论才适用。
+对于柯尔莫戈洛夫谱 \(\Phi_n(\kappa) = 0.033C_n^2\kappa^{-\frac{1}{3}}\) ，这个条件是
+\[\sigma_\chi^2 = 0.307C_n^2k^{\frac{7}{6}} L^{116}\] 
+
+微波在地球大气中的传播任何传播距离基本都可以用弱起伏理论，但如果距离过长，在电离层传播或太阳日冕传播的时候，就不适用弱起伏理论。
+对于光波传播，弱起伏理论的适用范围不过几公里。
+这时就要用强起伏理论。
+
+* 光在随机介质传播的理论解析方法 :ATTACH:
+:PROPERTIES:
+:ID:       e052fab2-c4fb-4e49-b123-109c26d4d2d7
+:END:
+- 微扰近似 :: 对辐射场和介质的介电常数使用某种微扰近似，解波动方程取得辐射场分布。
+  只适用弱起伏传播问题。
+  例如几何光学法、平缓微扰法。
+- 辐射场的统计矩方程 :: 根据介电常数统计特性做出某种假定，建立辐射场的统计矩方程，求统计矩。
+  假定只存在前向散射，只适用于大尺度不均匀随机介质。
+  例如markov马尔可夫近似。
+- 考虑多次散射的严格的波传播方程 :: 考虑多次散射，建立严格波传播方程，得到辐射场的形式解。
+  多次散射相当于无穷多不同级次的微扰作用产生的总体效果，量子力学中可以使用费曼图。
+  量子理论的路径积分法可用来直接求解抛物型方程得到波场分布。
+  抛物型方程和量子力学的薛定谔方程的数学形式是一样的，可以使用量子概率诠释理解湍流中的波场。
+
+#+name: 湍流大气光传播的主要处理方法对比
+#+attr_html: :width 690
+[[attachment:_20210706_220337screenshot.png]]
+
+* 随机介质抛物型方程
+考虑随机介质中传播的一列波 \(u(\bm{r})\) ，相对介电常数为 \(\varepsilon_r(\bm{r}) = \langle\varepsilon_r\rangle[1+\varepsilon_1(\bm{r})]\) （表示平均值加扰动）
+则平均波数是 \(k^2 = \omega^2\mu_0\varepsilon_0\langle\varepsilon_r\rangle=k_0^2\langle\varepsilon_r\rangle\) 
+
+由于湍流各向同性，使用标量波动方程：
+\[[\nabla^2+k^2(1+\varepsilon_1(\bm{r}))]u(\bm{r}) = 0\]
+
+假设波沿x方向传播，相位呈ikx变化：
+\[u(\bm{r}) = U(\bm{r})\exp(jkx)\] 
+这里的 \(U(\bm{r})\) 是 \(x\) 的缓变函数，可以理解为只在随机介质的尺度 \(l\) 的距离上发生变化。
+
+将此代入标量波动方程可得
+\[2jk \frac{\partial U(\bm{r})}{\partial x} +\nabla^2U(\bm{r})+k^2\varepsilon_1(\bm{r})U(\bm{r}) = 0\] 
+这里的计算需要注意使用函数乘积的二阶梯度公式：
+\[\nabla^2(fg) = g\nabla^2f+2\nabla f\cdot\nabla g+f\nabla^2g\] 
+
+现在考虑 \(U(\bm{r})\) ，由于它只在 \(l\) 的距离上变化，那么只要 \(l\gg \lambda\) 则
+\[2k|\frac{\partial U}{\partial x} | > |\frac{\partial ^2U}{\partial x^2} |\] 
+因此可以使用横向算子 \(\nabla_T=\partial^2 / \partial y^2 + \partial^2 / \partial z^2\) 代替拉普拉斯算子，从而得到*抛物方程*
+#+name: 抛物方程
+\[2jk \frac{\partial U(\bm{r})}{\partial x} +\nabla_T^2U(\bm{r})+k^2\varepsilon_1(\bm{r})U(\bm{r}) = 0\] 
+
+方程的解的形式是
+\[U(x,\bm{\rho}) = \frac{k}{2\pi jx}\int d\bm{\rho} U_0(\bm{\rho})\exp\left[\frac{jk}{2x}(\bm{\rho}-\bm{\rho}')^2+\psi(\bm{\rho},\bm{\rho}')\right]\] 
+
+这个式子和[[file:20210517204601-大气湍流影响后光场的部分相干性描述.org::huygens-fresnel][菲涅尔近似下的标量波动方程]]佷相像，区别在于将 \(\exp(jkx)\) 项变成了 \(\exp(\psi(\bm{\rho},\bm{\rho}'))\)，因而将传播引起的附加复相位变成随机介质起伏引起的附加复相位。
+而 \(\exp[\frac{jk}{2x}(\bm{\rho}-\bm{\rho}')^2]\) 是球面波从 \((0,\bm{\rho}')\) 传播到 \((x,\bm{\rho})\) 时介质无随机起伏时造成的附加相位。
+该数学形式又称广义惠更斯-菲涅尔原理。
+
+* 折射指数起伏的假定（20-2）
+假定
+- 上述抛物型方程成立
+- 介电常数起伏是高斯随机场，其特征量可以使用相关函数表达
+  #+name: correlation
+  \(B_\varepsilon(\bm{r}-\bm{r}') = \langle\varepsilon_1(\bm{r})\varepsilon_1(\bm{r}')\rangle\) 
+- 介电常数起伏在传播方向（x方向）上具有 \(\delta\) 相关，即
+  #+name: delta-correlation
+  \[\langle\varepsilon_1(x,\bm{\rho})\varepsilon_1(x',\bm{\rho}')\rangle = \delta(x-x')A(\bm{\rho}-\bm{\rho}')\]
+
+这里的第三个条件也叫[[file:20210707121700-马尔可夫近似.org][马尔可夫]]（Markov）近似。
+意味着波的起伏特征中：
+- 横向相关性直接相关于介电常数的横向相关性
+- 纵向相关性无关于介电常数的纵向相关性（也无关于横向相关性）
+
+为得到表示横向相关性的函数 \(A(\bm{\rho}-\bm{\rho}')\) 和折射指数起伏谱 \(\Phi_n(\bm{\kappa})\) 的关系，我们将相关函数写成谱密度的傅里叶变换
+\[B_\varepsilon(\bm{r}-\bm{r}') = \int_V \Phi_\varepsilon(\bm{K})\exp[j \bm{k}\cdot(\bm{r}-\bm{r}')]d\bm{K}\]
+其中 \(\Phi_\varepsilon(\bm{K}) = 4\Phi_n(\bm{K}), d\bm{K} = dK_1 dK_2 dK_3 = dK_1 d\bm{\kappa}\) 
+
+使用[[correlation]]式及其展开式，对上式进行傅里叶逆变换可以得到
+\[\Phi_\varepsilon(\bm{\kappa}) = \frac{1}{2\pi^3}\int_S A(\bm{\rho}-\bm{\rho}')\exp[-j\bm{\kappa}\cdot(\bm{\rho}-\bm{\rho}')]d(\bm{\rho}-\bm{\rho}')\] 
+再取其逆变换可得
+\[A(\bm{\rho}-\bm{\rho}') = 2\pi\int \Phi_\varepsilon(\bm{\kappa})\exp[j\bm{\kappa}\cdot(\bm{\rho}-\bm{\rho}')]d\bm{\kappa}\]
+如果湍流各向同性，那么上式可以变成
+\begin{align*}
+A(\rho)
+&= (2\pi)^2\int_0^\infty \Phi_\varepsilon(\kappa)J_0(\kappa|\bm{\rho}-\bm{\rho}'|)\kappa d\kappa \\
+&= (4\pi)^2\int_0^\infty \Phi_n(\kappa)J_0(\kappa|\bm{\rho}-\bm{\rho}'|)\kappa d\kappa \\
+\end{align*} 
+
+折射率起伏造成的波场起伏由两个参量表述：\(\Phi,\Lambda\)
+- 前者是波场起伏强度的量度，表示在几何光学近似下接收点处波函数的均方差相位起伏。
+- 后者是绕射参数，是折射率起伏相关特征尺度 \(l\) 与第一菲涅尔半径 \(R_F\) 比的平方。
+  该值越小，绕射越小，越可用几何光学近似。
+
+* 平均场方程的导出
+对[[抛物方程]]进行平均化可以得到<<平均化的抛物方程>>
+\[2jk \frac{\partial \langle U(\bm{r})\rangle}{\partial x} + \nabla_T^2\langle U(\bm{r})\rangle + k^2\langle\varepsilon_1(\bm{r})U(\bm{r})\rangle = 0\] 
+如果我们将最后一项表示成 \(\langle\varepsilon_1(\bm{r})U(\bm{r})\rangle = g(\bm{r})\langle U(\bm{r})\rangle\) ，那么该方程就只是对 \(\langle U(\bm{r})\rangle\) 的方程了。
+现在问题在于如何表示 \(g(\bm{r})\) 。
+
+由于 \(U(\bm{r})\) 是 \(\varepsilon_1(\bm{r})\) 的泛函，根据Navikov-Furutsu公式：
+\[\langle \varepsilon_1(\bm{r})U(\bm{r})\rangle = \int dV'\langle \varepsilon_1(\bm{r})\varepsilon_1(\bm{r}')\rangle\left\langle \frac{\delta U(\bm{r})}{\delta \varepsilon_1(\bm{r}')}\right\rangle\] 
+这里使用了泛函的导数（变分导数）。
+
+使用[[delta-correlation]]式可以将介电常数化开
+#+name: eqn:1
+\[\langle \varepsilon_1(\bm{r})U(\bm{r})\rangle = \int dV'\langle \varepsilon_1(\bm{r})\varepsilon_1(\bm{r}')\rangle\left\langle \frac{\delta U(\bm{r})}{\delta \varepsilon_1(\bm{r}')}\right\rangle\] 
+
+我们可以证明两个式子成立（暂且不证明）：
+\[\frac{\delta U(x,\bm{\rho})}{\delta \varepsilon_1(x',\bm{\rho}')} = \frac{jk}{4}\delta(\bm{\rho}-\bm{\rho}')U(x,\bm{\rho}')\] 
+\[\frac{\delta U^*(x,\bm{\rho})}{\delta \varepsilon_1(x',\bm{\rho}')} = \frac{jk}{4}\delta(\bm{\rho}-\bm{\rho}')U^*(x,\bm{\rho}')\] 
+将第一个式子代入[[eqn:1]]，可以得到
+\[\langle \varepsilon_1(\bm{r})U(\bm{r})\rangle = \frac{jk}{4}A(0)\langle U(x,\bm{\rho})\rangle\] 
+
+因此[[平均化的抛物方程][平均化的抛物方程]]可以化为<<平均场方程>>
+\[\left[2jk \frac{\partial }{\partial x} + \nabla_T^2 + \frac{jk^3}{4}A(0)\right]\langle U(x,\bm{\rho})\rangle = 0\] 
+
+* 解平均场方程
+边界条件：\(x=0\) 处有 \(\langle U(0,\bm{\rho})\rangle = U_0(\bm{\rho})\) ，该条件和平均场方程结合就可以完全确定相干场（平均场）。
+
+将相干场设为 \[\langle U(x,\bm{\rho})\rangle = f(x,\bm{\rho})\exp(-\alpha_0 x)\] 并代入平均场方程的话， \(\alpha_0\) 就可以表示为
+\[\alpha_0 = k^2A(0) / 8 = 2\pi^2k^2\int_0^{\infty} \Phi_n(\kappa)\kappa d\kappa\]
+而 \(f(x,\bm{\rho})\) 满足
+\[[2jk \frac{\partial }{\partial x} + \nabla_t^2]f(x,\bm{\rho}) = 0\] 
+这就是自由空间中的抛物型方程（[[file:20200929222543-傍轴近似.org][傍轴近似方程]]），\(f\) 就是没有随机性的自由空间的场。
+如果将 \(f(x,\bm{\rho})\) 写为 \(f(x,\bm{\rho})=U_0(x,\bm{\rho})\) ，最终解，也就是<<相干场>>为
+\[\langle U(x,\bm{\rho})\rangle = U_0(x,\bm{\rho})\exp(-\alpha_0x)\]
+（这里书上应该写错了）
+而<<相干强度>>为
+\[|\langle U(x,\bm{\rho})\rangle|^2 = |U_0(x,\bm{\rho})|^2\exp(-2\alpha_0x)\]
+
+这里 \(2\alpha_0 = 4\pi^2k^2\int_0^{\infty}\Phi_n(\kappa)\kappa d\kappa = \int \sigma(\hat{o},\hat{i})d\Omega\) ，它恰好等于单位体积湍流的总散射截面。
 
 
 * 参考

@@ -1,5 +1,4 @@
 #+title: 直接探测的量子极限推导
-#+author: 郭子辰 20051212120
 #+setupfile: src/jake-latex-standard.org
 #+OPTIONS: toc:nil
 #+roam_tags: 

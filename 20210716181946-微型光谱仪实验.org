@@ -1,0 +1,7 @@
+#+title: 微型光谱仪实验
+#+roam_tags: 
+#+roam_alias: 
+
+C方玻片的厚度是0.216cm
+
+* 参考

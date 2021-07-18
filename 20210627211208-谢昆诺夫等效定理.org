@@ -1,0 +1,20 @@
+#+title: 谢昆诺夫等效定理
+#+roam_tags: 
+#+roam_alias: 
+
+* 谢昆诺夫（Schelkunoff）等效定理 :ATTACH:
+:PROPERTIES:
+:ID:       e9f527fc-f47a-4b0d-b7c3-a427e025f32b
+:END:
+
+[[attachment:_20210627_211344screenshot.png]]
+如图a，闭合表面S将各向同性*均匀介质空间*分为2部分，外部无源、内部有源。
+
+谢昆诺夫等效定理指出：
+对于外部空间的场来说，边界表面 \(S\) 上引入电流源及磁流源可以等效替代内部源。
+同时如果原来的源所产生的场是 \(\vec{E}_s,\vec{H}_s\) ，那么表面等电磁流元分别为 \(\hat{n}\times \vec{H}_s,\hat{n}\times \vec{E}_s\) 。
+
+这个定理也可以将*外部*的源等效替换成边界表面的电流和磁流。
+
+* 参考
+[[file:~/org_notebooks/roam/public/20210417224217-菲涅尔_基尔霍夫标量衍射公式的推导.org::*前提：矢量恒等式][前提：矢量恒等式]]

@@ -1,5 +1,6 @@
 #+title: 菲涅尔-基尔霍夫标量衍射公式的推导
-#+startup: num
+# #+startup: num
+#+STARTUP: nolatexpreview
 #+roam_tags: 
 #+roam_alias: 
 

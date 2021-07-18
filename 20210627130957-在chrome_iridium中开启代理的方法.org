@@ -1,0 +1,11 @@
+#+title: 在chrome，iridium中开启代理的方法
+#+roam_tags: 
+#+roam_alias: 
+
+修改 desktop 文件，将 =/usr/lib/applications/iridium-browser.desktop= 中的 Exec 部分改一下，改成
+#+begin_src sh
+Exec=iridium-browser --proxy-server="http://localhost:8889" %u
+#+end_src
+
+就可以了。
+

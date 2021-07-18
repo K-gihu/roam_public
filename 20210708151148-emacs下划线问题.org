@@ -1,0 +1,6 @@
+#+title: emacs下划线问题
+#+roam_tags: 
+#+roam_alias: 
+
+* 参考
+https://github.com/hlissner/doom-emacs/issues/5169

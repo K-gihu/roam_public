@@ -1,0 +1,7 @@
+#+title: 电磁学和光学中对复指数时间因子的偏好
+#+roam_tags: 
+#+roam_alias: 
+
+电磁学中喜欢使用正时间因子 \(\exp(j\omega t)\) ，光学中喜欢使用负时间因子 \(\exp(-j\omega t)\) 
+* 参考
+[[file:~/org_notebooks/roam/public/20210324143657-现代光学理论_信息光学_韩香娥.org::*参考][参考]]

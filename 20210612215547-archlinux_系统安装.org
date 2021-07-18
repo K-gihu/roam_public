@@ -1,4 +1,4 @@
-#+title: archlinux system insallation
+#+title: archlinux 系统安装
 #+roam_tags: 
 #+roam_alias: 
 
@@ -35,6 +35,10 @@ export QT_IM_MODULE=fcitx
 
 其实可以直接安装 fcitx5-im 组，其中包含 fcitx5,fcitx5-configtool,fcitx5-qt,fcitx5-gtk
 ** 磁盘分区软件 gparted
+** [[file:20210625133807-修复小米ruby笔记本睡眠后无声音问题.org][修复小米Ruby笔记本睡眠后无声音问题]] 
+** [[file:20210322134229-如何使用_interception_tool_调换capslock_esc_ctrl.org][如何使用 interception tool 调换capslock esc ctrl]] 
+** [[file:20201231110807-archlinux中安装和配置latex.org][archlinux中安装和配置latex]]
+** [[file:20210412202941-获取并展示系统信息的方法_命令_软件_声音信息.org][获取并展示系统信息的方法，命令，软件，声音信息]]
 
 * 参考
 https://fcitx-im.org/wiki/Configure_(Other)/zh-hans

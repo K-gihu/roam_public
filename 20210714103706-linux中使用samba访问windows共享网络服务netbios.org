@@ -1,0 +1,18 @@
+#+title: linux中使用samba访问windows共享网络服务NetBIOS
+#+roam_tags: 
+#+roam_alias: 
+
+使用 =smbclient -L server= 列出某个server 对应的 service 。
+要点是设置本机的IP与windows服务器在同一网段，就可以使用smbclient访问了。
+#+begin_src shell
+smbclient //server/service
+#+end_src
+
+使用cifs挂载
+#+begin_src shell
+mount -t cifs //server/share /mnt/server --verbose -o user=UserName,dom=DOMAIN
+#+end_src
+
+* 参考
+https://www.redhat.com/sysadmin/samba-windows-linux
+https://unix.stackexchange.com/questions/34933/can-i-connect-to-windows-machine-from-linux-shell

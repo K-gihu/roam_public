@@ -1,0 +1,87 @@
+#+title: 平面波在弱起伏随机介质中的视线传播
+#+roam_tags: 
+#+roam_alias: 
+
+* 起伏介质的麦克斯韦方程
+一般不可能对湍流介质的不同时刻、空间点的变化做出预报，即使知道一个点的变化，也不可能知道所有点的变化。介质需要使用统计描述。
+
+我们使用空间和时间的随机函数描述湍流介质的介电常数，并假定它与时间无关，那么
+\[\varepsilon_r = \varepsilon_r(\bm{r},t) = \varepsilon_r(\bm{r})\]
+时间无关的假定意味着频率单一，不考虑频谱和频移。
+
+我们写出无磁性、无源麦克斯韦方程的旋度式，使用负时间因子 \(\exp(-j\omega t)\) 
+\begin{gather*}
+\nabla\times \bm{E}(\bm{r}) = j\omega\mu_0 \bm{H}(\bm{r}) \\
+\nabla\times \bm{H}(\bm{r}) = -j\omega\varepsilon_0\varepsilon_r(\bm{r})\bm{E}(\bm{r})
+\end{gather*} 
+联立，并使用电场无源条件 \(\nabla\cdot(\varepsilon_r(\bm{r})\bm{E}(\bm{r}))=0\) 得到
+\[\nabla^2 \bm{E}(\bm{r})+\omega^2\mu_0\varepsilon_0\varepsilon_r(\bm{r})\bm{E}(\bm{r})+\nabla[\frac{\nabla\varepsilon_r(\bm{r})}{\varepsilon_r(\bm{r})}\cdot \bm{E}(\bm{r})] = 0\] 
+使用折射指数代换 \(\varepsilon_r = n^2\) ，以及波数代换 \(k^2=\omega^2\mu_0\varepsilon_0\) 可以得到
+\[\nabla^2 \bm{E}(\bm{r}) + k^2n^2(\bm{r})\bm{E}(\bm{r}) + 2\nabla[\nabla\ln n(\bm{r}) \cdot \bm{E}(\bm{r})] = 0\] 
+
+* 忽略退偏振（去极化）效应
+假设 \(\bm{E} = E_y \hat{y}\) 沿着 \(\hat{x}\) 方向传播，折射率为 \(n^2\approx 1+2n_1\) （\(n_1\) 是起伏项），那么
+- 上面方程的第二项 \(k^2n^2(\bm{r})\bm{E}(\bm{r})\sim k^2E_y+k^2 2n_1E_y \sim (2n_1 /\lambda^2)E_y\)
+- 第三项 \(2\nabla[\nabla\ln n(\bm{r}) \cdot \bm{E}(\bm{r})]\sim (2 \partial^2n_1 /\partial y^2)E_y \sim (2n_1 /l^2)E_y\) 
+因此当 \(\lambda \ll l\) （\(l\) 是折射率起伏的相关距离）的时候，第三项可以忽略，从而忽略退偏振效应。
+
+如果不忽略（折射率非均匀起伏），那么会产生交叉极化效应。
+
+如果忽略了退偏振效应，那么方程化为（这里怎么不是 \(1+2n_1\) ？？）
+\[(\nabla^2 + k^2n^2(\bm{r}))\bm{E}(\bm{r})=[\nabla^2+k^2(1+n_1)^2]\bm{E}(\bm{r})=0\] 
+由于该方程对于电场的三个分量都是一样的，是一种标量方程，所以可以写成标量方程的形式：
+\[(\nabla^2 + k^2n^2(\bm{r}))U(\bm{r})=[\nabla^2+k^2(1+n_1)^2]U(\bm{r})=0\] 
+对于弱起伏情况，上式可以使用波恩近似或李托夫近似求解。
+
+* 波恩近似
+将 \([\nabla^2+k^2(1+n_1)^2]U(\bm{r})=0\) 里面的 \((1+n_1)^2\) 展开得到
+\[(\nabla^2+k^2)U(\bm{r}) = -k^2\delta nU(\bm{r}), \delta n = 2n_1 + n_1^2\] 
+
+令 \(U(\bm{r}) = U_0(\bm{r})+U_1(\bm{r})+\dots\) 
+我们设未扰动解 \(U_0\) 和扰动解 \(U_1\) 分别满足
+\begin{gather*}
+(\nabla^2+k^2)U_0(\bm{r})=0 \\
+(\nabla^2+k^2)U_1(\bm{r}) + k^2\delta n[U_0(\bm{r})+U_1(\bm{r})]=0 \\
+\end{gather*} 
+加起来依然满足上面的方程。
+
+扰动项近似满足 \(|U_1 / U_0| \leq n_1, \delta n \approx 2n_1\) ，所以忽略 \(\delta n U_1\) ：
+那么上面第二个方程变成
+\[(\nabla^2+k^2)U_1(\bm{r}) = -2k^2n_1U_0(\bm{r})\]
+
+使用标量格林函数法解方程得
+\[U_1(\bm{r}) = 2k^2\int_{V'} g(\bm{r}-\bm{r}')n_1(\bm{r}')U_0(\bm{r}')dV'\] 
+其中的 \(g(\bm{r}-\bm{r}') = \frac{\exp(jkR)}{4\pi R}, R = |\bm{r}-\bm{r}'|\) 
+
+通过这个解可以看出，由于 \(\langle n_1(\bm{r})\rangle=0\) 所以 \(\langle U_1(\bm{r})\rangle=0\) 。扰动场的平均值是0.
+
+以此类推，\(m\) 阶波恩近似解为
+#+name: morderborn
+\[U_m(\bm{r}) = 2k^2\int_{V'} \frac{\exp(jkR)}{4\pi R}n_1(\bm{r})U_{m-1}(\bm{r}')dV'\] 
+
+* 傍轴近似下的波恩近似 :ATTACH:
+:PROPERTIES:
+:ID:       4e2089ac-726a-4d5b-a6cd-504b0cd1eb19
+:END:
+
+[[attachment:_20210706_161715screenshot.png]]
+考虑一列平面波从 \(x=0\) 处入射到湍流介质，观测点位于 \(P(L,y,z)\) ，忽略后向散射和去极化效应.
+
+由于忽略后向散射，所以[[morderborn]]的积分范围就是 \(x\in(0,L)\)。
+
+如果 \(\lambda<l_0\) （\(l_0\) 是湍流中的不均匀体尺度），那么不均匀体的散射就局限于量级为 \(\lambda /l_0\) 的前向散射角范围内，对 \(U_1\) 的主要贡献来自这个前向散射角锥内。这时可以进行抛物近似（傍轴近似）：
+\begin{align*}
+\frac{\exp(jkR)}{4\pi R}
+&\approx \frac{1}{4\pi(x-x')}\exp\left[jk\left((x-x')+\frac{(y-y')^2+(z-z')^2}{2(x-x')}\right)\right] \\
+&= \frac{1}{4\pi(x-x')}\exp\left[jk\left((x-x')+\frac{|\bm{\rho}-\bm{\rho}'|^2}{2(x-x')}\right)\right] 
+\end{align*}  
+代入[[morderborn]]，相应的波恩一阶解就是
+\[U_1(L,\bm{\rho}) = \frac{k^2}{2\pi}\int_0^L dx\int_{-\infty}^{\infty} \exp\left[jk(L-x')+\frac{jk|\bm{\rho}-\bm{\rho}'|^2}{2(L-x')}\right] \frac{n_1(x',\bm{\rho}')}{L-x'} U_0(x',\bm{\rho}')d\bm{\rho}'\] 
+
+更高阶的解形式类似。
+\[U_m(L,\bm{\rho}) = \frac{k^2}{2\pi}\int_0^L dx\int_{-\infty}^{\infty} \exp\left[jk(L-x')+\frac{jk|\bm{\rho}-\bm{\rho}'|^2}{2(L-x')}\right] \frac{n_1(x',\bm{\rho}')}{L-x'} U_{m-1}(x',\bm{\rho}')d\bm{\rho}'\] 
+
+* 李托夫近似
+令 \(U(\bm{r}) = \exp(\psi(\bm{r}))\) ，\(U_0(\bm{r})=\exp(\psi_0(\bm{r}))\) 
+
+* 参考

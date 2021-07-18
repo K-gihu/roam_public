@@ -1,0 +1,7 @@
+#+title: org-roam迁移到v2的方法
+#+roam_tags: 
+#+roam_alias: 
+
+https://hsingko.github.io/post/2021/05/04/migrate-to-org-roam-v2-in-doom-emacs/
+
+* 参考

@@ -1,0 +1,15 @@
+#+title: matplotlib可以做什么
+#+roam_tags: 
+#+roam_alias: 
+
+* 3d图 :ATTACH:
+:PROPERTIES:
+:ID:       d4c492a3-e187-486e-95b0-76918a97b43e
+:END:
+[[https://matplotlib.org/stable/tutorials/toolkits/mplot3d.html#wireframe-plots][线框图]]
+[[attachment:_20210701_170419screenshot.png]]
+#+begin_src python
+ax.plot_wireframe(X,Y,Z)
+#+end_src
+
+* 参考

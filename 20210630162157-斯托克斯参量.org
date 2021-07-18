@@ -1,0 +1,82 @@
+#+title: 斯托克斯参量
+#+roam_tags: 随机介质中的波传播与散射
+#+roam_alias: 
+
+以下的分析只适用于平面波。
+
+* 右旋和左旋
+右旋和左旋指的是矢量末端的旋转轨迹（极化方向）和波传播方向满足的是右手关系还是左手关系。
+
+* 极化椭圆 :ATTACH:
+:PROPERTIES:
+:ID:       8f7faf35-2cb3-4482-b907-cc885b7dfc28
+:END:
+我们只考虑横波。
+沿z轴传播的平面电磁波的一般形式是
+\[\bm{E} = \bm{E}_0\exp [j(kz-\omega t)]
+= [\hat{x}a_1\exp (-i\delta_1)+\hat{y}a_2\exp (-i\delta_2)]\exp [j(kz-\omega t)] \] 
+该矢量在 \(x,y\) 两个方向上的分量大小是
+\[E_x = a_1\cos (kz-\omega t+\delta_1); E_y = a_2\cos (kz-\omega t+\delta_2)\] 
+
+它们满足椭圆方程： \[\left(\frac{E_x}{a_1}\right)^2 + \left(\frac{E_y}{a_2}\right)^2 - 2 \left(\frac{E_xE_y}{a_1a_2}\right)\cos \delta = \sin ^2 \delta \] 
+[[attachment:_20210630_200245screenshot.png]]
+椭圆如图所示。
+椭圆长轴和x轴正方向的夹角 \(\psi \) 是旋转角。它满足 \[\tan2\psi = \frac{2a_1a_2}{a_1^2 - a_2^2}\cos \delta\]。 \(\chi\) 是椭圆度角，它满足 \(\tan\chi = b / a\) 
+这个椭圆就是电磁波振动时矢量末端划过的轨迹，因而表示偏振态。
+
+极化椭圆在任何直角坐标系中的二直角分量的平方和不变。
+
+* 斯托克斯参量
+下面进行几个重要定义
+- 平行极化和垂直极化电场分量 :: \(E_\| = a_1\cos j\delta_1 , E_\perp = a_2\cos j\delta_2 \) 
+- \(+ 45^\circ\) 和 \(-45^\circ\) 线极化波电场 :: \(E_+ = (E_\| + E_\perp) / \sqrt{2},E_- = (E_\| - E_\perp) / \sqrt{2} \) 
+- 右旋圆极化和左旋圆极化电场 :: \(E_R = (E_\| + jE_\perp) / \sqrt{2}, E_L = (E_\| - jE_\perp) / \sqrt{2}\) 
+
+然后（下面的强度都指的是电场强度的模方）
+- 取平行极化和垂直极化电场分量对应的强度和为 \(I\) 
+- 取平行极化和垂直极化电场分量的强度差为 \(Q\) 
+- 取\(+ 45^\circ\) 和 \(-45^\circ\) 线极化波电场分量的强度差为 \(U\) 
+- 取右旋圆极化和左旋圆极化电场的强度差为 \(V\)
+我们就得到了斯托克斯参量。
+
+\[I,Q,U,V\]
+- \(I = |E_\||^2 + |E_\perp|^2 = a_1^2 +a_2^2 \) 是水平线极化和垂直线极化的强度和
+- \(Q = |E_\||^2 - |E_\perp|^2 = a_1^2 - a_2^2 \) 是水平线极化和垂直线极化的强度差
+- \(U = 2\mathrm{Re}(E_\| E_\perp^*) = 2a_1a_2\cos \delta\) 是 \(+45^\circ\) 线极化和 \(-45^\circ\) 线极化的强度差
+- \(V = 2\mathrm{Im}(E_\| E_\perp^*) = 2a_1a_2\sin \delta\) 是右旋圆极化和左旋圆极化的强度差
+
+* 庞加莱球 :ATTACH:
+:PROPERTIES:
+:ID:       5c4d0d23-0e70-4635-941e-03ab1c069ba2
+:END:
+\(I,2\chi ,2\psi \) 可以作为球面坐标系的三个坐标（其中 \(2\chi \) 不是天顶角了，而是其余角），而构成的球面坐标系中，\(Q,U,V\) 可以构成一个直角坐标系。
+满足以下关系
+\begin{align*}
+Q &= I\cos2\chi\cos2\psi \\
+U &= I\cos2\chi\sin2\psi \\
+V &= I\sin2\chi
+\end{align*} 
+\[\tan2\psi = \frac{U}{Q}; \tan2\chi = \frac{V}{\sqrt{Q^2 +U^2 }\] 
+构成的球称为极化球，或庞加莱球
+[[attachment:_20210701_102353screenshot.png]]
+该球有以下特征
+- \(\delta =0,\pi \implies \sin 2\chi = 0\) 赤道线表示线极化
+- \(\tan\alpha = 1, \sin 2\chi = \pm 1, \delta = \pm \pi / 2\) 左旋圆极化（北极点），右旋圆极化（南极点）
+- \(\tan 2\chi \geq 0, \tan 2\chi \leq 0\) 左旋椭圆极化和右旋椭圆极化
+
+* 部分相干、部分极化波
+实际电磁波是很多平面波的相干或非相干叠加，各个子波相位差很难保持不变，这就是部分相干光，因而极化特征也是部分极化。
+类似与部分相干的处理方式，我们取斯托克斯参量的时间平均：
+\[Q^2 +U^2 +V^2 = I^2 - 4[\langle a_\|^2 \rangle\langle a_\perp^2\rangle - \langle a_\|a_\perp e^{j\delta} \rangle \langle a_\|a_\perp e^{-j\delta} \rangle ]\] 
+因此 \[Q^2 +U^2 +V^2 \leq I^2\] 
+反映在庞加莱球上，就是实际电磁波的极化特征基本在球内。
+
+- 比值 \(p = (Q^2 +U^2 +V^2)^{1 / 2} / I\) 称为极化度。
+    完全极化波的极化度为1，因而就在极化球的球面上。
+    非极化波（自然光）极化度为0，在原点。
+- \((Q^2 +U^2 )^{1 / 2} / I\) 称为线极化度
+    达到 1 时线极化。
+- \(V / I\) 称为圆极化度
+    达到1时圆极化。
+
+* 参考

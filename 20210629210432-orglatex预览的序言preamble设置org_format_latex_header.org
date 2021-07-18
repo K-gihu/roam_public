@@ -1,0 +1,8 @@
+#+title: orglatex预览的序言preamble设置org-format-latex-header
+#+roam_tags: 
+#+roam_alias: 
+
+`org-format-latex-header` 可以用来设置预览的latex片段的序言。
+
+* 参考
+https://orgmode.org/manual/Previewing-LaTeX-fragments.html

@@ -1,0 +1,6 @@
+#+title: linux使用打印机
+#+roam_tags: 
+#+roam_alias: 
+
+
+* 参考

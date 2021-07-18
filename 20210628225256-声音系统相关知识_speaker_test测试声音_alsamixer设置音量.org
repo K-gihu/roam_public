@@ -1,5 +1,5 @@
-#+title: 修复linux alsa声音问题
-#+roam_tags: 
+#+title: 声音系统相关知识；speaker-test测试声音；alsamixer设置音量
+#+roam_tags: alsa linux
 #+roam_alias: 
 
 * 声音系统的层次结构
@@ -13,13 +13,15 @@ alsa是linux内核的一部分，提供驱动
 
 pulseaudio 是多功能的声音服务。
 
-* 维修过程
-首先安装 =alsa-utils= ，alsa的基础工具包，包含 alsamixer、amixer 等。
-alsamixer是有图形界面的，amixer是命令行程序
+* alsa-utils实用测试工具和配置工具
+首先安装 /alsa-utils/ ，alsa的基础工具包，包含 alsamixer、amixer 等。
+alsamixer是有图形界面的，amixer是命令行程序，这两个都能调音量之类的。
 
-以下两个守护进程是随着上面的包安装的，但是只有用户有意识地执行了一些命令之后才会运行。
+以下两个守护进程是随 /alsa-utils/ 安装的，但是只有用户有意识地执行了一些命令之后才会运行。
 - alsa-restore.service 在开机时读取 /var/lib/alsa/asound.state 关机时将更新的值写入。*前提是*事先已经使用了 =alsactl store= 生成该文件。
 - alsa-state.service 以守护模式重启 alsactl 并持续跟踪并保存音量的更改，*前提是*用户有意识地启动了至少一次 alsactl 守护进程。
+
+可以使用 =speaker-test -c 2= 测试声音，输出粉噪声。具体使用方法见 https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture#Unmuting_the_channels
 
 * 参考
 https://wiki.archlinux.org/title/Sound_system

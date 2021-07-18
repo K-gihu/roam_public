@@ -1,0 +1,10 @@
+#+title: 平面波
+#+roam_tags: 
+#+roam_alias: 
+
+平面波的一般形式：
+\[F(\bm{x},t) = G(\bm{x}\cdot \hat{n}, t)\]
+
+* 参考
+[[file:~/org_notebooks/roam/public/20210709174336-麦克斯韦方程组.org::*真空中的平面波][真空中的平面波]]
+https://en.wikipedia.org/wiki/Plane_wave

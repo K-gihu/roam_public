@@ -1,0 +1,232 @@
+#+title: 大气湍流影响后光场的部分相干性描述
+#+roam_tags: 
+#+roam_alias: 
+
+# 这里控制了从那层标题开始会转化为 frame
+#+OPTIONS: H:2 toc:nil num:t
+# 这里使用的 beamerarticle 其实是不添加文档类的，目的是模仿 beameruserguide.pdf 中创建 beamer+article 的工作流程。详见该文档 21.2.2 节。
+#+LATEX_CLASS: beamerarticle
+# #+LATEX_CLASS_OPTIONS: [presentation]
+#+latex_compiler: xelatex
+#+startup: beamer
+#+language: zh
+# #+latex_header: \input{preamble.tex}
+
+
+* title :B_fullframe:
+:PROPERTIES:
+:BEAMER_env: fullframe
+:END:
+\titlepage
+
+* 目录 :B_fullframe:
+:PROPERTIES:
+:BEAMER_env: fullframe
+:END:
+#+begin_export latex
+\frametitle<presentation>{目录}
+#+end_export
+\tableofcontents
+
+* 概括
+** 概括 :B_fullframe:
+:PROPERTIES:
+:BEAMER_env: fullframe
+:END:
+#+begin_export latex
+\frametitle<presentation>{概括}
+#+end_export
+- 相干性、大气湍流是什么？如何描述
+- 大气湍流何时影响光场相干性？
+- 光场的传播规律是什么？在自由空间和湍流中的区别？
+- 互相干函数传播规律如何联系光场的传播规律？
+   
+#+CAPTION: 符号对照表
+| 符号                        | 含义                                 |
+|-----------------------------+--------------------------------------|
+| \(\vec{\rho} \)                | 出射面坐标                           |
+| \(\vec{r} \)                | 入射面坐标                           |
+| \(z\)                       | 两平面距离                           |
+| \(\psi (\vec{r} ,\vec{\rho} ,z)\) | 湍流介质对球面波的 Rytov 复相位扰动  |
+| \(U_0\)                     | 入射面上的光场                       |
+| \(U\)                       | 出射面上的光场                       |
+| \(jkz\)                     | 自由空间介质对球面波的纵向复相位扰动 |
+
+** 讲义 :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+研究这个问题，首先要明白相干性、大气湍流分别是什么，并知道用什么参数描述它们。于是有第前两节。
+
+大气湍流何时影响光场的相干性？是光场在湍流中传播的时候。
+光场传播时具有一定的规律，我们称为传播规律，它可以让我们通过传播的距离和初始光场（或称为入射光场）得到结果光场（或称为出射光场）。
+在自由空间中和湍流中，传播规律自然是不同的。于是有第三、第五节。
+
+通过光场的传播规律，可以导出互相干函数的传播规律。于是有第四、六节。
+
+* 光场的部分相干性的主要参数
+复相干函数、复相干度都可以表示光场的相干性。
+** 忽略时间差条件下的互相干函数
+互相干函数的一般的定义\cite{suxianyu}
+\[\Gamma(P_1,P_2; \tau) = \langle U(P_1,t+\tau ) U^*(P_2,t) \rangle \] 
+
+如果考察的时间差足够小，\(\tau = \frac{r_2-r_1}{c}\ll \tau_c\) ，就可以
+- 仅考虑 *空间* 相干性，忽略时间差
+如果
+- 仅考虑许多 *平行平面* 上点的相干性。
+那么就可以得到\cite{wangfei}：
+\[\Gamma(\vec{\rho}_1, \vec{\rho}_2, z)=\langle U(\vec{\rho}_1, z)U^*(\vec{\rho}_2, z) \rangle\] 
+
+** 讲义 :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+一般定义可以描述空间中任意两个点的相干性，后者只能描述某个平面（z 平面）上任意两个点的相干性。
+
+后者去掉了两个波传播的时间差，也就是认为在研究范围内，时间差引起复相干函数的扰动可以忽略。
+反映在数学上应该是 \(\frac{r_2-r_1}{c}\ll \tau_c\) 的条件，即两个波传播的时间差远小于相干时间。
+
+** 复相干度
+- 归一化互相干函数就是复相干度
+- 使用观察点处两个波的强度进行归一化
+\[\gamma(\rho_1,\rho_2, z) = \frac{\Gamma(\rho_1,\rho_2, z)}{[\Gamma (\rho_1,\rho_1, z)\Gamma (\rho_2,\rho_2, z)]^{\frac{1}{2}} }\] 
+
+* 大气湍流的主要参数
+** 大气湍流是什么
+大气湍流是大气的温度、压强、密度等参量的随机变化，最终引起折射率的随机分布。
+
+大气湍流中的光场可以使用 Rytov 微扰法描述。
+** Rytov 复相位扰动
+使用 Rytov 微扰法的时候，认为电场分量受到一个复相位的扰动,这个复相位也可以写成级数形式\cite{wangfei}。
+\[U = U_0\exp (\psi)\]
+其中的 \(\psi = \psi_0 + \psi_1 + \dots \) 
+# ** 折射率结构常数
+# ** 光束的参数
+# *** 平均光斑宽度
+# *** 发散角
+# *** 光强闪烁
+* 光传播的平行平面模型
+** 光传播的平行平面模型 :B_fullframe:
+:PROPERTIES:
+:BEAMER_env: fullframe
+:END:
+#+caption: 平行平面模型
+#+attr_latex: :width 0.5\textwidth
+[[file:freespace_cross_coherence_propagation.png]]
+#+begin_export latex
+\frametitle<presentation>{光传播的平行平面模型}
+#+end_export
+常用的光传播模型是两个具有一定间距的平行平面构成的，一个称为入射平面，一个称为出射平面，光就从入射平面方向传播到出射平面方向。
+- 入射平面、出射平面 :: 光传播时经过的两个平行平面，先经过的是入射平面，后经过的是出射平面。
+- 入射光场、出射光场 :: 光传播时在入射平面、出射平面上形成的光场。
+
+** 讲义 :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+我们可以认为入射平面、出射平面的尺度就是我们感兴趣的光场的尺度。
+
+光从入射平面传播到出射平面，在入射平面上形成了入射光场，在出射平面上形成了出射光场。
+
+我的理解：两个平面之所以平行，是为了限定研究直线传播，如果两平面不平行就可以研究弯曲的传播了。
+这种平面模型便于计算机仿真。
+
+* 自由空间中光场和互相干函数的传播
+** 傍轴近似下的标量衍射公式
+描述了自由空间中当入射平面和出射平面的 *间距* 远大于 *两个平面的尺度* 的时候，出射光场和入射光场的关系。
+#+name: huygens-fresnel
+\[U(\vec{\rho} ,z) = \frac{1}{j\lambda z}\int U_0(\vec{r}, 0)\exp (\frac{jk|\vec{\rho} -\vec{r} |^2 }{2z}) \times \exp (jkz)d^2 \vec{r} \]
+
+** 自由空间中的光场的部分相干性
+:PROPERTIES:
+:BEAMER_act: <beamer>
+:END:
+- 使用准单色条件，仅考虑 *空间* 相干性，忽略时间差
+\begin{footnotesize}
+\begin{align*}
+&J(x_1,y_1,x_2,y_2) = \frac{\exp(j\theta)}{\overline{\lambda}^2 z^2}\int J_0(\alpha_1,\beta_1,\alpha_2,\beta_2)\exp[\frac{j\pi }{\overline{\lambda} z} (\alpha_2^2 + \beta_2^2 - \alpha_1^2 - \beta_1^2)] \\
+&\quad \times \exp [-j \frac{2\pi }{\overline{\lambda} z}(\alpha_2 x_2 + \beta_2 y_2 - \alpha_1x_1 - \beta_1y_1)]d\alpha_1 d\beta_1 d\alpha_2 d\beta_2 \\
+& \theta = \frac{\pi}{\overline{\lambda} z}[x_2^2 +y_2^2 -x_1^2 -y_1^2]
+\end{align*}
+\end{footnotesize}
+
+这里的 \(J(x_1,y_1,x_2,y_2)\) 是出射平面的互强度（空间互相干函数）
+\(J_0(\alpha_1,\beta_1,\alpha_2,\beta_2)\) 是入射平面的互强度（空间互相干函数）
+
+** 讲义 :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+互强度就是准单色近似下，时间差为零时的互相干函数，也可以理解为空间互相干函数。
+
+在文献\cite{suxianyu}中。前面的傍轴近似下的惠更斯-菲涅尔原理，加上准单色近似，可以得到互强度的传播规律。
+
+** 自由空间中的光场的部分相干性
+如 \(Q_1,Q_2\) 重合，那么互相干函数转化为光强度分布：
+\[I(x,y) = \frac{1}{\overline{\lambda} ^2 z^2 }\int J_0(\alpha_1,\beta_1,\alpha_2,\beta_2)\exp \left[-j \frac{2\pi }{\overline{\lambda} z}[x(\alpha_2 - \alpha_1) + y(\beta_2 - \beta_1)]\right] d\alpha_1d\beta_1d\alpha_2d\beta_2\] 
+
+* 大气湍流中的光场和互相干函数的传播
+** 讲义 :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+我们通过在惠更斯-菲涅尔原理中引入一个 Rytov 复相位扰动来表示湍流的作用。
+** 傍轴近似下的广义惠更斯-菲涅尔原理
+这里的 \(\psi \) 是湍流介质引起的 Rytov 复相位扰动。
+\[U(\vec{\rho} ,z) = \frac{1}{j\lambda z}\int U_0(\vec{r}, 0)\exp (\frac{jk|\vec{\rho} -\vec{r} |^2 }{2z}) \times \alert{\exp [\psi (\vec{r} ,\vec{\rho} ,z)]}d^2 \vec{r} \] 
+
+对比：自由空间中的惠更斯-菲涅尔原理
+\[U(\vec{\rho} ,z) = \frac{1}{j\lambda z}\int U_0(\vec{r}, 0)\exp (\frac{jk|\vec{\rho} -\vec{r} |^2 }{2z}) \times \exp (jkz)d^2 \vec{r} \]
+| \(\vec{\rho} \)                | 出射面坐标                           |
+| \(\vec{r} \)                | 入射面坐标                           |
+| \(z\)                       | 两平面距离                           |
+| \(\psi (\vec{r} ,\vec{\rho} ,z)\) | 湍流介质对球面波的 Rytov 复相位扰动  |
+| \(U_0\)                     | 入射面上的光场                       |
+| \(U\)                       | 出射面上的光场                       |
+| \(jkz\)                     | 自由空间介质对球面波的纵向复相位扰动 |
+
+** 讲义 :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+我们使用复相干函数的定义就可以得到传播的规律，只不过这里使用的场函数不是自由空间中用惠更斯-菲涅尔原理导出的场函数，而是在湍流介质中使用广义惠更斯-菲涅尔原理导出的场函数。
+** 大气湍流中互相干函数的传播
+\begin{align*}
+\Gamma (\vec{\rho} _1, \vec{\rho} _2, z) &= \langle U(\vec{\rho} _1, z)U^*(\vec{\rho} _2, z) \rangle_s\\
+&=\frac{1}{\lambda ^2 z^2 }\int \Gamma_0(\vec{r} _1, \vec{r} _2, 0)\exp \frac{ik(\vec{\rho} _1 - \vec{r} _1)^2 }{2L}\exp \frac{-ik(\vec{\rho} _2 - \vec{r} _2)^2 }{2L}\\
+&\quad \times \langle \exp [\psi (\vec{r} _1, \vec{\rho} _1, z) + \psi ^*(\vec{r} _2, \vec{\rho} _2, z)] \rangle_m \times d^2 \vec{r} _1 d^2 \vec{r} _2
+\end{align*}
+其中的 \(\Gamma_0 (\vec{r} _1, \vec{r} _2, 0) = \langle U_0(\vec{r} _1, 0)U_0^*(\vec{r} _2, 0) \rangle_s\) 
+** 讲义 :B_ignoreheading:
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+文献中说这里的下标 s 和 m 分别表示光源本身的振幅、相位起伏和湍流引入的复相位二阶统计矩。
+
+这个区分有没有计算上的区别？或者说说这两个算子 \(\langle \cdot \rangle_s, \langle \cdot \rangle_m  \) 有没有区别？
+
+** 用 kolmogorov 湍流谱表示 Rytov 微扰
+仅考虑到二阶微扰时
+\begin{align*}
+& \exp [\psi (\vec{r} _1, \vec{\rho} _1, z) + \psi ^*(\vec{r} _2, \vec{\rho} _2, z)] = \exp[2 E_1(0,0; 0,0) + E_2(\vec{\rho}  _1,\vec{\rho}  _2; \vec{r} _1, \vec{r} _2)]\\
+& E_1(0,0; 0,0) = -2\pi ^2 k^2 z \int_0^{\infty} \kappa \phi_n(\kappa)d\kappa \\
+& E_2(\vec{\rho}_1, \vec{\rho}_2; \vec{r}_1, \vec{r}_2) = 4\pi ^2 k^2 z \int_0^{1} \int_0^{\infty } \kappa \phi _n(\kappa)J_0[\kappa |(1-\xi )\rho_d + \xi r_d|]\  d\xi d\kappa  
+\end{align*} 
+| \(\kappa\)               | 入射面的空间频率矢量的模    |
+| \(\rho_d = \rho_1 - \rho_2\) | 出射面上两点的位置矢量差    |
+| \(r_d = r_1 - r_2\) | 入射面上两点的位置矢量差    |
+| \(\phi_n(\kappa)\)          | 湍流谱，可以是 von Karman谱 |
+
+这样，受湍流影响的光场的互相干函数就可以求了。
+
+* :B_fullframe:
+:PROPERTIES:
+:BEAMER_env: fullframe
+:END:
+#+begin_export latex
+\frametitle<presentation>{参考文献}
+#+end_export
+\begin{thebibliography}{4}
+\bibitem{suxianyu}苏显渝. 信息光学.第2版[M]. 科学出版社, 2011.
+\bibitem{wangfei}王飞, 余佳益, 刘显龙,等. 部分相干光束经过湍流大气传输研究进展[J]. 物理学报, 2018, v.67(18):9-22.
+\end{thebibliography}

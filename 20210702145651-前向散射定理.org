@@ -1,0 +1,8 @@
+#+title: 前向散射定理
+#+roam_tags: 
+#+roam_alias: 
+
+描述散射体总消光能量和散射波前向特性之间的关系。
+可以得到 \[\sigma_s = \int_{4\pi} |\bm{f}(\hat{o},\hat{i})|^2d\Omega\] 
+
+* 参考

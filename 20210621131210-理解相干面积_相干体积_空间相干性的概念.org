@@ -1,6 +1,4 @@
 #+title: 理解相干面积、相干体积、空间相干性的概念
-#+author: 郭子辰 20051212120
-#+setupfile: src/jake-latex-standard.org
 #+roam_tags: 
 #+roam_alias: 
 

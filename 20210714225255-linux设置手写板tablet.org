@@ -1,0 +1,24 @@
+#+title: linux设置手写板tablet
+#+roam_tags: 
+#+roam_alias: 
+
+写一份xorg配置文件，将我的手写板伪装成wacom手写板，这样就可以利用linux针对wacom的配置了。
+[[file:/etc/X11/xorg.conf.d/50-tablet.conf]]
+#+begin_example
+Section "InputClass"
+	Identifier "Tablet"
+	Driver "Wacom"
+	MatchDevicePath "/dev/input/event*"
+	MatchUSBID "256c:006e"
+EndSection
+#+end_example
+其中的 MatchUSBID 是从 =lsusb= 中得到的。
+
+* 设置手写板的占据的屏幕范围
+#+begin_src shell
+xsetwacom set 11 MapToOutput eDP-1
+#+end_src
+其中11来自 =xsetwacom list devices=，eDP-1来自 =xrandr= 。
+
+* 参考
+https://wiki.archlinux.org/title/Wacom_tablet

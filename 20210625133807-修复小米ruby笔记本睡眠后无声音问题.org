@@ -1,0 +1,30 @@
+#+title: 修复小米Ruby笔记本睡眠后无声音问题
+#+roam_tags: linux alsa
+#+roam_alias: 
+
+* 修复的过程
+在 [[https://askubuntu.com/questions/1234807/no-sound-after-sleep-ubuntu-20-04/1294354#1294354][stackexchange]] 发现了针对小米笔记本电脑睡眠后无声音问题的解决方法：将设备和驱动断开，然后重新扫描 pci 设备：
+#+begin_src shell
+echo 1 > /sys/bus/pci/devices/0000:00:1f.3/remove
+echo 1 > /sys/bus/pci/rescan
+#+end_src
+基本就是上面两步就可以了。为了在每次从睡眠中恢复的时候执行两个命令，需要创建一个 =systemd= 脚本
+[[file:/usr/lib/systemd/system-sleep/99_restart_sound]]。
+#+begin_src shell
+device_id=`lspci | grep "Audio device" | cut -d" " -f1` #lspci | grep 'Audio device' | cut -d" " -f1
+device_dir=`ls /sys/bus/pci/devices/ | grep $device_id`
+
+case $1/$2 in
+	pre/*)
+		;;
+	post/*)
+		echo 1 > /sys/bus/pci/devices/$device_dir/remove
+		echo 1 > /sys/bus/pci/rescan
+		volumeicon &
+                ;;
+esac
+exit 0
+#+end_src
+
+* 参考
+[[file:20210628225256-声音系统相关知识_speaker_test测试声音_alsamixer设置音量.org][linux alsa声音系统相关知识；speaker-test测试声音；alsamixer设置音量]]

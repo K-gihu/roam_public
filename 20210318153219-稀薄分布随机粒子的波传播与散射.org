@@ -2,7 +2,72 @@
 #+roam_tags: 随机介质中的波传播与散射
 #+roam_alias: 
 
-* 主要内容
+* 稀薄随机介质中的散射 :ATTACH:
+:PROPERTIES:
+:ID:       f880c70f-af90-4de0-8242-e2e2e063b7a7
+:END:
+- 稀薄随机介质 :: 粒子体积在总体积中的占比远小于0.1%的随机介质。
+稀薄随机介质散射问题研究可以使用单次散射近似和一阶多重散射近似。
+- 单次散射近似 :: 由于在传输路径上，电磁波只被少数粒子散射，所以可以近似将散射看作只由于粒子的单次散射产生。忽略多重散射。
+ [[attachment:_20210701_153940screenshot.png]]
+- 一阶多重散射近似 :: 粒子密度稍大的时候，需要考虑路径上的衰减。
+ [[attachment:_20210701_154227screenshot.png]]
+ 
+另外，如果粒子体积占比达到1%，则使用输运理论，考虑粒子的多重散射。
 
+* 粒子尺寸分布和散射场的统计特征
+- 单位线度分布的粒子数体密度 :: \(N(D)\) 
+- 粒子数体密度（或全部线度的粒子数体密度） :: \(\rho = \int_0^{\infty} N(D)dD\) 
+- 粒子线度概率密度 :: \(W(D) = N(D) / \rho\) 
+- （线度）平均衰减截面 :: \(\langle\sigma_t\rangle=\frac{1}{\rho}\int_0^{\infty} N(\alpha)\sigma_td\alpha\) 
+- （线度）平均散射截面 :: \(\langle\sigma_s\rangle= \frac{1}{\rho}\int_0^{\infty} N(\alpha)\sigma_sd\alpha\)
+  后面不加线度了，但要知道这个平均是对线度的平均
+- 平均粒子反照率 :: \(\langle W_0\rangle = \langle\sigma_s\rangle / \langle\sigma_t\rangle\) 
+- 等效于同一尺寸参数粒子的平均相函数 :: \[\langle p(\hat{s},\hat{s}')\rangle = \frac{1}{\rho\langle\sigma_s\rangle}\int_0^{\infty} N(\alpha)\sigma_s(\alpha)p(\hat{s},\hat{s}')d\alpha\]
+  相函数可以使用 Henyey-Greenstein 相函数描述
+- Henyey-Greenstein 相函数 :: \(p(\mu) = W_0(1-g^2)[1+g^2-2g\mu]^{-3 /2}\)
+  其中 \(\mu\) 是散射角余弦， \(g\) 是散射角余弦对立体角的平均值，称为单个粒子不对称因子，表征粒子散射各向异性的程度。
+  \(g = \overline{\mu} = (\int_{4\pi} p(\hat{s},\hat{s}')\mu d\omega') / \int_{4\pi} p(\hat{s},\hat{s}')d\omega', \ \mu = \cos\gamma = \hat{s}\cdot \hat{s}'\) 
+- 平均粒子不对称因子 :: \(\langle g\rangle = \frac{1}{\rho\langle\sigma_s\rangle}\int_0^{\infty} N(\alpha)\sigma_s(\alpha)g(\alpha)d\alpha\) 
 
+* 李托夫（近似）方法[fn:1]
+前面描述的一阶多重散射近似，接收场被认为是相干场和非相干场之和，即
+\[u(\bm{r},t) = \langle u(\bm{r},t)\rangle+u_f(\bm{r},t)\] 
+这只有在*弱起伏*情况下才成立，要求非相干强度远小于相干强度，即
+\[\langle|u_f(\bm{r},t)|^2\rangle\ll |\langle u(\bm{r},t)\rangle|^2\] 
+
+李托夫方法是使用复相位描述波场起伏的方法。不同于上式求和的描述方法，使用下式的乘积形式来描述波场：
+#+name: rytov
+\[u(\bm{r},t) = u_0(\bm{r},t)\exp[\psi(\bm{r},t)]\] 
+这里的 \(u_0\) 一般是自由空间场或平均场，总之是假设起伏不存在的场。
+这里用平均场：\(u_0(\bm{r},t)= \langle u(\bm{r},t)\rangle\) ，也是复数
+\(\psi\) 是复相位起伏
+
+现在我们使用振幅+相位表示法表示 \(u,u_0\) 。
+\[u_0(\bm{r},t) = A_0(\bm{r},t)\exp(iS_0(\bm{r},t))\] 
+\[u(\bm{r},t) = A(\bm{r},t)\exp(iS(\bm{r},t))\] 
+将二式代入[[rytov]]式中，可以使用两个波场的振幅和相位表达复相位起伏。
+
+如果将复相位起伏表示为实部虚部形式：\(\psi(\bm{r},t) = \chi(\bm{r},t)+iS_1(\bm{r},t)\) 那么
+\[\chi(\bm{r},t) = \ln[A(\bm{r},t) / A_0(\bm{r},t)]\]
+\[S_1(\bm{r},t) = S(\bm{r},t)-S_0(\bm{r},t)\] 
+可以看出物理意义。实部 \(\chi\) 就是振幅的对数的起伏，称为对数振幅起伏；而虚部 \(S_1\) 代表相位起伏。
+
+** 对比李托夫近似和波恩近似
+波恩近似的表示法 \(u(\bm{r},t) = \sum_{i} u_i(\bm{r},t) = u_1+u_2+u_3+\dots\)
+李托夫近似的表示法 \(u(\bm{r},t) = u_0(\bm{r},t)\exp(\sum_{i}\psi_i(\bm{r},t))\)
+
+如果起伏场远小于平均场，那么波恩近似的前两项是
+\[u(\bm{r},t) = \langle u\rangle[1+u_f / \langle u\rangle+\dots]\]
+李托夫近似的前两项是
+\begin{align*}
+u(\bm{r},t) &= u_0(\bm{r},t)\exp[\psi_0(\bm{r},t) + \psi_1(\bm{r},t)] \\
+ &= \langle u(\bm{r},t)\rangle(\bm{r},t)\exp[u_f(\bm{r},t) / \langle u(\bm{r},t)\rangle] \\
+ &\approx \langle u(\bm{r},t)\rangle(\bm{r},t)[1+u_f(\bm{r},t) / \langle u(\bm{r},t)\rangle] \\
+\end{align*} 
+其精度是远高于波恩近似的
 * 参考
+
+* Footnotes
+
+[fn:1] 参考石丸155李托夫方法，385李托夫解，461李托夫近似 

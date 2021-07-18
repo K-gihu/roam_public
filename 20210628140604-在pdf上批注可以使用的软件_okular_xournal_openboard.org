@@ -1,0 +1,9 @@
+#+title: 在pdf上批注可以使用的软件：okular、xournal++、openboard
+#+roam_tags: 
+#+roam_alias: 
+
+okular的批注功能最好，专看pdf的。但是有poppler[[file:20210628135423-okular由于poppler的问题无法显示中文批注_可以使用mupdf.org][无法显示中文批注]]的问题，不过可以安装mupdf后端版本的。
+
+后面两个可以在平板使用。xournal++没有批注侧栏。
+
+* 参考

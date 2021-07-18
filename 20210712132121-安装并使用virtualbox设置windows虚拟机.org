@@ -1,0 +1,42 @@
+#+title: 安装并使用virtualbox设置windows虚拟机
+#+roam_tags: 
+#+roam_alias: 
+
+* 安装
+#+begin_src shell
+sudo pacman -S virtualbox virtualbox-host-modules-arch
+#+end_src
+后者是在使用 linux 内核的情况下才安装的。
+安装后重启，以载入 virtualbox 模块。
+
+* virtualbox模块的载入和功能
+这些模块的列表放在[[file:/usr/lib/modules-load.d/virtualbox-host-modules-arch.conf]]
+稍微介绍一下
+- vboxdrv 是一个主要的模块，必须在虚拟机运行之前载入
+  载入模块可以使用 =modprobe vboxdrv=
+- vboxnetadp和vboxnetflt，如果你要用桥接网络或者只有主机的网络时需要。前者用于在 virtualbox 全局设置中创建主机的接口，后者使用那个网络接口来启动虚拟机。
+注意，如果模块已经载入到内核，同时你更新了模块，那么你需要手动重载：以 root 用户运行 =vobxreload= 。
+
+* 在虚拟机中链接主机USB设备
+将用户添加到 vboxusers 用户组中，即可获得授权使用该功能。
+#+begin_src shell
+sudo usermod -a -G vobxusers klu
+#+end_src
+
+* 虚拟机附加光盘
+推荐安装 virtualbox-guest-iso 这个包，安装后 iso 文件放在[[file:/usr/lib/virtualbox/additions/VBoxGuestAdditions.iso]]。可以将此文件装载到虚拟机，然后运行安装。
+
+* 扩展包
+virtualbox-ext-oracle 这个包不是自由的，但有[[https://www.virtualbox.org/manual/ch01.html#intro-installing][额外的功能]]：
+#+begin_example
+The virtual USB 2.0 (EHCI) device.
+The virtual USB 3.0 (xHCI) device. 
+VirtualBox Remote Desktop Protocol (VRDP) support. 
+Host webcam passthrough. 
+Intel PXE boot ROM.
+Disk image encryption with AES algorithm. 
+Cloud integration features. 
+#+end_example
+
+* 参考
+https://wiki.archlinux.org/title/VirtualBox

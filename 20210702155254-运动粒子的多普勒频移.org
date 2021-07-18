@@ -1,0 +1,97 @@
+#+title: 运动粒子的多普勒频移
+#+roam_tags: 
+#+roam_alias: 
+
+* 运动粒子的时间相关散射截面 :ATTACH:
+:PROPERTIES:
+:ID:       0046fc98-63e5-40e2-aed9-0e48d11dc5ad
+:END:
+一个粒子以速度 \(\bm{V}\) 平动，时谐入射场为
+\[\bm{E}_i(\bm{r}) = \hat{e}_i\exp(jk \bm{r}\cdot \hat{i})\] 
+我们首先分析一个粒子被散射的情况
+
+[[attachment:_20210702_174736screenshot.png]]
+
+如图，原点为 \(o\) ，粒子的位矢是 \(\bm{r}_1\) ，\(R_0\) 是散射波传播到达位置处的出射平面与原点的距离。
+
+可以在理论上设置两个平面：入射平面和出射平面，入射波从入射平面进入研究区域，散射波从出射平面离开研究区域。 入射平面是过 \(o\) 点做以 \(\hat{i}\) 为法方向的平面，出射平面是在 \(R_0\) 处与 \(\hat{o}\) 垂直的平面。
+
+那么入射波从入射平面传播到粒子处经历的相位变化是 \(k \hat{i}\cdot \bm{r}_1\) ，从粒子处传播到出射平面的相位变化是 \(kR_0 - k \hat{o}\cdot \bm{r}_1\) 。
+
+另外从[[file:20210627231524-张量格林函数求无源介质的矢量波动方程_散射问题.org][单粒子散射的相关分析]]我们可以得到粒子本身引起的相位和振幅变化可以使用[[file:20210626142011-散射振幅矢量.org][散射振幅函数]]表示，而从粒子到出射平面的振幅变化可以使用 \(\frac{1}{R_0}\) 表示，所以从入射平面到出射平面的振幅和相位变化可以使用下式表示
+\[\frac{\bm{f}(\hat{o},\hat{i})}{R_0}\exp[jk(\hat{i}-\hat{o})\cdot \bm{r}_1+jkR_0]\] 
+这相当于入射平面处有一振幅为1，相位为0的入射波 \(\hat{e}_i\) 入射，从而在粒子处形成了入射场 \[\bm{E}_i(\bm{r}) = \hat{e}_i\exp(jk \hat{i}\cdot \bm{r})\]
+
+那么在 \(R_0\) 处的散射场就可以用上式表示
+\[\bm{E}_s = \frac{\bm{f}(\hat{o},\hat{i})}{R_0}\exp[jk(\hat{i}-\hat{o})\cdot \bm{r}_1+jkR_0]\]
+
+* 引入粒子运动的因素、时间相关微分散射截面、频谱 :ATTACH:
+:PROPERTIES:
+:ID:       f65360bf-0280-4530-a050-cdf5fa481479
+:END:
+如果我们认为上式是 \(t_1\) 时刻的散射场 \(\bm{E}_s(t_1)\) ，那么上式中的 \(\bm{r}_1\) 一般而言（粒子在运动）就不是 \(t_1\) 时刻粒子的位矢，而是 \(t_1' =t_1-R_1 /c\) 时刻粒子的位矢（\(R_1\) 见图，距离粒子是 \(R_1\) ，距离原点是 \(R_0\) ）。因为此刻的波是传播时间之前的时刻的波源发出的，而在传播时间之内，波源可能运动。
+
+同理，在另外一个时刻 \(t_2\) 的散射场 \(\bm{E}_s(t_2) =\frac{\bm{f}(\hat{o},\hat{i})}{R_0}\exp[jk(\hat{i}-\hat{o})\cdot \bm{r}_2+jkR_0]\) 就是 \(t_2' = t_2-R_2 /c\) 时刻的位于 \(\bm{r}_2\) 处粒子发出的。如图。
+
+[[attachment:_20210702_194347screenshot.png]]
+
+现在我们有了两个时刻的变量，基本的时间变化就可以研究了。
+
+我们知道粒子运动速度是 \(\bm{V}\) （匀速），故两个位矢满足：
+#+name: r1-r2
+\[\bm{r}_1 - \bm{r}_2 = \int_{t_2'}^{t_1'} \bm{V}dt \approx \bm{V}\tau, \tau = t_1-t_2\] 
+这里使用了 \(t_1'-t_2' = t_1-t_2-c^{-1}(R_1-R_2)\approx t_1-t_2\) 的近似。\(R_1-R_2\) 就是两个位置的粒子在散射方向上的距离差距，从而与 \(\bm{V}(t_1'-t_2')\) 在同一量级，只要 \(V\ll c\) 就可以忽略之。
+\[\bm{r}_1 - \bm{r}_2 = \int_{t_2'}^{t_1'} \bm{V}dt \approx \bm{V}\tau, \tau = t_1-t_2\] 
+现在定义
+- 时间相关微分散射截面 :: \(\sigma_d(\hat{o},\hat{i},\tau) = \lim\limits_{R_0 \to \infty}(R_0^2\langle E_s(t_1)E_s^*(t_2) \rangle)\) 
+
+结合[[r1-r2]]，和两个散射波场定义，可以得到：
+\[\sigma_d(\hat{o},\hat{i},\tau) = \sigma_d(\hat{o},\hat{i})\langle \exp(j \bm{k}_s\cdot \bm{V}\tau)\rangle\]
+这里的 \(\sigma_d(\hat{o},\hat{i})\) 就是 \(\bm{V}=0\) 时的微分散射截面，也就是[[file:20210428092804-散射截面_微分散射截面_吸收截面_消光截面_雷达截面.org][通常意义的]]微分散射截面。
+而 \(\bm{k}_s=k(\hat{i}-\hat{o})\) ，类似[[file:20210701131659-波恩近似.org][波恩近似]]中的设定。
+
+一般粒子的速度 \(\bm{V}\) 由平均速度 \(\langle \bm{V}\rangle=\bm{U}\) 和起伏速度 \(\bm{V}_f\) 两部分组成，即 \(\bm{V}=\bm{U}+\bm{V}_f\)。
+换种写法就是 \(\bm{V} = \langle \bm{V}\rangle+\bm{V}_f\) 。
+
+速度起伏 \(\bm{V}_f\) 的特征函数是 \(\chi(\bm{k}_s\tau) = \langle\exp(j \bm{k}_s\cdot \bm{V}_f\tau)\rangle\)，可以以此将 \(\sigma_d\) 写为
+\[\sigma_d(\hat{o},\hat{i},\tau) = \sigma_d(\hat{o},\hat{i})\exp(j \bm{k}_s\cdot \bm{U}\tau) \chi(\bm{k}_s\tau)\] 
+相应的时间频谱是
+\[W_\sigma(\hat{o},\hat{i},\omega) = \int_{-\infty}^{\infty} \sigma_d(\hat{o},\hat{i},\tau)\exp(j\omega\tau)d\tau\]
+其中 \(\tau=t_1-t_2\) ，也就是接收处收到两个散射波的时间差。
+
+* 特例：起伏速度为0，平均速度为常数，多普勒频移 :ATTACH:
+:PROPERTIES:
+:ID:       1008779a-6044-4818-8aa7-6e4f001341da
+:END:
+此时的时间相关微分散射截面为 \(\sigma_d(\hat{o},\hat{i},\tau)= \sigma_d(\hat{o},\hat{i})\exp(j \bm{k}_s\cdot \bm{U}\tau)\)
+对其进行傅里叶变换可以得到频谱 \(W_\sigma(\hat{o},\hat{i},\omega)= \sigma_d(\hat{o},\hat{i})\delta(\omega+\bm{k}_s\cdot \bm{U})\)
+由此可见，由于 \(\exp(j \bm{k}_s\cdot \bm{U}\tau)\) 的影响，频谱产生了偏移 \(\omega=-\bm{k}_s\cdot \bm{U}\) ，这是多普勒频移现象的体现。
+\[\omega = -\bm{k}_s\cdot \bm{U} = -(\hat{i}-\hat{o})\cdot \bm{U}k\] 
+而多普勒频移使用下式定义
+\[\frac{\omega}{\omega_0} = -(\hat{i}-\hat{o})\cdot\frac{\bm{U}}{c}
+= -2\sin(\theta /2)\frac{\bm{U}_d}{c}\] 
+
+[[attachment:_20210703_104032screenshot.png]]
+
+入射波的频率是 \(\omega_0\) 。散射波的频率可以使用下式得到
+\[\omega+\omega_0 = \omega_0[1-(\hat{i}-\hat{o})\cdot \frac{\bm{U}}{c}]\] 
+
+* 特例：起伏速度正态分布（在每个直角坐标分量） :ATTACH:
+:PROPERTIES:
+:ID:       b9a07d28-7fae-4baa-ace2-757a2e93578a
+:END:
+\[P(\bm{V}_f) = (2\pi\sigma_f^2)^{-3 / 2} \exp[-V_f^2 / 2\sigma_f^2]\] 
+此时特征函数就是（怎么算？在我自己计算的过程中发现这个 \(\bm{k}_s\cdot \bm{V}_f\) 不好处理，角度问题怎么解决？）
+\[\chi(\bm{k}_s\tau) = \langle\exp(j \bm{k}_s\cdot \bm{V}_f\tau)\rangle
+= \exp(-k_s^2\sigma_f^2\tau^2 /2)\] 
+由 \(\sigma_d(\hat{o},\hat{i},\tau) = \sigma_d(\hat{o},\hat{i})\exp(j \bm{k}_s\cdot \bm{U}\tau) \chi(\bm{k}_s\tau)\) 和 \(W_\sigma(\hat{o},\hat{i},\omega)= \int_{-\infty}^{\infty} \sigma_d(\hat{o},\hat{i},\tau)\exp(j\omega\tau)d\tau\) 可得频谱
+\[W_\sigma(\hat{o},\hat{i},\omega)
+= \sigma_d(\hat{o},\hat{i})\left(\frac{2\pi}{k_s^2\sigma_f^2}\right)^{1 /2} \exp\frac{-(\omega+\bm{k}_s\cdot \bm{U})^2}{2k_s^2\sigma_f^2}\] 
+这里的计算本质上就是求一个[[file:20210703232536-高斯积分_常用于统计学和物理学.org][高斯积分]]。
+
+与上面使用 \(\delta\) 函数不同，这里使用 \(\exp(-\omega^2 /\sigma^2)\) 函数是由一定宽度的，这就是由于速度起伏引起的频谱展宽，宽度就是 \(\Delta\omega=\sqrt{2}k_s\sigma_f\) 而频谱偏移依然可以使用 \(\omega=-\bm{k}_s\cdot \bm{U}\) 表示。
+
+[[attachment:_20210703_132644screenshot.png]]
+
+* 参考
+

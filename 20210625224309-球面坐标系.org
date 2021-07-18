@@ -1,15 +1,19 @@
 #+title: 球面坐标系
 #+roam_tags: 
-#+roam_alias: 
+#+roam_alias: 方位角 天顶角
 
 * 坐标系图像 :ATTACH:
 :PROPERTIES:
 :ID:       bb6495a5-ff2d-4ee0-bc2a-95a293caa897
 :END:
 [[attachment:_20210625_224545screenshot.png]]
-注意球面坐标系的两个角，\(\phi \) 是方位角，\(\theta \) 是俯仰角。
+注意球面坐标系三坐标的名字，\(r\) 是径向距离（radial distance），\(\phi \) 是方位角（azimuthal angle），\(\theta \) 是天顶角（zenith angle）或极角（polar angle）。
 
-* 球面面元的表示
+* 球面面元
 \[dS = r d\theta \cdot r\sin \theta \cdot d\varphi = r^2 \sin \theta d\theta d\varphi\] 
+
+* 立体角元
+用球面面元除以径向距离的平方即可。
+\[d\Omega = \frac{dS}{r^2 } = \sin \theta d\theta d\phi \] 
 
 * 参考

@@ -1,0 +1,20 @@
+#+title: 备份用的timeshift的配置
+#+roam_tags: 
+#+roam_alias: 
+
+用于自动在每次更新软件之前备份软件库。
+[[file:/usr/share/libalpm/hooks/00-timeshift-autosnap.hook]]
+#+begin_example
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = *
+
+[Action]
+Description = Creating Timeshift snapshot before upgrade...
+Depends = timeshift
+When = PreTransaction
+Exec = /usr/bin/timeshift-autosnap
+#+end_example
+
+* 参考

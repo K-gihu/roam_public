@@ -1,0 +1,6 @@
+#+title: 波阻抗
+#+roam_tags: 
+#+roam_alias: 
+
+\[\eta_0 = \sqrt{\frac{\mu_0}{\varepsilon_0}\] 
+* 参考

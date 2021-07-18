@@ -1,5 +1,4 @@
 #+title: 点目标、线目标、面目标的激光雷达方程的推导
-#+author: 郭子辰 20051212120
 #+setupfile: src/jake-latex-standard.org
 #+roam_tags: 
 #+roam_alias: 

@@ -1,0 +1,53 @@
+#+title: 张量格林函数求无源介质的矢量波动方程，散射问题
+#+roam_tags: 随机介质中的波传播与散射
+#+roam_alias: 
+
+时谐平面电磁波（时谐因子是 \(e^{-i\omega t}\) ）入射到相对介电常数为 \(\varepsilon_r(\bm{r})\) 的非磁性介质上，发生散射。空间无源。
+
+总电场为 \(\bm{E}(\bm{r}) = \bm{E}_i(\bm{r}) + \bm{E}_s(\bm{r})\) 。
+
+* 总电场的矢量波动方程导出
+写出总电场满足的该无源空间的麦克斯韦方程组：
+\begin{gather*}
+\nabla \times \bm{E} = j\omega \mu_0 \bm{H} \\
+\nabla \times \bm{H} = -j\omega \varepsilon_0 \bm{E} + \bm{J}_{ef}
+\end{gather*} 
+这里的第二个方程本来是麦克斯韦-安培定律，即传导电流和位移电流产生磁场，这里将与散射介质相关的等效电流 \(\bm{J}_{ef}\) 和与散射介质无关的项分离。
+它等于
+#+name: eqn:effective-current-density
+\begin{equation}
+\bm{J}_{ef} = -j\omega \varepsilon_0[\varepsilon_r(\bm{r})-1]\bm{E}, \in V; 0, \not\in V
+\end{equation}  
+这里取第一个方程的旋度，并代入第二个方程，可以得到矢量波动方程：
+#+name: eqn:vec-wave-eq
+\begin{equation}
+\nabla \times \nabla \times \bm{E}(\bm{r}) + k^2 \bm{E}(\bm{r}) = j\omega \mu_0 \bm{J}_{ef}(\bm{r}) 
+\end{equation} 
+
+* 使用张量格林函数解矢量波动方程（远场近似）
+使用并矢（张量）格林函数 \(\mathcal{G}(\bm{r},\bm{r}')\) ，它满足 \[\nabla \times \nabla \times \mathcal{G}(\bm{r},\bm{r}') + k^2 \mathcal{G}(\bm{r},\bm{r}') = \mathcal{I}\delta (\bm{r}-\bm{r}')\] 
+形式上和上面的矢量波动方程是一致的。
+
+矢量波动方程[[eqn:vec-wave-eq]]的解可以使用张量格林函数表示为 \[\bm{E}(\bm{r}) = \int \mathcal{G}(\bm{r},\bm{r}')\cdot (j\omega \mu_0\bm{J}_{ef}) dv'\] 
+这里的张量格林函数的含义是什么呢？可以理解为，它点乘 \(j\omega \mu_0 \bm{J}_{ef}\) 的结果就是等效电流产生的电场（散射场）
+
+现在使用[[eqn:effective-current-density]]展开电流密度，同时用张量格林函数的远场近似表达式展开之：
+\[\mathcal{G}(\bm{r},\bm{r}') \approx \frac{\exp (jkR)}{4\pi R}(\mathcal{I} + \frac{\nabla \nabla }{k^2 })\exp (jk \hat{o}\cdot \bm{r}')\] 
+其中 \[R = |\bm{r}-\bm{r}'|\] 
+略过中间的过程，可以求出积分表达式：
+\[\bm{E}_s(\bm{r}) = \frac{k^2 \exp(jkR)}{4\pi R}\int_{V'} -\hat{o}\times (\hat{o}\times \bm{E}(\bm{r}'))(\varepsilon_r(\bm{r}')-1) \exp (-jk \bm{r}'\cdot \hat{o})dV'\]
+根据[[file:20210626142011-散射振幅矢量.org][散射振幅函数]]的定义，可以得到
+#+name: eqn:sca-amp-func
+\[\bm{f}(\hat{o},\hat{i}) = \frac{k^2}{4\pi}\int_{V'} -\hat{o}\times (\hat{o}\times \bm{E}(\bm{r}'))(\varepsilon_r(\bm{r}')-1) \exp (-jk \bm{r}'\cdot \hat{o})dV' \]
+
+* 物理含义
+这里的 \(-\hat{o}\times(\hat{o}\times \bm{E}) = \bm{E} - \hat{o}(\hat{o}\cdot \bm{E})\) 其实就是 \(\bm{E}\) 垂直于 \(\hat{o}\) 方向的分量。积分内的相当于一个沿散射方向传播的平面波。
+
+* 近似
+这里的 \(\bm{E}(\bm{r}')\) 可以使用很多函数近似以便于计算，这就可以得到很多实用的近似表达式，例如
+- [[file:20210427205055-瑞利近似下的瑞利散射.org][瑞利近似下的瑞利散射]]
+- [[file:20210701131659-波恩近似.org][波恩近似]]
+- [[file:20210702131135-wkb近似.org][WKB近似]]
+
+* 参考
+《微粒的光散射、吸收和发射》2.1

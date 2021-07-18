@@ -1,5 +1,4 @@
 #+title: 朗伯面目标散射的背景光功率计算
-#+author: 郭子辰 20051212120
 #+setupfile: src/jake-latex-standard.org
 #+roam_tags: 
 #+roam_alias: 

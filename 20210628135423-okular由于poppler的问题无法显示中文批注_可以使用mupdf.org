@@ -1,0 +1,11 @@
+#+title: okular由于poppler的问题无法显示中文批注，可以使用mupdf
+#+roam_tags: 
+#+roam_alias: 
+
+由于一个[[https://gitlab.freedesktop.org/poppler/poppler/-/issues/362][古老的bug]]，poppler无法正常显示中文批注，而mupdf就没这个问题，所以可以使用
+#+begin_src sh
+yay -S okular-backend-mupdf-git
+#+end_src
+
+* 参考
+https://gitlab.freedesktop.org/poppler/poppler/-/issues/362

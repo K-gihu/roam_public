@@ -1,0 +1,11 @@
+#+title: org block中输入org-mode特殊文本的方法
+#+roam_tags: 
+#+roam_alias: 
+
+前面加一个逗号。
+#+begin_example
+,* I am no real headline
+#+end_example
+
+* 参考
+https://orgmode.org/manual/Literal-Examples.html

@@ -1,0 +1,9 @@
+#+title: 电介质吸收能量的计算
+#+roam_tags: 
+#+roam_alias: 
+
+如果介质的复介电常数是 \(\varepsilon_r = \varepsilon_r'+i\varepsilon_r''\) 
+\[P_a = \int_V \frac{1}{2}\omega\varepsilon_0\varepsilon_r''|E|^2dV\]
+
+* 参考
+[[file:~/org_notebooks/roam/public/20210702155254-运动粒子的多普勒频移.org::*特例：起伏速度正态分布（在每个直角坐标分量）][特例：起伏速度正态分布（在每个直角坐标分量）]]

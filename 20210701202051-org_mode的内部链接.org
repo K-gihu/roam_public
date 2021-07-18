@@ -1,0 +1,16 @@
+#+title: org-mode的内部链接
+#+roam_tags: 
+#+roam_alias: 
+
+- 内部链接 :: 一个指向当前文档的链接，与URL不同，并不以已知的scheme或文件名开始。
+例如，按正常优先级或程序搜寻顺序：
+- =[[#my-custom-id]]= 可以指向有 =:CUSTOM_ID: my-custom-id= 的属性的条目
+- =[[*Some section]]= 指向标题 =Some section=
+- =[[My target]]= 指向 =<<My Target>>=
+- =[[My target]]= 指向 =#+name: My Target= ，这定义了元素的名字
+- =[[My target]]= 指向可以包含TODO关键词和tag的标题（精确匹配）
+- =[[My target]]= 指向搜索到的一行，需要参考 [[help:org-link-search-must-match-exact-headline]]
+导出的时候，链接会转换为数字。强制需要 =CAPTION= 关键词。
+
+* 参考
+https://orgmode.org/manual/Internal-Links.html

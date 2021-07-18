@@ -1,0 +1,8 @@
+#+title: 高斯函数
+#+roam_tags: 
+#+roam_alias: 
+
+\[f(x) = a\exp\left(-\frac{(x-b)^2}{2c^2}\right)\] 
+
+* 参考
+https://en.wikipedia.org/wiki/Gaussian_function

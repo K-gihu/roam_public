@@ -1,0 +1,46 @@
+#+title: 麦克斯韦方程组
+#+roam_tags: 
+#+roam_alias: 
+
+* 积分形式
+\begin{align*}
+\oint_L \bm{E}\cdot d \bm{l} &= -\frac{\partial }{\partial t}\int_S \bm{B}\cdot d \bm{S} \\
+\oint_L \bm{H}\cdot d \bm{l} &= \frac{\partial }{\partial t}\int_S \bm{D}\cdot d \bm{S} + \int_S \bm{J}\cdot d \bm{S} \\
+\oint_S \bm{B}\cdot d \bm{S} &= 0 \\
+\oint_S \bm{D}\cdot d \bm{S} &= \int_V \rho dV 
+\end{align*} 
+
+分别是电磁感应定律、推广的安培环路定律、磁场高斯定律、电场高斯定律
+
+另外这里的积分符号只用了 =\int= 和 =\oint= ，面积分还是体积分通过积分变量判定，这样比较省符号。
+
+* 微分形式
+\begin{align*}
+\nabla\times \bm{E} &= -\frac{\partial \bm{B}}{\partial t} \\
+\nabla\times \bm{H} &= \frac{\partial \bm{D}}{\partial t} + \bm{J} \\
+\nabla\cdot \bm{B} &= 0 \\
+\nabla\cdot \bm{D} &= \rho
+\end{align*} 
+
+* 电流守恒定律，以及麦克斯韦方程的不独立性
+自由电荷体密度和传导电流密度满足守恒定律：
+\[\nabla\cdot \bm{J} + \frac{\partial \rho}{\partial t} = 0\] 
+使用电荷守恒定律结合麦克斯韦方程组的前两个旋度方程，是可以推导出后两个方程的。
+也就是说这四个麦克斯韦方程是不独立的，独立的只有两个。
+
+* 真空中的平面波
+真空（可以看成均匀、各向同性的介电常数和磁化常数都是1的介质）中无源麦克斯韦旋度方程：
+\begin{align*}
+\nabla\times \bm{E} &= -\mu_0 \frac{\partial \bm{H}}{\partial t} \\
+\nabla\times \bm{H} &= \varepsilon_0 \frac{\partial \bm{E}}{\partial t}
+\end{align*} 
+消去 \(\bm{H}\) 可得
+\[\nabla\times\nabla\times \bm{E} = -\mu_0\varepsilon_0\frac{\partial ^2 \bm{E}}{\partial t^2} \]
+使用无源的电场散度方程 \(\nabla\cdot \bm{E} = 0\) ，加上旋度变换式可得
+- 电场波动方程 :: \[\nabla^2 \bm{E} - \mu_0\varepsilon_0 \frac{\partial ^2 \bm{E}}{\partial t^2} = 0\] 
+
+平面波是具有平面波前的波？
+平面波是在平面上具有不变的性质的波？
+
+* 参考
+[[file:~/org_notebooks/roam/public/20210417224217-菲涅尔_基尔霍夫标量衍射公式的推导.org::*前提：无源的麦克斯韦方程组][前提：无源的麦克斯韦方程组]]
